@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CarSpeedTest - Accurate GPS speedometer app for iOS. Track your speed in real-time with customizable limits and historical records.">
+    <title>CarSpeedTest - GPS Speedometer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            padding: 60px 20px;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .features {
+            background: white;
+            border-radius: 20px;
+            padding: 50px 40px;
+            margin: 40px 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 40px;
+            color: #667eea;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .feature-item {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .feature-item h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #764ba2;
+        }
+
+        .feature-item p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .requirements {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .requirements h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .requirements ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .requirements li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .requirements li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            padding: 40px 20px;
+            opacity: 0.9;
+        }
+
+        .app-store-badge {
+            display: inline-block;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .subtitle {
+                font-size: 1.1em;
+            }
+
+            .features {
+                padding: 30px 20px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CarSpeedTest</h1>
+            <p class="subtitle">Accurate GPS Speedometer for Your Journey</p>
+            <p>Track your speed in real-time with precision and style</p>
+        </header>
+
+        <section class="features">
+            <h2>Features</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="icon">🎯</div>
+                    <h3>Real-time Speed Tracking</h3>
+                    <p>High-precision GPS tracking displays your current speed with accuracy and reliability</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="icon">⚡</div>
+                    <h3>Circular Progress Display</h3>
+                    <p>Beautiful circular progress indicator shows your speed relative to your custom limit</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="icon">📊</div>
+                    <h3>Speed History & Charts</h3>
+                    <p>View detailed records of your speed tests with interactive line charts</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="icon">⚙️</div>
+                    <h3>Customizable Settings</h3>
+                    <p>Choose between km/h or mph units and set your preferred speed limits</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="icon">⏱️</div>
+                    <h3>Elapsed Time Tracking</h3>
+                    <p>Track how long it takes to reach your target speed with built-in timer</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="icon">💾</div>
+                    <h3>Historical Records</h3>
+                    <p>Store up to 10 speed test records and review your performance over time</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="requirements">
+            <h3>Requirements</h3>
+            <ul>
+                <li>iOS 15.0 or later</li>
+                <li>Location services enabled</li>
+                <li>Compatible with iPhone and iPad</li>
+            </ul>
+        </section>
+
+        <section class="requirements">
+            <h3>Privacy & Permissions</h3>
+            <ul>
+                <li>Location access required for GPS speed tracking</li>
+                <li>All data stored locally on your device</li>
+                <li>No personal information collected or shared</li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 CarSpeedTest. All rights reserved.</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">For support or inquiries, please contact us through the App Store.</p>
+        </footer>
+    </div>
+</body>
+</html>
