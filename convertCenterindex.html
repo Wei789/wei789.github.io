@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FX Calculator - A powerful currency converter and calculator supporting 33+ currencies with real-time exchange rates, offline mode, and favorite currencies management.">
+    <meta name="keywords" content="currency converter, exchange rate, calculator, FX, forex, money converter, offline currency">
+    <title>FX Calculator - Currency Converter & Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Material Design CSS */
+        :root {
+            --primary-color: #1976D2;
+            --primary-dark: #1565C0;
+            --secondary-color: #FF9800;
+            --background-color: #FAFAFA;
+            --surface-color: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #757575;
+            --divider-color: #BDBDBD;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Section */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        header p {
+            font-size: 1.25rem;
+            font-weight: 300;
+            margin-bottom: 32px;
+            opacity: 0.9;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #F57C00;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: #f5f5f5;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 60px 20px;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 48px;
+            color: var(--text-primary);
+        }
+
+        /* Feature Cards */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .feature-card {
+            background-color: var(--surface-color);
+            padding: 32px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+            color: var(--primary-color);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #263238;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        footer .links {
+            margin-bottom: 24px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 16px;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        footer a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        .divider {
+            height: 1px;
+            background-color: rgba(255,255,255,0.2);
+            margin: 24px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            section h2 {
+                font-size: 1.75rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 60px 20px;
+            }
+
+            section {
+                padding: 40px 20px;
+            }
+
+            .feature-card {
+                padding: 24px;
+            }
+
+            .btn {
+                padding: 12px 24px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <h1>FX Calculator</h1>
+            <p>Your powerful currency converter and calculator in one app</p>
+            <a href="https://apps.apple.com/tw/app/%E5%8C%AF%E7%8E%87%E8%A8%88%E7%AE%97%E6%A9%9F/id6738332392" target="_blank" class="btn btn-primary">Download on App Store</a>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features">
+        <div class="container">
+            <h2>Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">💱</span>
+                    <h3>Real-time Currency Conversion</h3>
+                    <p>Convert between 33+ currencies with up-to-date exchange rates. Get accurate conversions for all major world currencies including USD, EUR, JPY, TWD, and more.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">🧮</span>
+                    <h3>Built-in Calculator</h3>
+                    <p>Powerful calculator with full expression support. Perform complex calculations with addition, subtraction, multiplication, division, and percentage operations.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">⭐</span>
+                    <h3>Favorite Currencies</h3>
+                    <p>Mark your frequently used currencies as favorites for quick access. Organize your preferred currencies and switch between them effortlessly.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">📡</span>
+                    <h3>Offline Mode</h3>
+                    <p>Works offline with cached exchange rates. Continue converting currencies even without an internet connection using the last updated rates.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">🌍</span>
+                    <h3>Multi-language Support</h3>
+                    <p>Available in multiple languages including English and Chinese. Experience the app in your preferred language with full localization support.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">🆓</span>
+                    <h3>Free to Use</h3>
+                    <p>Ad-supported free app with no hidden costs. Access all features without any subscription fees or in-app purchases.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download CTA Section -->
+    <section id="download" style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%); color: white; text-align: center;">
+        <div class="container">
+            <h2 style="color: white;">Ready to get started?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 32px; opacity: 0.9;">Download FX Calculator now and simplify your currency conversions</p>
+            <a href="https://apps.apple.com/tw/app/%E5%8C%AF%E7%8E%87%E8%A8%88%E7%AE%97%E6%A9%9F/id6738332392" target="_blank" class="btn" style="background-color: white; color: var(--primary-color);">Download on App Store</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 ConvertCenter. All rights reserved.</p>
+            <div class="links">
+                <a href="https://sites.google.com/view/fxcalcowp" target="_blank">Privacy Policy</a>
+                <span style="opacity: 0.5;">|</span>
+                <a href="https://sites.google.com/view/fxcalcow" target="_blank">Terms of Use</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
