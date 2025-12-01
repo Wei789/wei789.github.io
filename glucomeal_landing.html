@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Post‑meal glucose reminders made effortless: one tap to log your first bite, automatic reminders, quick number entry, and a clean log you can share with your clinician." />
+  <meta name="keywords" content="gestational diabetes, GDM, blood glucose, postprandial, reminder, pregnancy, timer, log" />
+  <title>GlucoMeal Timer - Post‑Meal Glucose Reminders</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --primary-color: #7C4DFF;
+      --primary-dark: #5E35B1;
+      --secondary-color: #FF6F61;
+      --background-color: #FAFAFA;
+      --surface-color: #FFFFFF;
+      --text-primary: #212121;
+      --text-secondary: #757575;
+      --divider-color: #BDBDBD;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: 0.2px;
+    }
+
+    header p {
+      font-size: 1.25rem;
+      font-weight: 300;
+      margin-bottom: 28px;
+      opacity: 0.92;
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      background-color: var(--secondary-color);
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      filter: brightness(0.97);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.28);
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background-color: white;
+      color: var(--primary-color);
+    }
+
+    .btn-primary:hover { background-color: #f5f5f5; }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.75);
+      box-shadow: none;
+    }
+
+    .btn-outline:hover {
+      border-color: rgba(255,255,255,1);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.18);
+      transform: translateY(-2px);
+    }
+
+    section { padding: 60px 20px; }
+
+    section h2 {
+      font-size: 2.5rem;
+      font-weight: 500;
+      text-align: center;
+      margin-bottom: 48px;
+      color: var(--text-primary);
+    }
+
+    .subhead {
+      max-width: 900px;
+      margin: -28px auto 42px;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 10px;
+    }
+
+    .feature-card {
+      background-color: var(--surface-color);
+      padding: 32px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      box-shadow: 0 6px 18px rgba(0,0,0,0.14);
+      transform: translateY(-4px);
+    }
+
+    .feature-icon {
+      font-size: 2.6rem;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .feature-card h3 {
+      font-size: 1.35rem;
+      font-weight: 500;
+      margin-bottom: 10px;
+      color: var(--primary-color);
+    }
+
+    .feature-card p {
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      margin-top: 10px;
+    }
+
+    .step {
+      background: var(--surface-color);
+      border-radius: 12px;
+      padding: 24px 24px 22px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .step-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(124, 77, 255, 0.12);
+      color: var(--primary-dark);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .step h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .step p { color: var(--text-secondary); }
+
+    .callout {
+      margin: 26px auto 0;
+      max-width: 980px;
+      background: rgba(124, 77, 255, 0.08);
+      border: 1px solid rgba(124, 77, 255, 0.18);
+      border-radius: 14px;
+      padding: 18px 18px;
+      color: #3a2a87;
+      text-align: center;
+    }
+
+    .callout strong { color: #2c1f6b; }
+
+    .cta {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+      color: white;
+      text-align: center;
+    }
+
+    .cta h2 { color: white; margin-bottom: 16px; }
+    .cta p {
+      font-size: 1.2rem;
+      margin-bottom: 28px;
+      opacity: 0.92;
+      max-width: 980px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    footer {
+      background-color: #263238;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    footer p { margin-bottom: 16px; opacity: 0.85; }
+
+    footer .links { margin-bottom: 6px; }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 16px;
+      opacity: 0.9;
+      transition: opacity 0.3s ease;
+    }
+
+    footer a:hover { opacity: 1; text-decoration: underline; }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 2rem; }
+      header p { font-size: 1rem; }
+      section h2 { font-size: 1.75rem; }
+    }
+
+    @media (max-width: 600px) {
+      header { padding: 60px 20px; }
+      section { padding: 40px 20px; }
+      .feature-card { padding: 24px; }
+      .btn { padding: 12px 22px; font-size: 0.9rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <h1>GlucoMeal Timer</h1>
+      <p>One tap to log your first bite. Automatic post‑meal reminders so you don’t miss glucose checks. Fast number entry and a clean daily log.</p>
+      <div class="cta-row">
+        <!-- TODO: replace with your real App Store link -->
+        <a href="https://apps.apple.com/app/id0000000000" target="_blank" class="btn btn-primary" rel="noopener noreferrer">Download on App Store</a>
+        <a href="#features" class="btn btn-outline">See Features</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="features">
+    <div class="container">
+      <h2>Features</h2>
+      <p class="subhead">
+        Designed for the two moments that cause missed checks: <strong>forgetting the “first bite” time</strong> and <strong>missing the 2‑hour window</strong>.
+        Fewer taps means better adherence.
+      </p>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <span class="feature-icon">🍚</span>
+          <h3>One‑tap “First Bite”</h3>
+          <p>One big button on the home screen. Tap to save the first‑bite timestamp and start your post‑meal timer—no forms, no friction.</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">⏰</span>
+          <h3>Post‑meal Reminders</h3>
+          <p>Automatic reminders after meals (default 2 hours). Switch to 60 / 90 / 120 minutes based on your clinician’s guidance.</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">🔁</span>
+          <h3>Snooze in 1 Tap</h3>
+          <p>Busy? Snooze directly from the notification (default 15 minutes; configurable to 10 / 15 / 30).</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">🔢</span>
+          <h3>Fast Glucose Entry</h3>
+          <p>Large number keypad. Enter your reading, save, done. The app records the measurement time and elapsed minutes automatically.</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">📋</span>
+          <h3>Clean Daily Log</h3>
+          <p>See today’s meals, what’s recorded, and what’s missing at a glance—plus quick status tags for in‑range vs. high readings.</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">🔒</span>
+          <h3>Privacy‑first</h3>
+          <p>Your data is stored locally on your device by default (MVP). You decide if and when to export or back up your logs.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>No fluff.</strong> We focus on the loop that matters: <strong>Start meal → Get reminded → Log reading</strong>.
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="container">
+      <h2>How it works</h2>
+      <p class="subhead">Three steps per meal. Built for one‑hand use and low mental load.</p>
+
+      <div class="how-grid">
+        <div class="step">
+          <div class="step-badge">1</div>
+          <h3>Start your meal</h3>
+          <p>Tap “Start Meal” to record your first bite (optional: Breakfast / Lunch / Dinner / Snack).</p>
+        </div>
+
+        <div class="step">
+          <div class="step-badge">2</div>
+          <h3>Get reminded</h3>
+          <p>When it’s time, you’ll see a clear notification. Tap “Log” to enter the reading—or “Snooze” if you need a few minutes.</p>
+        </div>
+
+        <div class="step">
+          <div class="step-badge">3</div>
+          <h3>Log your reading</h3>
+          <p>Enter your glucose value on a large keypad. The time and interval from first bite are saved automatically.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="download" class="cta">
+    <div class="container">
+      <h2>Ready to stop missing checks?</h2>
+      <p>Make post‑meal reminders effortless—so logging becomes a habit.</p>
+      <!-- TODO: replace with your real App Store link -->
+      <a href="https://apps.apple.com/app/id0000000000" target="_blank" class="btn" style="background-color: white; color: var(--primary-color);" rel="noopener noreferrer">
+        Download on App Store
+      </a>
+      <p style="font-size: 0.95rem; margin-top: 14px; opacity: 0.85;">
+        * This app provides reminders and logging only. It is not a diagnostic or treatment tool. Set glucose targets based on your clinician’s advice.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 GlucoMeal Timer. All rights reserved.</p>
+      <div class="links">
+        <!-- TODO: replace with your own URLs -->
+        <a href="https://example.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <span style="opacity: 0.5;">|</span>
+        <a href="https://example.com/terms" target="_blank" rel="noopener noreferrer">Terms of Use</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
