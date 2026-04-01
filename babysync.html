@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="BabySync+ — 專為疲憊新手父母打造的寶寶記錄 App。從主畫面小工具一鍵記錄餵奶、換尿布、睡眠，支援動態島、Siri 語音、多人共享。" />
+  <meta name="keywords" content="baby,tracker,feeding,diaper,sleep,newborn,growth,WHO,widget,breastfeed,bottle,family,sync,coparent,寶寶,育兒,餵奶,尿布,睡眠" />
+  <meta property="og:title" content="BabySync+ — Feed, Sleep & Sync Together" />
+  <meta property="og:description" content="點一下小工具，搞定。直接從主畫面記錄餵奶、尿布、睡眠。" />
+  <meta property="og:image" content="https://wei789.github.io/babysync/app-icon.png" />
+  <meta property="og:url" content="https://wei789.github.io/babysync.html" />
+  <title>BabySync+ — Feed, Sleep & Sync Together</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --primary: #7C6AEF;
+      --primary-dark: #5B4BC7;
+      --accent: #F5A623;
+      --bg: #0A0A0F;
+      --bg-card: #16161F;
+      --bg-surface: #1E1E2A;
+      --text: #F0F0F5;
+      --text-secondary: #9999AA;
+      --border: rgba(255,255,255,0.08);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* Hero */
+    .hero {
+      padding: 80px 24px 60px;
+      text-align: center;
+      background: radial-gradient(ellipse at 50% 0%, rgba(124,106,239,0.15) 0%, transparent 60%);
+    }
+
+    .hero-icon {
+      width: 120px;
+      height: 120px;
+      border-radius: 28px;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 32px rgba(124,106,239,0.3);
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    .hero .subtitle {
+      font-size: 1.3rem;
+      color: var(--text-secondary);
+      font-weight: 400;
+      margin-bottom: 24px;
+    }
+
+    .hero .tagline {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 36px;
+      line-height: 1.8;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 14px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 4px 16px rgba(124,106,239,0.35);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(124,106,239,0.45);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary);
+      background: rgba(124,106,239,0.08);
+      transform: translateY(-2px);
+    }
+
+    /* Screenshots */
+    .screenshots {
+      padding: 60px 0;
+      overflow: hidden;
+    }
+
+    .screenshots h2 {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 40px;
+    }
+
+    .screenshot-scroll {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 0 24px 20px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .screenshot-scroll::-webkit-scrollbar { display: none; }
+
+    .screenshot-scroll img {
+      width: 220px;
+      flex-shrink: 0;
+      border-radius: 20px;
+      scroll-snap-align: center;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+      border: 1px solid var(--border);
+    }
+
+    /* Features */
+    .features { padding: 60px 24px; }
+
+    .features h2 {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 48px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      transition: all 0.25s ease;
+    }
+
+    .feature-card:hover {
+      border-color: rgba(124,106,239,0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+
+    .feature-icon {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .feature-card h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .feature-card p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* How it works */
+    .how { padding: 60px 24px; }
+
+    .how h2 {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 48px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .step {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      text-align: center;
+    }
+
+    .step-num {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(124,106,239,0.15);
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+    }
+
+    .step h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .step p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    /* CTA */
+    .cta {
+      padding: 80px 24px;
+      text-align: center;
+      background: radial-gradient(ellipse at 50% 100%, rgba(124,106,239,0.12) 0%, transparent 60%);
+    }
+
+    .cta h2 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .cta p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      margin-bottom: 32px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .lang-note {
+      margin-top: 24px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      margin: 0 12px;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: var(--text); }
+
+    footer .links { margin-top: 12px; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.2rem; }
+      .hero .subtitle { font-size: 1.1rem; }
+      .features-grid { grid-template-columns: 1fr; }
+      .screenshot-scroll img { width: 180px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero { padding: 60px 20px 40px; }
+      .hero h1 { font-size: 1.8rem; }
+      .hero-icon { width: 96px; height: 96px; border-radius: 22px; }
+      .features, .how, .cta { padding: 40px 16px; }
+      .feature-card, .step { padding: 22px; }
+      .cta-row { flex-direction: column; align-items: center; }
+      .btn { width: 100%; max-width: 280px; justify-content: center; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <img src="babysync/app-icon.png" alt="BabySync+ App Icon" class="hero-icon" />
+      <h1>BabySync+</h1>
+      <p class="subtitle">Feed, Sleep & Sync Together</p>
+      <p class="tagline">
+        凌晨三點，一手抱著寶寶，另一手點一下小工具——記錄完成。<br>
+        專為疲憊新手父母打造的極簡育兒記錄 App。
+      </p>
+      <div class="cta-row">
+        <a href="https://apps.apple.com/app/id0000000000" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          App Store 下載
+        </a>
+        <a href="#features" class="btn btn-outline">查看功能</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Screenshots -->
+  <section class="screenshots">
+    <div class="container">
+      <h2>App 預覽</h2>
+    </div>
+    <div class="screenshot-scroll">
+      <img src="babysync/iPhone 14 Plus-04_Home.png" alt="Home Dashboard" loading="lazy" />
+      <img src="babysync/iPhone 14 Plus-03_Widget.png" alt="Interactive Widget" loading="lazy" />
+      <img src="babysync/iPhone 14 Plus-05_Feeding.png" alt="Feeding Tracker" loading="lazy" />
+      <img src="babysync/iPhone 14 Plus-06_Sleep.png" alt="Sleep Timer" loading="lazy" />
+      <img src="babysync/iPhone 14 Plus-07_Diaper.png" alt="Diaper Log" loading="lazy" />
+      <img src="babysync/iPhone 14 Plus-01_WidgetTutorial.png" alt="Widget Tutorial" loading="lazy" />
+      <img src="babysync/iPhone 14 Plus-02_SiriTutorial.png" alt="Siri Tutorial" loading="lazy" />
+      <img src="babysync/iPhone 14 Plus-08_Settings.png" alt="Settings" loading="lazy" />
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features" id="features">
+    <div class="container">
+      <h2>功能特色</h2>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <span class="feature-icon">📱</span>
+          <h3>小工具一鍵記錄</h3>
+          <p>直接從主畫面記錄餵奶、換尿布、睡眠。瓶餵一鍵記錄，自動記住上次奶量；親餵左右兩側獨立計時。</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">🏝️</span>
+          <h3>動態島即時計時</h3>
+          <p>睡眠和餵奶計時器直接顯示在動態島和鎖定畫面上，不碰手機就能看到寶寶睡了多久。</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">🗣️</span>
+          <h3>Siri 語音記錄</h3>
+          <p>「嘿 Siri，BabySync 瓶餵」——雙手沒空的時候，讓 Siri 幫你記。</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">👨‍👩‍👧</span>
+          <h3>多人共享育兒</h3>
+          <p>分享 6 位邀請碼，爸媽、阿公阿嬤、保姆即時同步每一筆紀錄。不用再傳「寶寶喝過奶了嗎？」</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">📊</span>
+          <h3>WHO 成長曲線</h3>
+          <p>用 WHO 官方百分位曲線追蹤身高體重，看診時一目瞭然。</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">⏰</span>
+          <h3>智慧餵奶提醒</h3>
+          <p>設定提醒間隔，小工具倒數計時到下次餵奶時間，超過會變紅提醒。</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">🌙</span>
+          <h3>深夜友善設計</h3>
+          <p>純黑介面不干擾寶寶睡眠。按鈕都在拇指區，單手操作。觸覺回饋確認每次動作。</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">🔒</span>
+          <h3>隱私安全</h3>
+          <p>免註冊、免填信箱。資料透過你自己的 iCloud 同步，安全又私密。</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">🌐</span>
+          <h3>多語言支援</h3>
+          <p>支援英文、日文、越南文、簡體中文、繁體中文，全球爸媽都能用。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="how" id="how">
+    <div class="container">
+      <h2>三步驟開始</h2>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>加入小工具</h3>
+          <p>長按主畫面，新增 BabySync 小工具到你最順手的位置。</p>
+        </div>
+
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>一鍵記錄</h3>
+          <p>點小工具上的按鈕直接記錄餵奶、換尿布、開始睡眠計時。</p>
+        </div>
+
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>邀請家人</h3>
+          <p>分享邀請碼給另一半或照顧者，所有紀錄即時同步。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="download">
+    <div class="container">
+      <h2>開始輕鬆記錄寶寶的每一刻</h2>
+      <p>讓育兒記錄不再是負擔——點一下就好。</p>
+      <a href="https://apps.apple.com/app/id0000000000" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        免費下載
+      </a>
+      <p class="lang-note">iOS 17+ | iPhone & iPad</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 BabySync+. All rights reserved.</p>
+      <div class="links">
+        <a href="babysync-privacy.html">Privacy Policy</a>
+        <span style="opacity:0.3">|</span>
+        <a href="babysync-support.html">Terms of Use</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
