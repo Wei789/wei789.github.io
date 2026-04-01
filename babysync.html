@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="BabySync+ — 專為疲憊新手父母打造的寶寶記錄 App。從主畫面小工具一鍵記錄餵奶、換尿布、睡眠，支援動態島、Siri 語音、多人共享。" />
-  <meta name="keywords" content="baby,tracker,feeding,diaper,sleep,newborn,growth,WHO,widget,breastfeed,bottle,family,sync,coparent,寶寶,育兒,餵奶,尿布,睡眠" />
+  <meta name="description" content="BabySync+ — Log feedings, diapers, and sleep without even opening the app. Built for exhausted parents at 3 AM." />
+  <meta name="keywords" content="baby,tracker,feeding,diaper,sleep,newborn,growth,WHO,widget,breastfeed,bottle,family,sync,coparent" />
   <meta property="og:title" content="BabySync+ — Feed, Sleep & Sync Together" />
-  <meta property="og:description" content="點一下小工具，搞定。直接從主畫面記錄餵奶、尿布、睡眠。" />
+  <meta property="og:description" content="Tap the widget. Done. Record feedings, diapers, and sleep from your Home Screen." />
   <meta property="og:image" content="https://wei789.github.io/babysync/app-icon.png" />
   <meta property="og:url" content="https://wei789.github.io/babysync.html" />
   <title>BabySync+ — Feed, Sleep & Sync Together</title>
@@ -19,10 +19,8 @@
     :root {
       --primary: #7C6AEF;
       --primary-dark: #5B4BC7;
-      --accent: #F5A623;
       --bg: #0A0A0F;
       --bg-card: #16161F;
-      --bg-surface: #1E1E2A;
       --text: #F0F0F5;
       --text-secondary: #9999AA;
       --border: rgba(255,255,255,0.08);
@@ -40,6 +38,37 @@
 
     .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
+    /* Language Switcher */
+    .lang-switcher {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 100;
+    }
+
+    .lang-switcher select {
+      appearance: none;
+      -webkit-appearance: none;
+      background: var(--bg-card);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 8px 36px 8px 14px;
+      font-size: 0.9rem;
+      font-family: inherit;
+      cursor: pointer;
+      outline: none;
+      transition: border-color 0.2s;
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%239999AA' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+    }
+
+    .lang-switcher select:hover,
+    .lang-switcher select:focus {
+      border-color: var(--primary);
+    }
+
     /* Hero */
     .hero {
       padding: 80px 24px 60px;
@@ -55,259 +84,62 @@
       box-shadow: 0 8px 32px rgba(124,106,239,0.3);
     }
 
-    .hero h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      margin-bottom: 8px;
-    }
+    .hero h1 { font-size: 3rem; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 8px; }
+    .hero .subtitle { font-size: 1.3rem; color: var(--text-secondary); font-weight: 400; margin-bottom: 24px; }
+    .hero .tagline { font-size: 1.1rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 36px; line-height: 1.8; }
 
-    .hero .subtitle {
-      font-size: 1.3rem;
-      color: var(--text-secondary);
-      font-weight: 400;
-      margin-bottom: 24px;
-    }
-
-    .hero .tagline {
-      font-size: 1.1rem;
-      color: var(--text-secondary);
-      max-width: 600px;
-      margin: 0 auto 36px;
-      line-height: 1.8;
-    }
-
-    .cta-row {
-      display: flex;
-      gap: 14px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+    .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 28px;
-      border-radius: 14px;
-      font-size: 1rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.25s ease;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: 14px; font-size: 1rem; font-weight: 600;
+      text-decoration: none; transition: all 0.25s ease;
     }
-
-    .btn-primary {
-      background: var(--primary);
-      color: white;
-      box-shadow: 0 4px 16px rgba(124,106,239,0.35);
-    }
-
-    .btn-primary:hover {
-      background: var(--primary-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 24px rgba(124,106,239,0.45);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-
-    .btn-outline:hover {
-      border-color: var(--primary);
-      background: rgba(124,106,239,0.08);
-      transform: translateY(-2px);
-    }
-
-    /* Screenshots */
-    .screenshots {
-      padding: 60px 0;
-      overflow: hidden;
-    }
-
-    .screenshots h2 {
-      text-align: center;
-      font-size: 2rem;
-      font-weight: 600;
-      margin-bottom: 40px;
-    }
-
-    .screenshot-scroll {
-      display: flex;
-      gap: 20px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding: 0 24px 20px;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-    }
-
-    .screenshot-scroll::-webkit-scrollbar { display: none; }
-
-    .screenshot-scroll img {
-      width: 220px;
-      flex-shrink: 0;
-      border-radius: 20px;
-      scroll-snap-align: center;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.4);
-      border: 1px solid var(--border);
-    }
+    .btn-primary { background: var(--primary); color: white; box-shadow: 0 4px 16px rgba(124,106,239,0.35); }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(124,106,239,0.45); }
+    .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn-outline:hover { border-color: var(--primary); background: rgba(124,106,239,0.08); transform: translateY(-2px); }
 
     /* Features */
     .features { padding: 60px 24px; }
-
-    .features h2 {
-      text-align: center;
-      font-size: 2rem;
-      font-weight: 600;
-      margin-bottom: 48px;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-    }
+    .features h2 { text-align: center; font-size: 2rem; font-weight: 600; margin-bottom: 48px; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
 
     .feature-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px;
-      transition: all 0.25s ease;
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 28px; transition: all 0.25s ease;
     }
+    .feature-card:hover { border-color: rgba(124,106,239,0.3); transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+    .feature-icon { font-size: 2.2rem; margin-bottom: 12px; display: block; }
+    .feature-card h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 8px; color: var(--text); }
+    .feature-card p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; }
 
-    .feature-card:hover {
-      border-color: rgba(124,106,239,0.3);
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-    }
-
-    .feature-icon {
-      font-size: 2.2rem;
-      margin-bottom: 12px;
-      display: block;
-    }
-
-    .feature-card h3 {
-      font-size: 1.15rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: var(--text);
-    }
-
-    .feature-card p {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      line-height: 1.7;
-    }
-
-    /* How it works */
+    /* How */
     .how { padding: 60px 24px; }
-
-    .how h2 {
-      text-align: center;
-      font-size: 2rem;
-      font-weight: 600;
-      margin-bottom: 48px;
-    }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-    }
-
-    .step {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px;
-      text-align: center;
-    }
-
-    .step-num {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(124,106,239,0.15);
-      color: var(--primary);
-      font-weight: 700;
-      font-size: 1.1rem;
-      margin-bottom: 16px;
-    }
-
-    .step h3 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .step p {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-    }
+    .how h2 { text-align: center; font-size: 2rem; font-weight: 600; margin-bottom: 48px; }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+    .step { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; text-align: center; }
+    .step-num { width: 44px; height: 44px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; background: rgba(124,106,239,0.15); color: var(--primary); font-weight: 700; font-size: 1.1rem; margin-bottom: 16px; }
+    .step h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
+    .step p { color: var(--text-secondary); font-size: 0.95rem; }
 
     /* CTA */
-    .cta {
-      padding: 80px 24px;
-      text-align: center;
-      background: radial-gradient(ellipse at 50% 100%, rgba(124,106,239,0.12) 0%, transparent 60%);
-    }
-
-    .cta h2 {
-      font-size: 2rem;
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-
-    .cta p {
-      color: var(--text-secondary);
-      font-size: 1.1rem;
-      margin-bottom: 32px;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .lang-note {
-      margin-top: 24px;
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-    }
+    .cta { padding: 80px 24px; text-align: center; background: radial-gradient(ellipse at 50% 100%, rgba(124,106,239,0.12) 0%, transparent 60%); }
+    .cta h2 { font-size: 2rem; font-weight: 600; margin-bottom: 12px; }
+    .cta p { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .lang-note { margin-top: 24px; font-size: 0.9rem; color: var(--text-secondary); }
 
     /* Footer */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 32px 24px;
-      text-align: center;
-      color: var(--text-secondary);
-      font-size: 0.85rem;
-    }
-
-    footer a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      margin: 0 12px;
-      transition: color 0.2s;
-    }
-
+    footer { border-top: 1px solid var(--border); padding: 32px 24px; text-align: center; color: var(--text-secondary); font-size: 0.85rem; }
+    footer a { color: var(--text-secondary); text-decoration: none; margin: 0 12px; transition: color 0.2s; }
     footer a:hover { color: var(--text); }
-
     footer .links { margin-top: 12px; }
 
-    /* Responsive */
     @media (max-width: 768px) {
       .hero h1 { font-size: 2.2rem; }
       .hero .subtitle { font-size: 1.1rem; }
       .features-grid { grid-template-columns: 1fr; }
-      .screenshot-scroll img { width: 180px; }
     }
-
     @media (max-width: 480px) {
       .hero { padding: 60px 20px 40px; }
       .hero h1 { font-size: 1.8rem; }
@@ -321,22 +153,30 @@
 </head>
 
 <body>
+  <!-- Language Switcher -->
+  <div class="lang-switcher">
+    <select id="langSelect">
+      <option value="en">English</option>
+      <option value="ja">日本語</option>
+      <option value="vi">Tiếng Việt</option>
+      <option value="zh-Hans">简体中文</option>
+      <option value="zh-Hant">繁體中文</option>
+    </select>
+  </div>
+
   <!-- Hero -->
   <section class="hero">
     <div class="container">
       <img src="babysync/app-icon.png" alt="BabySync+ App Icon" class="hero-icon" />
       <h1>BabySync+</h1>
-      <p class="subtitle">Feed, Sleep & Sync Together</p>
-      <p class="tagline">
-        凌晨三點，一手抱著寶寶，另一手點一下小工具——記錄完成。<br>
-        專為疲憊新手父母打造的極簡育兒記錄 App。
-      </p>
+      <p class="subtitle" data-i18n="subtitle"></p>
+      <p class="tagline" data-i18n="tagline"></p>
       <div class="cta-row">
         <a href="https://apps.apple.com/app/id6759586973" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-          App Store 下載
+          <span data-i18n="downloadBtn"></span>
         </a>
-        <a href="#features" class="btn btn-outline">查看功能</a>
+        <a href="#features" class="btn btn-outline" data-i18n="seeFeatures"></a>
       </div>
     </div>
   </section>
@@ -344,62 +184,17 @@
   <!-- Features -->
   <section class="features" id="features">
     <div class="container">
-      <h2>功能特色</h2>
-
+      <h2 data-i18n="featuresTitle"></h2>
       <div class="features-grid">
-        <div class="feature-card">
-          <span class="feature-icon">📱</span>
-          <h3>小工具一鍵記錄</h3>
-          <p>直接從主畫面記錄餵奶、換尿布、睡眠。瓶餵一鍵記錄，自動記住上次奶量；親餵左右兩側獨立計時。</p>
-        </div>
-
-        <div class="feature-card">
-          <span class="feature-icon">🏝️</span>
-          <h3>動態島即時計時</h3>
-          <p>睡眠和餵奶計時器直接顯示在動態島和鎖定畫面上，不碰手機就能看到寶寶睡了多久。</p>
-        </div>
-
-        <div class="feature-card">
-          <span class="feature-icon">🗣️</span>
-          <h3>Siri 語音記錄</h3>
-          <p>「嘿 Siri，BabySync 瓶餵」——雙手沒空的時候，讓 Siri 幫你記。</p>
-        </div>
-
-        <div class="feature-card">
-          <span class="feature-icon">👨‍👩‍👧</span>
-          <h3>多人共享育兒</h3>
-          <p>分享 6 位邀請碼，爸媽、阿公阿嬤、保姆即時同步每一筆紀錄。不用再傳「寶寶喝過奶了嗎？」</p>
-        </div>
-
-        <div class="feature-card">
-          <span class="feature-icon">📊</span>
-          <h3>WHO 成長曲線</h3>
-          <p>用 WHO 官方百分位曲線追蹤身高體重，看診時一目瞭然。</p>
-        </div>
-
-        <div class="feature-card">
-          <span class="feature-icon">⏰</span>
-          <h3>智慧餵奶提醒</h3>
-          <p>設定提醒間隔，小工具倒數計時到下次餵奶時間，超過會變紅提醒。</p>
-        </div>
-
-        <div class="feature-card">
-          <span class="feature-icon">🌙</span>
-          <h3>深夜友善設計</h3>
-          <p>純黑介面不干擾寶寶睡眠。按鈕都在拇指區，單手操作。觸覺回饋確認每次動作。</p>
-        </div>
-
-        <div class="feature-card">
-          <span class="feature-icon">🔒</span>
-          <h3>隱私安全</h3>
-          <p>免註冊、免填信箱。資料透過你自己的 iCloud 同步，安全又私密。</p>
-        </div>
-
-        <div class="feature-card">
-          <span class="feature-icon">🌐</span>
-          <h3>多語言支援</h3>
-          <p>支援英文、日文、越南文、簡體中文、繁體中文，全球爸媽都能用。</p>
-        </div>
+        <div class="feature-card"><span class="feature-icon">📱</span><h3 data-i18n="f1Title"></h3><p data-i18n="f1Desc"></p></div>
+        <div class="feature-card"><span class="feature-icon">🏝️</span><h3 data-i18n="f2Title"></h3><p data-i18n="f2Desc"></p></div>
+        <div class="feature-card"><span class="feature-icon">🗣️</span><h3 data-i18n="f3Title"></h3><p data-i18n="f3Desc"></p></div>
+        <div class="feature-card"><span class="feature-icon">👨‍👩‍👧</span><h3 data-i18n="f4Title"></h3><p data-i18n="f4Desc"></p></div>
+        <div class="feature-card"><span class="feature-icon">📊</span><h3 data-i18n="f5Title"></h3><p data-i18n="f5Desc"></p></div>
+        <div class="feature-card"><span class="feature-icon">⏰</span><h3 data-i18n="f6Title"></h3><p data-i18n="f6Desc"></p></div>
+        <div class="feature-card"><span class="feature-icon">🌙</span><h3 data-i18n="f7Title"></h3><p data-i18n="f7Desc"></p></div>
+        <div class="feature-card"><span class="feature-icon">🔒</span><h3 data-i18n="f8Title"></h3><p data-i18n="f8Desc"></p></div>
+        <div class="feature-card"><span class="feature-icon">🌐</span><h3 data-i18n="f9Title"></h3><p data-i18n="f9Desc"></p></div>
       </div>
     </div>
   </section>
@@ -407,26 +202,11 @@
   <!-- How it works -->
   <section class="how" id="how">
     <div class="container">
-      <h2>三步驟開始</h2>
-
+      <h2 data-i18n="howTitle"></h2>
       <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <h3>加入小工具</h3>
-          <p>長按主畫面，新增 BabySync 小工具到你最順手的位置。</p>
-        </div>
-
-        <div class="step">
-          <div class="step-num">2</div>
-          <h3>一鍵記錄</h3>
-          <p>點小工具上的按鈕直接記錄餵奶、換尿布、開始睡眠計時。</p>
-        </div>
-
-        <div class="step">
-          <div class="step-num">3</div>
-          <h3>邀請家人</h3>
-          <p>分享邀請碼給另一半或照顧者，所有紀錄即時同步。</p>
-        </div>
+        <div class="step"><div class="step-num">1</div><h3 data-i18n="s1Title"></h3><p data-i18n="s1Desc"></p></div>
+        <div class="step"><div class="step-num">2</div><h3 data-i18n="s2Title"></h3><p data-i18n="s2Desc"></p></div>
+        <div class="step"><div class="step-num">3</div><h3 data-i18n="s3Title"></h3><p data-i18n="s3Desc"></p></div>
       </div>
     </div>
   </section>
@@ -434,11 +214,11 @@
   <!-- CTA -->
   <section class="cta" id="download">
     <div class="container">
-      <h2>開始輕鬆記錄寶寶的每一刻</h2>
-      <p>讓育兒記錄不再是負擔——點一下就好。</p>
+      <h2 data-i18n="ctaTitle"></h2>
+      <p data-i18n="ctaDesc"></p>
       <a href="https://apps.apple.com/app/id6759586973" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-        免費下載
+        <span data-i18n="freeDownload"></span>
       </a>
       <p class="lang-note">iOS 17+ | iPhone</p>
     </div>
@@ -455,5 +235,211 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    const i18n = {
+      en: {
+        subtitle: "Feed, Sleep & Sync Together",
+        tagline: "It's 3 AM. You're half asleep, holding a crying baby.<br>Tap the widget. Done. Built for exhausted parents.",
+        downloadBtn: "App Store Download",
+        seeFeatures: "See Features",
+        featuresTitle: "Features",
+        f1Title: "One-Tap Widget Recording",
+        f1Desc: "Record feedings, diapers, and sleep right from your Home Screen. Bottle feeds log in one tap and remember last amount; breast feeds have independent left/right timers.",
+        f2Title: "Dynamic Island Live Timer",
+        f2Desc: "Sleep and feeding timers display on the Dynamic Island and Lock Screen. Check how long baby's been sleeping without touching your phone.",
+        f3Title: "Siri Voice Recording",
+        f3Desc: '"Hey Siri, BabySync bottle feed" — When both hands are busy, let Siri log it for you.',
+        f4Title: "Family Co-parenting",
+        f4Desc: "Share a 6-digit invite code. Parents, grandparents, and nannies see every record in real time. No more \"did you feed the baby?\" texts.",
+        f5Title: "WHO Growth Charts",
+        f5Desc: "Track height and weight against WHO official percentile curves — perfect for pediatric checkups.",
+        f6Title: "Smart Feeding Reminders",
+        f6Desc: "Set a reminder interval. The widget counts down to the next feeding and turns red when overdue.",
+        f7Title: "Nighttime-Friendly Design",
+        f7Desc: "Pure black interface won't disturb baby's sleep. Buttons in the thumb zone for one-hand use. Haptic feedback confirms every action.",
+        f8Title: "Private & Secure",
+        f8Desc: "No account needed. No email required. Your data syncs through your own iCloud — private and automatic.",
+        f9Title: "Multi-Language Support",
+        f9Desc: "Available in English, Japanese, Vietnamese, Simplified Chinese, and Traditional Chinese.",
+        howTitle: "Get Started in 3 Steps",
+        s1Title: "Add the Widget",
+        s1Desc: "Long press your Home Screen and add BabySync widget where it's most convenient.",
+        s2Title: "One-Tap Record",
+        s2Desc: "Tap the widget buttons to log feedings, diapers, or start a sleep timer.",
+        s3Title: "Invite Family",
+        s3Desc: "Share the invite code with your partner or caregivers. All records sync in real time.",
+        ctaTitle: "Start recording every moment with ease",
+        ctaDesc: "Baby care logging shouldn't be a burden — just one tap.",
+        freeDownload: "Free Download"
+      },
+      ja: {
+        subtitle: "授乳記録・家族リアルタイム同期",
+        tagline: "深夜3時。半分寝ぼけながら泣いている赤ちゃんを抱えている。<br>ウィジェットをタップ。完了。疲れ果てたパパママのために。",
+        downloadBtn: "App Store ダウンロード",
+        seeFeatures: "機能を見る",
+        featuresTitle: "機能紹介",
+        f1Title: "ウィジェットでワンタップ記録",
+        f1Desc: "ホーム画面から直接、授乳・おむつ・睡眠を記録。ミルクはワンタップで前回の量を記憶。母乳は左右独立タイマー。",
+        f2Title: "ダイナミックアイランドでタイマー表示",
+        f2Desc: "睡眠・授乳タイマーがダイナミックアイランドとロック画面に表示。スマホに触れずに赤ちゃんの睡眠時間を確認。",
+        f3Title: "Siri 音声記録",
+        f3Desc: "「Hey Siri、BabySync ミルク」— 両手がふさがっている時はSiriにお任せ。",
+        f4Title: "家族で共同育児",
+        f4Desc: "6桁の招待コードを共有。パパ・ママ・祖父母・シッターがリアルタイムで全記録を確認。「ミルクあげた？」のやり取り不要。",
+        f5Title: "WHO 成長曲線",
+        f5Desc: "WHO公式パーセンタイル曲線で身長・体重を追跡。小児科の受診時に便利。",
+        f6Title: "スマート授乳リマインダー",
+        f6Desc: "リマインダー間隔を設定。ウィジェットが次の授乳までカウントダウンし、時間超過で赤く表示。",
+        f7Title: "夜間に優しいデザイン",
+        f7Desc: "真っ黒なUIで赤ちゃんの眠りを妨げない。親指ゾーンのボタンで片手操作。触覚フィードバックで操作を確認。",
+        f8Title: "プライバシー保護",
+        f8Desc: "アカウント登録不要。メール不要。データは自分のiCloudで同期 — 安全で自動的。",
+        f9Title: "多言語対応",
+        f9Desc: "英語・日本語・ベトナム語・簡体中国語・繁体中国語に対応。",
+        howTitle: "3ステップで開始",
+        s1Title: "ウィジェットを追加",
+        s1Desc: "ホーム画面を長押しして、使いやすい場所にBabySyncウィジェットを追加。",
+        s2Title: "ワンタップで記録",
+        s2Desc: "ウィジェットのボタンをタップして授乳・おむつ・睡眠タイマーを記録。",
+        s3Title: "家族を招待",
+        s3Desc: "招待コードをパートナーや保育者に共有。全記録がリアルタイムで同期。",
+        ctaTitle: "赤ちゃんの毎日を簡単に記録しよう",
+        ctaDesc: "育児記録は負担じゃない — タップひとつで。",
+        freeDownload: "無料ダウンロード"
+      },
+      vi: {
+        subtitle: "Ghi nhận bé・Đồng bộ gia đình",
+        tagline: "3 giờ sáng. Bạn nửa tỉnh nửa mê, ôm em bé đang khóc.<br>Chạm widget. Xong. Dành cho ba mẹ kiệt sức.",
+        downloadBtn: "Tải trên App Store",
+        seeFeatures: "Xem tính năng",
+        featuresTitle: "Tính năng",
+        f1Title: "Ghi nhận bằng Widget một chạm",
+        f1Desc: "Ghi nhận bú, tã, giấc ngủ ngay từ Màn hình chính. Bú bình ghi một chạm, nhớ lượng sữa lần trước. Bú mẹ có đồng hồ trái/phải riêng.",
+        f2Title: "Đồng hồ trên Dynamic Island",
+        f2Desc: "Đồng hồ giấc ngủ và bú hiển thị trên Dynamic Island và Màn hình khóa. Xem bé ngủ bao lâu mà không cần chạm điện thoại.",
+        f3Title: "Ghi nhận bằng giọng nói Siri",
+        f3Desc: '"Hey Siri, BabySync bú bình" — Khi hai tay đều bận, để Siri ghi giúp.',
+        f4Title: "Gia đình cùng chăm bé",
+        f4Desc: "Chia sẻ mã mời 6 chữ số. Ba mẹ, ông bà, người giữ trẻ xem mọi ghi nhận theo thời gian thực. Không cần nhắn \"cho bé bú chưa?\".",
+        f5Title: "Biểu đồ tăng trưởng WHO",
+        f5Desc: "Theo dõi chiều cao và cân nặng theo đường phân vị WHO chính thức — hoàn hảo cho buổi khám nhi.",
+        f6Title: "Nhắc nhở cho bú thông minh",
+        f6Desc: "Đặt khoảng thời gian nhắc. Widget đếm ngược đến lần bú tiếp theo và chuyển đỏ khi quá giờ.",
+        f7Title: "Thiết kế thân thiện ban đêm",
+        f7Desc: "Giao diện đen hoàn toàn không làm phiền giấc ngủ của bé. Nút bấm trong vùng ngón cái, dùng một tay. Phản hồi xúc giác xác nhận mọi thao tác.",
+        f8Title: "Riêng tư & An toàn",
+        f8Desc: "Không cần tài khoản. Không cần email. Dữ liệu đồng bộ qua iCloud của bạn — riêng tư và tự động.",
+        f9Title: "Hỗ trợ đa ngôn ngữ",
+        f9Desc: "Có sẵn bằng tiếng Anh, Nhật, Việt, Trung giản thể và Trung phồn thể.",
+        howTitle: "Bắt đầu trong 3 bước",
+        s1Title: "Thêm Widget",
+        s1Desc: "Nhấn giữ Màn hình chính, thêm widget BabySync vào vị trí thuận tiện nhất.",
+        s2Title: "Ghi nhận một chạm",
+        s2Desc: "Chạm nút trên widget để ghi bú, tã, hoặc bắt đầu đồng hồ giấc ngủ.",
+        s3Title: "Mời gia đình",
+        s3Desc: "Chia sẻ mã mời cho người thân. Mọi ghi nhận đồng bộ theo thời gian thực.",
+        ctaTitle: "Bắt đầu ghi lại từng khoảnh khắc của bé",
+        ctaDesc: "Ghi nhận chăm bé không phải là gánh nặng — chỉ một chạm.",
+        freeDownload: "Tải miễn phí"
+      },
+      "zh-Hans": {
+        subtitle: "喂奶记录・家庭实时同步",
+        tagline: "凌晨三点，一手抱着宝宝，另一手点一下小组件——记录完成。<br>专为精疲力竭的新手爸妈打造的极简育儿记录 App。",
+        downloadBtn: "App Store 下载",
+        seeFeatures: "查看功能",
+        featuresTitle: "功能特色",
+        f1Title: "小组件一键记录",
+        f1Desc: "直接从主屏幕记录喂奶、换尿布、睡眠。瓶喂一键记录，自动记住上次奶量；亲喂左右两侧独立计时。",
+        f2Title: "灵动岛即时计时",
+        f2Desc: "睡眠和喂奶计时器直接显示在灵动岛和锁定屏幕上，不碰手机就能看到宝宝睡了多久。",
+        f3Title: "Siri 语音记录",
+        f3Desc: "「嘿 Siri，BabySync 瓶喂」——双手没空的时候，让 Siri 帮你记。",
+        f4Title: "多人共享育儿",
+        f4Desc: "分享 6 位邀请码，爸妈、爷爷奶奶、保姆即时同步每一笔记录。不用再发「宝宝喝过奶了吗？」",
+        f5Title: "WHO 成长曲线",
+        f5Desc: "用 WHO 官方百分位曲线追踪身高体重，看诊时一目了然。",
+        f6Title: "智能喂奶提醒",
+        f6Desc: "设定提醒间隔，小组件倒计时到下次喂奶时间，超过会变红提醒。",
+        f7Title: "深夜友好设计",
+        f7Desc: "纯黑界面不干扰宝宝睡眠。按钮都在拇指区，单手操作。触觉反馈确认每次动作。",
+        f8Title: "隐私安全",
+        f8Desc: "免注册、免填邮箱。数据通过你自己的 iCloud 同步，安全又私密。",
+        f9Title: "多语言支持",
+        f9Desc: "支持英文、日文、越南文、简体中文、繁体中文，全球爸妈都能用。",
+        howTitle: "三步开始",
+        s1Title: "添加小组件",
+        s1Desc: "长按主屏幕，添加 BabySync 小组件到你最顺手的位置。",
+        s2Title: "一键记录",
+        s2Desc: "点小组件上的按钮直接记录喂奶、换尿布、开始睡眠计时。",
+        s3Title: "邀请家人",
+        s3Desc: "分享邀请码给另一半或照顾者，所有记录即时同步。",
+        ctaTitle: "开始轻松记录宝宝的每一刻",
+        ctaDesc: "让育儿记录不再是负担——点一下就好。",
+        freeDownload: "免费下载"
+      },
+      "zh-Hant": {
+        subtitle: "餵奶記錄・家庭即時同步",
+        tagline: "凌晨三點，一手抱著寶寶，另一手點一下小工具——記錄完成。<br>專為疲憊新手父母打造的極簡育兒記錄 App。",
+        downloadBtn: "App Store 下載",
+        seeFeatures: "查看功能",
+        featuresTitle: "功能特色",
+        f1Title: "小工具一鍵記錄",
+        f1Desc: "直接從主畫面記錄餵奶、換尿布、睡眠。瓶餵一鍵記錄，自動記住上次奶量；親餵左右兩側獨立計時。",
+        f2Title: "動態島即時計時",
+        f2Desc: "睡眠和餵奶計時器直接顯示在動態島和鎖定畫面上，不碰手機就能看到寶寶睡了多久。",
+        f3Title: "Siri 語音記錄",
+        f3Desc: "「嘿 Siri，BabySync 瓶餵」——雙手沒空的時候，讓 Siri 幫你記。",
+        f4Title: "多人共享育兒",
+        f4Desc: "分享 6 位邀請碼，爸媽、阿公阿嬤、保姆即時同步每一筆紀錄。不用再傳「寶寶喝過奶了嗎？」",
+        f5Title: "WHO 成長曲線",
+        f5Desc: "用 WHO 官方百分位曲線追蹤身高體重，看診時一目瞭然。",
+        f6Title: "智慧餵奶提醒",
+        f6Desc: "設定提醒間隔，小工具倒數計時到下次餵奶時間，超過會變紅提醒。",
+        f7Title: "深夜友善設計",
+        f7Desc: "純黑介面不干擾寶寶睡眠。按鈕都在拇指區，單手操作。觸覺回饋確認每次動作。",
+        f8Title: "隱私安全",
+        f8Desc: "免註冊、免填信箱。資料透過你自己的 iCloud 同步，安全又私密。",
+        f9Title: "多語言支援",
+        f9Desc: "支援英文、日文、越南文、簡體中文、繁體中文，全球爸媽都能用。",
+        howTitle: "三步驟開始",
+        s1Title: "加入小工具",
+        s1Desc: "長按主畫面，新增 BabySync 小工具到你最順手的位置。",
+        s2Title: "一鍵記錄",
+        s2Desc: "點小工具上的按鈕直接記錄餵奶、換尿布、開始睡眠計時。",
+        s3Title: "邀請家人",
+        s3Desc: "分享邀請碼給另一半或照顧者，所有紀錄即時同步。",
+        ctaTitle: "開始輕鬆記錄寶寶的每一刻",
+        ctaDesc: "讓育兒記錄不再是負擔——點一下就好。",
+        freeDownload: "免費下載"
+      }
+    };
+
+    function setLang(lang) {
+      document.documentElement.lang = lang === "zh-Hans" ? "zh-CN" : lang === "zh-Hant" ? "zh-TW" : lang;
+      const strings = i18n[lang] || i18n.en;
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (strings[key] != null) el.innerHTML = strings[key];
+      });
+      localStorage.setItem("babysync-lang", lang);
+      document.getElementById("langSelect").value = lang;
+    }
+
+    document.getElementById("langSelect").addEventListener("change", e => setLang(e.target.value));
+
+    // Auto-detect or restore saved language
+    const saved = localStorage.getItem("babysync-lang");
+    if (saved && i18n[saved]) {
+      setLang(saved);
+    } else {
+      const browserLang = navigator.language || "";
+      if (browserLang.startsWith("ja")) setLang("ja");
+      else if (browserLang.startsWith("vi")) setLang("vi");
+      else if (browserLang === "zh-TW" || browserLang === "zh-Hant") setLang("zh-Hant");
+      else if (browserLang.startsWith("zh")) setLang("zh-Hans");
+      else setLang("en");
+    }
+  </script>
 </body>
 </html>
