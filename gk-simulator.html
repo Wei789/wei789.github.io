@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="theme-color" content="#F5F2EA"> <!-- 配合您的 --bg 變數顏色 -->
+
+<!-- 行動裝置/PWA 優化設定 -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="GK Simulator">
+<link rel="apple-touch-icon" href="https://your-domain.com/apple-touch-icon.png"> <!-- 建議替換為 180x180 的圖示 -->
+
+<title data-i18n="page_title">GK 動態提領模擬器</title>
+<meta name="description" content="GK 動態提領模擬器 (Guyton-Klinger Rules Simulator) - 專為退休規劃設計的動態提領決策模型工具。支援多種市場情境模擬、通膨調整與資本保全策略，幫助您制定穩健的退休財務計畫。">
+<meta name="keywords" content="GK法則, Guyton-Klinger, 動態提領, 退休規劃, 提領率, 資本保全, 財務自由, FIRE, 退休金計算, 投資模擬">
+<meta name="author" content="GK 動態提領模擬器">
+
+<!-- Open Graph / 社群分享 -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="GK 動態提領模擬器 | Guyton-Klinger 退休提領決策模型">
+<meta property="og:description" content="專為退休規劃設計的動態提領決策模型工具。支援多種市場情境模擬、通膨調整與資本保全策略，幫助您制定穩健的退休財務計畫。">
+<meta property="og:url" content="https://your-domain.com/gk-simulator">
+<meta property="og:image" content="https://your-domain.com/og-image.jpg"> <!-- 建議替換為實際的預覽圖網址 -->
+<meta property="og:site_name" content="GK 動態提領模擬器">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GK 動態提領模擬器 | Guyton-Klinger 退休提領決策模型">
+<meta name="twitter:description" content="專為退休規劃設計的動態提領決策模型工具。支援多種市場情境模擬、通膨調整與資本保全策略，幫助您制定穩健的退休財務計畫。">
+<meta name="twitter:image" content="https://your-domain.com/og-image.jpg"> <!-- 建議替換為實際的預覽圖網址 -->
+
+<!-- 多國語言 SEO (hreflang) -->
+<link rel="alternate" hreflang="zh-TW" href="https://your-domain.com/gk-simulator?lang=zh-TW">
+<link rel="alternate" hreflang="zh-CN" href="https://your-domain.com/gk-simulator?lang=zh-CN">
+<link rel="alternate" hreflang="en" href="https://your-domain.com/gk-simulator?lang=en">
+<link rel="alternate" hreflang="ja" href="https://your-domain.com/gk-simulator?lang=ja">
+<link rel="alternate" hreflang="ko" href="https://your-domain.com/gk-simulator?lang=ko">
+<link rel="alternate" hreflang="x-default" href="https://your-domain.com/gk-simulator">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Noto+Serif+TC:wght@400;500&family=Noto+Serif+SC:wght@400;500&family=Noto+Serif+JP:wght@400;500&family=Noto+Serif+KR:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F5F2EA;
+    --surface: #FFFFFF;
+    --surface-2: #FAF7EF;
+    --text: #1A2332;
+    --text-2: #6B6657;
+    --text-3: #A39C8B;
+    --border: #E8E2D5;
+    --border-strong: #C9C0A8;
+    --accent: #8B3A1F;
+    --cpr: #B8612D;
+    --pr: #2D5F3F;
+    --modwr: #6B4226;
+    --serif-en: 'Fraunces', Georgia, serif;
+    --serif: 'Noto Serif TC', 'Noto Serif SC', 'Noto Serif JP', 'Noto Serif KR', 'Fraunces', 'Songti TC', Georgia, serif;
+    --sans: 'IBM Plex Sans', -apple-system, "PingFang TC", "PingFang SC", "Hiragino Sans", "Yu Gothic", "Microsoft JhengHei", "Microsoft YaHei", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+    --mono: 'IBM Plex Mono', "SF Mono", Menlo, monospace;
+  }
+
+  /* Language-specific serif overrides for headings */
+  html[lang="zh-CN"] { --serif: 'Noto Serif SC', 'Fraunces', 'Songti SC', serif; }
+  html[lang="ja"] { --serif: 'Noto Serif JP', 'Fraunces', 'Hiragino Mincho Pro', serif; }
+  html[lang="ko"] { --serif: 'Noto Serif KR', 'Fraunces', 'Apple SD Gothic Neo', serif; }
+  html[lang="en"] { --serif: 'Fraunces', Georgia, serif; }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 56px 32px 80px;
+  }
+
+  header {
+    margin-bottom: 56px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: 52px;
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+
+  h1 em {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+
+  .meta {
+    text-align: right;
+    font-size: 12px;
+    color: var(--text-2);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1.5;
+  }
+
+  .meta strong {
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .lang-switch {
+    margin-top: 20px;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .lang-switch .lang-label {
+    font-size: 11px;
+    color: var(--text-3);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-right: 8px;
+  }
+
+  .lang-btn {
+    padding: 5px 12px;
+    background: transparent;
+    border: 1px solid var(--border);
+    font-family: var(--sans);
+    font-size: 12px;
+    color: var(--text-2);
+    cursor: pointer;
+    transition: all 0.15s;
+    border-radius: 2px;
+    letter-spacing: 0.02em;
+  }
+
+  .lang-btn:hover {
+    border-color: var(--border-strong);
+    color: var(--text);
+  }
+
+  .lang-btn.active {
+    background: var(--text);
+    color: var(--bg);
+    border-color: var(--text);
+  }
+
+  section { margin-bottom: 44px; }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+
+  h2 .num {
+    font-family: var(--serif-en);
+    font-style: italic;
+    color: var(--accent);
+    font-size: 18px;
+  }
+
+  h2::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 12px;
+  }
+
+  .field {
+    background: var(--surface);
+    padding: 14px 18px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    transition: border-color 0.15s;
+  }
+
+  .field:focus-within { border-color: var(--accent); }
+
+  .field label {
+    display: block;
+    font-size: 11px;
+    color: var(--text-2);
+    margin-bottom: 6px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .field-input {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+
+  .field input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-family: var(--mono);
+    font-size: 19px;
+    font-weight: 500;
+    color: var(--text);
+    outline: none;
+    padding: 0;
+  }
+
+  .field .suffix {
+    font-size: 13px;
+    color: var(--text-3);
+    flex-shrink: 0;
+  }
+
+  details { margin-top: 16px; }
+
+  details summary {
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--text-2);
+    padding: 8px 0;
+    user-select: none;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    letter-spacing: 0.04em;
+  }
+
+  details summary::-webkit-details-marker { display: none; }
+
+  details summary::before {
+    content: '+';
+    font-family: var(--serif-en);
+    font-style: italic;
+    color: var(--accent);
+    width: 14px;
+    transition: transform 0.2s;
+  }
+
+  details[open] summary::before { content: '−'; }
+
+  details summary:hover { color: var(--accent); }
+
+  details[open] .grid { margin-top: 12px; }
+
+  .returns-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 24px;
+  }
+
+  .returns-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+    gap: 10px;
+  }
+
+  .return-cell { display: flex; flex-direction: column; gap: 4px; }
+
+  .return-cell label {
+    font-size: 10px;
+    color: var(--text-2);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-align: center;
+  }
+
+  .return-cell input {
+    width: 100%;
+    padding: 10px 8px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--text);
+    outline: none;
+    border-radius: 2px;
+    transition: all 0.15s;
+    text-align: center;
+  }
+
+  .return-cell input:focus { border-color: var(--accent); background: #FFF; }
+  .return-cell input.neg { color: var(--accent); }
+
+  .presets {
+    display: flex;
+    gap: 8px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .presets-label {
+    font-size: 11px;
+    color: var(--text-2);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-right: 4px;
+  }
+
+  .preset-btn {
+    padding: 7px 14px;
+    background: transparent;
+    border: 1px solid var(--border-strong);
+    border-radius: 2px;
+    font-family: var(--sans);
+    font-size: 12px;
+    color: var(--text-2);
+    cursor: pointer;
+    transition: all 0.15s;
+    letter-spacing: 0.02em;
+  }
+
+  .preset-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--surface);
+  }
+
+  .calculate-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    padding: 22px;
+    margin: 32px 0;
+    background: var(--text);
+    color: var(--bg);
+    border: none;
+    font-family: var(--serif);
+    font-size: 19px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-radius: 3px;
+  }
+
+  .calculate-btn em {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-weight: 400;
+    opacity: 0.7;
+  }
+
+  .calculate-btn:hover { background: var(--accent); transform: translateY(-1px); }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 32px;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .stat { background: var(--surface); padding: 22px 20px; }
+
+  .stat .label {
+    font-size: 11px;
+    color: var(--text-2);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+  }
+
+  .stat .value {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .stat .delta {
+    font-family: var(--mono);
+    font-size: 11px;
+    margin-top: 8px;
+    color: var(--text-2);
+  }
+
+  .stat .delta.up { color: var(--pr); }
+  .stat .delta.down { color: var(--accent); }
+
+  .chart-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 24px;
+    margin-bottom: 32px;
+    border-radius: 3px;
+  }
+
+  .legend-strip {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 18px;
+    font-size: 12px;
+    color: var(--text-2);
+    flex-wrap: wrap;
+  }
+
+  .legend-strip span { display: flex; align-items: center; gap: 7px; }
+
+  .legend-strip i {
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    border-radius: 2px;
+  }
+
+  .legend-strip i.line { height: 3px; border-radius: 0; }
+
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    background: var(--surface);
+  }
+
+  .detail-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    min-width: 720px;
+  }
+
+  .detail-table thead th {
+    text-align: left;
+    padding: 14px 14px;
+    border-bottom: 1px solid var(--border-strong);
+    font-weight: 500;
+    font-size: 10px;
+    color: var(--text-2);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: var(--surface-2);
+    white-space: nowrap;
+  }
+
+  .detail-table td {
+    padding: 14px;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--mono);
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .detail-table tr:last-child td { border-bottom: none; }
+
+  .detail-table tr.triggered td {
+    background: linear-gradient(to right, rgba(184, 97, 45, 0.04), transparent 60%);
+  }
+
+  .detail-table td:first-child {
+    font-family: var(--serif-en);
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .detail-table .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .detail-table .num.muted { color: var(--text-3); }
+  .detail-table .num.strong { font-weight: 500; }
+
+  .detail-table .flags { display: flex; gap: 4px; flex-wrap: wrap; }
+
+  .flag {
+    font-family: var(--sans);
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 2px;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .flag.modwr { background: rgba(107, 66, 38, 0.10); color: var(--modwr); }
+  .flag.cpr { background: rgba(184, 97, 45, 0.13); color: var(--cpr); }
+  .flag.pr { background: rgba(45, 95, 63, 0.12); color: var(--pr); }
+
+  .neg-text { color: var(--accent); }
+
+  .hidden { display: none; }
+
+  .example-intro {
+    font-size: 15px;
+    color: var(--text-2);
+    margin-bottom: 28px;
+    line-height: 1.7;
+  }
+
+  .example-intro strong { color: var(--text); font-weight: 500; }
+
+  .flow {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 24px;
+    padding: 0;
+  }
+
+  .flow li {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 18px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .flow-num {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 28px;
+    color: var(--accent);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .flow-body { flex: 1; }
+
+  .flow-title {
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+
+  .flow-desc { font-size: 12px; color: var(--text-2); line-height: 1.6; }
+
+  .flow-meta {
+    display: block;
+    margin-top: 4px;
+    font-style: italic;
+    color: var(--text-3);
+  }
+
+  .flow strong { color: var(--text); font-weight: 500; }
+
+  .example-note {
+    font-size: 13px;
+    color: var(--text-2);
+    margin-bottom: 32px;
+    padding: 12px 16px;
+    background: var(--surface-2);
+    border-left: 2px solid var(--border-strong);
+    font-style: italic;
+  }
+
+  .example-note em {
+    font-family: var(--serif-en);
+    color: var(--accent);
+    font-style: normal;
+    margin-right: 4px;
+  }
+
+  .worked-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 16px;
+  }
+
+  .worked-case {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .worked-case.highlight {
+    border-color: rgba(184, 97, 45, 0.35);
+    box-shadow: 0 0 0 1px rgba(184, 97, 45, 0.08);
+  }
+
+  .worked-case.highlight-pr {
+    border-color: rgba(45, 95, 63, 0.35);
+    box-shadow: 0 0 0 1px rgba(45, 95, 63, 0.08);
+  }
+
+  .worked-header {
+    padding: 18px 20px 14px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface-2);
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .worked-tag {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 22px;
+    color: var(--accent);
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  .worked-title {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 500;
+    flex: 1;
+  }
+
+  .worked-context {
+    width: 100%;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-2);
+    margin-top: 2px;
+  }
+
+  .worked-steps { list-style: none; padding: 0; margin: 0; }
+
+  .worked-steps li {
+    display: grid;
+    grid-template-columns: 96px 1fr auto;
+    gap: 14px;
+    align-items: baseline;
+    padding: 11px 20px;
+    border-bottom: 1px dashed var(--border);
+    font-size: 13px;
+  }
+
+  .worked-steps li:last-child { border-bottom: none; }
+
+  .worked-steps li.trigger-row {
+    background: linear-gradient(to right, rgba(184, 97, 45, 0.045), transparent 70%);
+  }
+
+  .step-label {
+    font-size: 11px;
+    color: var(--text-2);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .step-calc { font-family: var(--mono); font-size: 12px; color: var(--text-2); }
+
+  .step-result {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--text);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .step-result.final { font-weight: 500; color: var(--accent); }
+
+  .step-result .ok {
+    font-family: var(--sans);
+    font-size: 10px;
+    padding: 2px 6px;
+    background: rgba(45, 95, 63, 0.10);
+    color: var(--pr);
+    border-radius: 2px;
+    letter-spacing: 0.04em;
+    margin-left: 4px;
+  }
+
+  .step-result .flag {
+    font-family: var(--sans);
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 2px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .rules-ref {
+    margin-top: 32px;
+    padding: 20px 24px;
+    background: var(--surface-2);
+    border-left: 2px solid var(--accent);
+    border-radius: 0 3px 3px 0;
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--text-2);
+  }
+
+  .rules-ref strong { color: var(--text); font-weight: 500; }
+
+  .rules-ref .rule-line { display: flex; gap: 12px; margin-bottom: 4px; }
+
+  .rules-ref .rule-line .badge {
+    flex-shrink: 0;
+    font-family: var(--serif-en);
+    font-style: italic;
+    width: 24px;
+    color: var(--accent);
+  }
+
+  .rules-ref code {
+    font-family: var(--mono);
+    font-size: 12px;
+    background: var(--surface);
+    padding: 1px 6px;
+    border-radius: 2px;
+    border: 1px solid var(--border);
+  }
+
+  footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-3);
+    line-height: 1.7;
+    text-align: center;
+  }
+
+  @media (max-width: 720px) {
+    .container { padding: 32px 18px 56px; }
+    h1 { font-size: 36px; }
+    h2 { font-size: 20px; }
+    .header-row { flex-direction: column; align-items: flex-start; }
+    .meta { text-align: left; }
+    .stat .value { font-size: 22px; }
+    .returns-grid { grid-template-columns: repeat(4, 1fr); }
+    .worked-steps li { grid-template-columns: 80px 1fr; gap: 4px 12px; }
+    .worked-steps .step-result { grid-column: 2; text-align: left; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <div class="header-row">
+    <h1><span data-i18n="h1_prefix">GK</span> <em data-i18n="h1_em">動態提領</em> <span data-i18n="h1_suffix">模擬器</span></h1>
+    <div class="meta">
+      Guyton-Klinger Rules<br>
+      <strong data-i18n="subtitle">退休提領決策模型</strong>
+    </div>
+  </div>
+  <div class="lang-switch">
+    <span class="lang-label" data-i18n="lang_label">Language</span>
+    <button class="lang-btn" data-lang="en">English</button>
+    <button class="lang-btn" data-lang="zh-TW">繁體</button>
+    <button class="lang-btn" data-lang="zh-CN">简体</button>
+    <button class="lang-btn" data-lang="ja">日本語</button>
+    <button class="lang-btn" data-lang="ko">한국어</button>
+  </div>
+</header>
+
+<section>
+  <h2><span class="num">01</span><span data-i18n="section01">本金與基準</span></h2>
+  <div class="grid">
+    <div class="field">
+      <label data-i18n="label_initial">初始本金</label>
+      <div class="field-input">
+        <input type="number" id="initial" value="10000000" min="1">
+        <span class="suffix" data-i18n="suffix_currency">元</span>
+      </div>
+    </div>
+    <div class="field">
+      <label data-i18n="label_wr">初始提領率</label>
+      <div class="field-input">
+        <input type="number" id="wr" value="4" step="0.1" min="0.1">
+        <span class="suffix">%</span>
+      </div>
+    </div>
+    <div class="field">
+      <label data-i18n="label_inflation">年通膨率</label>
+      <div class="field-input">
+        <input type="number" id="inflation" value="2.5" step="0.1">
+        <span class="suffix">%</span>
+      </div>
+    </div>
+    <div class="field">
+      <label data-i18n="label_years">模擬年數</label>
+      <div class="field-input">
+        <input type="number" id="years" value="8" min="1" max="40">
+        <span class="suffix" data-i18n="suffix_years">年</span>
+      </div>
+    </div>
+  </div>
+
+  <details>
+    <summary data-i18n="advanced_toggle">進階規則參數</summary>
+    <div class="grid">
+      <div class="field">
+        <label data-i18n="label_cpr_ratio">CPR 觸發倍率</label>
+        <div class="field-input">
+          <input type="number" id="cprRatio" value="1.2" step="0.05">
+          <span class="suffix" data-i18n="suffix_xinitial">× 初始</span>
+        </div>
+      </div>
+      <div class="field">
+        <label data-i18n="label_cpr_cut">CPR 削減</label>
+        <div class="field-input">
+          <input type="number" id="cprCut" value="10" step="1">
+          <span class="suffix">%</span>
+        </div>
+      </div>
+      <div class="field">
+        <label data-i18n="label_pr_ratio">PR 觸發倍率</label>
+        <div class="field-input">
+          <input type="number" id="prRatio" value="0.8" step="0.05">
+          <span class="suffix" data-i18n="suffix_xinitial">× 初始</span>
+        </div>
+      </div>
+      <div class="field">
+        <label data-i18n="label_pr_boost">PR 增加</label>
+        <div class="field-input">
+          <input type="number" id="prBoost" value="10" step="1">
+          <span class="suffix">%</span>
+        </div>
+      </div>
+    </div>
+  </details>
+</section>
+
+<section>
+  <h2><span class="num">02</span><span data-i18n="section02">各年市場報酬率</span></h2>
+  <div class="returns-panel">
+    <div class="returns-grid" id="returnsGrid"></div>
+    <div class="presets">
+      <span class="presets-label" data-i18n="preset_label">情境範本</span>
+      <button class="preset-btn" data-preset="example" data-i18n="preset_example">教學範例</button>
+      <button class="preset-btn" data-preset="bullbear" data-i18n="preset_bullbear">先牛後熊</button>
+      <button class="preset-btn" data-preset="lostdecade" data-i18n="preset_lostdecade">失落十年</button>
+      <button class="preset-btn" data-preset="goodbad" data-i18n="preset_goodbad">退休首年崩盤</button>
+      <button class="preset-btn" data-preset="steady" data-i18n="preset_steady">穩健成長</button>
+      <button class="preset-btn" data-preset="reset" data-i18n="preset_reset">全部歸零</button>
+    </div>
+  </div>
+</section>
+
+<button class="calculate-btn" id="calcBtn">
+  <span data-i18n="calc_btn">執行模擬</span> <em>→</em>
+</button>
+
+<section id="results" class="hidden">
+  <h2><span class="num">03</span><span data-i18n="section03">模擬結果</span></h2>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="chart-wrap">
+    <div class="legend-strip">
+      <span><i style="background:#1A2332"></i><span data-i18n="legend_portfolio">組合期末價值</span></span>
+      <span><i style="background:#B8612D"></i><span data-i18n="legend_triggered">規則觸發年</span></span>
+      <span><i class="line" style="background:#8B3A1F"></i><span data-i18n="legend_withdraw">當年提領</span></span>
+    </div>
+    <div style="position:relative;height:340px;">
+      <canvas id="chart"></canvas>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table class="detail-table">
+      <thead>
+        <tr>
+          <th data-i18n="tbl_year">年度</th>
+          <th class="num" data-i18n="tbl_start">期初本金</th>
+          <th class="num" data-i18n="tbl_inflated">通膨擬議</th>
+          <th class="num" data-i18n="tbl_final">最終提領</th>
+          <th class="num" data-i18n="tbl_wr">提領率</th>
+          <th class="num" data-i18n="tbl_return">市場報酬</th>
+          <th class="num" data-i18n="tbl_end">期末本金</th>
+          <th data-i18n="tbl_flags">觸發規則</th>
+        </tr>
+      </thead>
+      <tbody id="detailBody"></tbody>
+    </table>
+  </div>
+
+  <div class="rules-ref">
+    <div class="rule-line"><span class="badge">i</span><span data-i18n-html="rule_i"><strong>通膨調整</strong>：每年提領隨通膨上調。</span></div>
+    <div class="rule-line"><span class="badge">ii</span><span data-i18n-html="rule_ii"><strong>凍漲規則（Modified WR）</strong>：前一年市場為負且當前提領率高於初始時，跳過該年通膨調整。</span></div>
+    <div class="rule-line"><span class="badge">iii</span><span data-i18n-html="rule_iii"><strong>資本保全（CPR）</strong>：提領率超過 <code>初始 × CPR 倍率</code> 時，砍削指定比例。</span></div>
+    <div class="rule-line"><span class="badge">iv</span><span data-i18n-html="rule_iv"><strong>繁榮規則（PR）</strong>：提領率低於 <code>初始 × PR 倍率</code> 時，加碼指定比例。</span></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">04</span><span data-i18n="section04">計算範例</span></h2>
+
+  <p class="example-intro" data-i18n-html="example_intro">以 <strong>1,000 萬本金、初始提領率 4%、通膨 2.5%</strong> 為例，每年依下列五個步驟結算：</p>
+
+  <ol class="flow">
+    <li><span class="flow-num">1</span><div class="flow-body"><div class="flow-title" data-i18n="flow1_title">通膨調整擬議</div><div class="flow-desc" data-i18n-html="flow1_desc">把上一年提領金額 × (1 + 通膨)，得到本年「擬議提領」。<span class="flow-meta">Y1 例外：直接 = 本金 × 初始提領率</span></div></div></li>
+    <li><span class="flow-num">2</span><div class="flow-body"><div class="flow-title" data-i18n="flow2_title">檢查凍漲規則</div><div class="flow-desc" data-i18n-html="flow2_desc">若前一年市場為負 <strong>且</strong> 擬議提領率 > 初始 4% → 跳過通膨，沿用去年金額</div></div></li>
+    <li><span class="flow-num">3</span><div class="flow-body"><div class="flow-title" data-i18n="flow3_title">檢查資本保全 / 繁榮</div><div class="flow-desc" data-i18n-html="flow3_desc">提領率 &gt; 4.8% → 砍 10%；&lt; 3.2% → 加 10%；落在區間內不調整</div></div></li>
+    <li><span class="flow-num">4</span><div class="flow-body"><div class="flow-title" data-i18n="flow4_title">扣除提領</div><div class="flow-desc" data-i18n="flow4_desc">期初本金 − 最終提領 = 投資剩餘金額</div></div></li>
+    <li><span class="flow-num">5</span><div class="flow-body"><div class="flow-title" data-i18n="flow5_title">套用市場報酬</div><div class="flow-desc" data-i18n="flow5_desc">剩餘金額 × (1 + 該年報酬率) = 期末本金</div></div></li>
+  </ol>
+
+  <p class="example-note"><em>★</em><span data-i18n="example_note">注意計算順序：本工具採「年初提領、剩餘金額才參與當年市場報酬」的慣例。</span></p>
+
+  <div class="worked-grid">
+
+    <article class="worked-case">
+      <header class="worked-header">
+        <div class="worked-tag">Y1</div>
+        <div class="worked-title" data-i18n="worked_y1_title">首年｜照表操課</div>
+        <div class="worked-context" data-i18n="worked_y1_context">期初 10,000,000　市場 +8%</div>
+      </header>
+      <ol class="worked-steps">
+        <li><span class="step-label" data-i18n="step_withdraw">提領</span><span class="step-calc">10,000,000 × 4%</span><span class="step-result">= 400,000</span></li>
+        <li><span class="step-label" data-i18n="step_after">提領後</span><span class="step-calc">10,000,000 − 400,000</span><span class="step-result">= 9,600,000</span></li>
+        <li><span class="step-label" data-i18n="step_market">市場 +8%</span><span class="step-calc">9,600,000 × 1.08</span><span class="step-result final">= 10,368,000</span></li>
+      </ol>
+    </article>
+
+    <article class="worked-case">
+      <header class="worked-header">
+        <div class="worked-tag">Y2</div>
+        <div class="worked-title" data-i18n="worked_y2_title">熊市｜正常通膨調整</div>
+        <div class="worked-context" data-i18n="worked_y2_context">期初 10,368,000　市場 −25%</div>
+      </header>
+      <ol class="worked-steps">
+        <li><span class="step-label" data-i18n="step_inflated">通膨擬議</span><span class="step-calc">400,000 × 1.025</span><span class="step-result">= 410,000</span></li>
+        <li><span class="step-label" data-i18n="step_check">檢查規則</span><span class="step-calc">410,000 ÷ 10,368,000</span><span class="step-result">= 3.95% <span class="ok" data-i18n="step_in_range">區間內</span></span></li>
+        <li><span class="step-label" data-i18n="step_after">提領後</span><span class="step-calc">10,368,000 − 410,000</span><span class="step-result">= 9,958,000</span></li>
+        <li><span class="step-label" data-i18n="step_market2">市場 −25%</span><span class="step-calc">9,958,000 × 0.75</span><span class="step-result final">= 7,468,500</span></li>
+      </ol>
+    </article>
+
+    <article class="worked-case highlight">
+      <header class="worked-header">
+        <div class="worked-tag">Y3</div>
+        <div class="worked-title" data-i18n="worked_y3_title">兩條規則同時觸發</div>
+        <div class="worked-context" data-i18n="worked_y3_context">期初 7,468,500　市場 +10%　前一年 −25%</div>
+      </header>
+      <ol class="worked-steps">
+        <li><span class="step-label" data-i18n="step_inflated">通膨擬議</span><span class="step-calc">410,000 × 1.025</span><span class="step-result">= 420,250</span></li>
+        <li class="trigger-row"><span class="step-label" data-i18n="step_freeze">凍漲檢查</span><span class="step-calc" data-i18n="step_freeze_calc">前年 −25% ✓　擬議率 5.63% > 4% ✓</span><span class="step-result"><span class="flag modwr" data-i18n="step_freeze_result">凍漲 → 410,000</span></span></li>
+        <li class="trigger-row"><span class="step-label" data-i18n="step_cpr">CPR 檢查</span><span class="step-calc">410,000 ÷ 7,468,500 = 5.49% > 4.8%</span><span class="step-result"><span class="flag cpr" data-i18n="step_cpr_result">砍 10% → 369,000</span></span></li>
+        <li><span class="step-label" data-i18n="step_after">提領後</span><span class="step-calc">7,468,500 − 369,000</span><span class="step-result">= 7,099,500</span></li>
+        <li><span class="step-label" data-i18n="step_market3">市場 +10%</span><span class="step-calc">7,099,500 × 1.10</span><span class="step-result final">= 7,809,450</span></li>
+      </ol>
+    </article>
+
+    <article class="worked-case highlight-pr">
+      <header class="worked-header">
+        <div class="worked-tag">Y6</div>
+        <div class="worked-title" data-i18n="worked_y6_title">繁榮規則加薪</div>
+        <div class="worked-context" data-i18n="worked_y6_context">期初 11,683,615　市場 +15%</div>
+      </header>
+      <ol class="worked-steps">
+        <li><span class="step-label" data-i18n="step_inflated">通膨擬議</span><span class="step-calc">348,913 × 1.025</span><span class="step-result">= 357,636</span></li>
+        <li class="trigger-row"><span class="step-label" data-i18n="step_pr">PR 檢查</span><span class="step-calc">357,636 ÷ 11,683,615 = 3.06% < 3.2%</span><span class="step-result"><span class="flag pr" data-i18n="step_pr_result">加 10% → 393,400</span></span></li>
+        <li><span class="step-label" data-i18n="step_after">提領後</span><span class="step-calc">11,683,615 − 393,400</span><span class="step-result">= 11,290,215</span></li>
+        <li><span class="step-label" data-i18n="step_market6">市場 +15%</span><span class="step-calc">11,290,215 × 1.15</span><span class="step-result final">= 12,983,747</span></li>
+      </ol>
+    </article>
+
+  </div>
+</section>
+
+<footer data-i18n="footer">
+  GK 法則由 Jonathan Guyton 與 William Klinger 提出，原始版本建議搭配 65/35 股債組合與較長退休區間使用，且 CPR 規則僅於退休前 15 年生效。本工具為教學與情境探索用途，並非投資建議。
+</footer>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+// ========== TRANSLATIONS ==========
+const i18n = {
+  'en': {
+    page_title: 'GK Dynamic Withdrawal Simulator',
+    h1_prefix: 'GK',
+    h1_em: 'Dynamic Withdrawal',
+    h1_suffix: 'Simulator',
+    subtitle: 'Retirement Withdrawal Decision Model',
+    lang_label: 'Language',
+    section01: 'Principal & Baseline',
+    section02: 'Annual Market Returns',
+    section03: 'Simulation Results',
+    section04: 'Calculation Walkthrough',
+    label_initial: 'Initial Principal',
+    label_wr: 'Initial Withdrawal Rate',
+    label_inflation: 'Annual Inflation',
+    label_years: 'Simulation Years',
+    suffix_currency: '',
+    suffix_years: 'yrs',
+    advanced_toggle: 'Advanced Rule Parameters',
+    label_cpr_ratio: 'CPR Trigger Ratio',
+    label_cpr_cut: 'CPR Reduction',
+    label_pr_ratio: 'PR Trigger Ratio',
+    label_pr_boost: 'PR Boost',
+    suffix_xinitial: '× initial',
+    preset_label: 'Presets',
+    preset_example: 'Tutorial',
+    preset_bullbear: 'Bull → Bear',
+    preset_lostdecade: 'Lost Decade',
+    preset_goodbad: 'Retire into Crash',
+    preset_steady: 'Steady Growth',
+    preset_reset: 'Reset All',
+    calc_btn: 'Run Simulation',
+    stat_end: 'Ending Balance',
+    stat_total: 'Total Withdrawn',
+    stat_avg: 'Avg Annual Withdrawal',
+    stat_triggers: 'Rule Triggers',
+    stat_vs_start: 'vs start',
+    stat_years_total: '{n} years total',
+    stat_initial_was: 'Initial: {n}',
+    stat_rules_total: '{n} total rules',
+    legend_portfolio: 'Portfolio End Value',
+    legend_triggered: 'Trigger Year',
+    legend_withdraw: 'Annual Withdrawal',
+    chart_y_portfolio: 'Portfolio ($M)',
+    chart_y_withdraw: 'Withdrawal ($K)',
+    chart_unit_portfolio: 'M',
+    chart_unit_withdraw: 'K',
+    tooltip_portfolio: 'Portfolio',
+    tooltip_withdraw: 'Withdrawal',
+    tbl_year: 'Year',
+    tbl_start: 'Start Balance',
+    tbl_inflated: 'CPI Draft',
+    tbl_final: 'Final Withdrawal',
+    tbl_wr: 'WR',
+    tbl_return: 'Market',
+    tbl_end: 'End Balance',
+    tbl_flags: 'Rules',
+    flag_modwr: 'Freeze',
+    flag_cpr: 'CPR −',
+    flag_pr: 'PR +',
+    rule_i: '<strong>Inflation Adjustment</strong>: withdrawal rises each year with inflation.',
+    rule_ii: '<strong>Modified Withdrawal Rule</strong>: if prior year returns were negative AND current WR exceeds initial, skip the inflation adjustment.',
+    rule_iii: '<strong>Capital Preservation (CPR)</strong>: when WR exceeds <code>initial × CPR ratio</code>, cut by the specified percentage.',
+    rule_iv: '<strong>Prosperity Rule (PR)</strong>: when WR falls below <code>initial × PR ratio</code>, boost by the specified percentage.',
+    example_intro: 'Using <strong>10,000,000 principal, 4% initial WR, 2.5% inflation</strong>, each year is computed in five steps:',
+    flow1_title: 'Inflation-Adjusted Draft',
+    flow1_desc: 'Last year\'s withdrawal × (1 + inflation) = this year\'s "proposed withdrawal".<span class="flow-meta">Y1 exception: = principal × initial WR</span>',
+    flow2_title: 'Check Freeze Rule',
+    flow2_desc: 'If last year\'s market was negative <strong>AND</strong> proposed WR > initial 4% → skip inflation, keep last year\'s amount.',
+    flow3_title: 'Check CPR / PR',
+    flow3_desc: 'WR &gt; 4.8% → cut 10%; &lt; 3.2% → boost 10%; in range → unchanged.',
+    flow4_title: 'Deduct Withdrawal',
+    flow4_desc: 'Start balance − final withdrawal = remaining capital.',
+    flow5_title: 'Apply Market Return',
+    flow5_desc: 'Remaining × (1 + return) = end balance.',
+    example_note: 'Note the order: withdrawals happen at start of year; only the remainder earns the year\'s return.',
+    worked_y1_title: 'Year 1 | By the book',
+    worked_y1_context: 'Start 10,000,000 · Market +8%',
+    worked_y2_title: 'Bear market | normal adjustment',
+    worked_y2_context: 'Start 10,368,000 · Market −25%',
+    worked_y3_title: 'Two rules triggered together',
+    worked_y3_context: 'Start 7,468,500 · Market +10% · Prev −25%',
+    worked_y6_title: 'Prosperity Rule raise',
+    worked_y6_context: 'Start 11,683,615 · Market +15%',
+    step_withdraw: 'Withdraw',
+    step_after: 'After draw',
+    step_market: 'Market +8%',
+    step_market2: 'Market −25%',
+    step_market3: 'Market +10%',
+    step_market6: 'Market +15%',
+    step_inflated: 'CPI draft',
+    step_check: 'Check WR',
+    step_in_range: 'in range',
+    step_freeze: 'Freeze check',
+    step_freeze_calc: 'Prev −25% ✓  Draft WR 5.63% > 4% ✓',
+    step_freeze_result: 'Freeze → 410,000',
+    step_cpr: 'CPR check',
+    step_cpr_result: 'Cut 10% → 369,000',
+    step_pr: 'PR check',
+    step_pr_result: 'Boost 10% → 393,400',
+    flag_freeze_short: 'Freeze',
+    flag_cpr_short: 'CPR −',
+    flag_pr_short: 'PR +',
+    year_short: 'Y',
+    footer: 'GK rules were proposed by Jonathan Guyton and William Klinger. The original version assumed a 65/35 stock/bond portfolio with a long retirement horizon, and CPR was active only during the first 15 years. This tool is for education and scenario exploration, not investment advice.'
+  },
+
+  'zh-TW': {
+    page_title: 'GK 動態提領模擬器',
+    h1_prefix: 'GK', h1_em: '動態提領', h1_suffix: '模擬器',
+    subtitle: '退休提領決策模型',
+    lang_label: '語言',
+    section01: '本金與基準', section02: '各年市場報酬率', section03: '模擬結果', section04: '計算範例',
+    label_initial: '初始本金', label_wr: '初始提領率', label_inflation: '年通膨率', label_years: '模擬年數',
+    suffix_currency: '元', suffix_years: '年',
+    advanced_toggle: '進階規則參數',
+    label_cpr_ratio: 'CPR 觸發倍率', label_cpr_cut: 'CPR 削減', label_pr_ratio: 'PR 觸發倍率', label_pr_boost: 'PR 增加',
+    suffix_xinitial: '× 初始',
+    preset_label: '情境範本',
+    preset_example: '教學範例', preset_bullbear: '先牛後熊', preset_lostdecade: '失落十年',
+    preset_goodbad: '退休首年崩盤', preset_steady: '穩健成長', preset_reset: '全部歸零',
+    calc_btn: '執行模擬',
+    stat_end: '期末本金', stat_total: '累計提領', stat_avg: '平均年提領', stat_triggers: '規則觸發',
+    stat_vs_start: 'vs 起始', stat_years_total: '{n} 年合計', stat_initial_was: '起始為 {n}', stat_rules_total: '共 {n} 條規則',
+    legend_portfolio: '組合期末價值', legend_triggered: '規則觸發年', legend_withdraw: '當年提領',
+    chart_y_portfolio: '組合價值 (萬元)', chart_y_withdraw: '提領金額 (千元)',
+    chart_unit_portfolio: '萬', chart_unit_withdraw: '千',
+    tooltip_portfolio: '組合', tooltip_withdraw: '提領',
+    tbl_year: '年度', tbl_start: '期初本金', tbl_inflated: '通膨擬議', tbl_final: '最終提領',
+    tbl_wr: '提領率', tbl_return: '市場報酬', tbl_end: '期末本金', tbl_flags: '觸發規則',
+    flag_modwr: '凍漲', flag_cpr: '保全 −', flag_pr: '繁榮 +',
+    rule_i: '<strong>通膨調整</strong>：每年提領隨通膨上調。',
+    rule_ii: '<strong>凍漲規則（Modified WR）</strong>：前一年市場為負且當前提領率高於初始時，跳過該年通膨調整。',
+    rule_iii: '<strong>資本保全（CPR）</strong>：提領率超過 <code>初始 × CPR 倍率</code> 時，砍削指定比例。',
+    rule_iv: '<strong>繁榮規則（PR）</strong>：提領率低於 <code>初始 × PR 倍率</code> 時，加碼指定比例。',
+    example_intro: '以 <strong>1,000 萬本金、初始提領率 4%、通膨 2.5%</strong> 為例，每年依下列五個步驟結算：',
+    flow1_title: '通膨調整擬議',
+    flow1_desc: '把上一年提領金額 × (1 + 通膨)，得到本年「擬議提領」。<span class="flow-meta">Y1 例外：直接 = 本金 × 初始提領率</span>',
+    flow2_title: '檢查凍漲規則',
+    flow2_desc: '若前一年市場為負 <strong>且</strong> 擬議提領率 > 初始 4% → 跳過通膨，沿用去年金額',
+    flow3_title: '檢查資本保全 / 繁榮',
+    flow3_desc: '提領率 &gt; 4.8% → 砍 10%；&lt; 3.2% → 加 10%；落在區間內不調整',
+    flow4_title: '扣除提領', flow4_desc: '期初本金 − 最終提領 = 投資剩餘金額',
+    flow5_title: '套用市場報酬', flow5_desc: '剩餘金額 × (1 + 該年報酬率) = 期末本金',
+    example_note: '注意計算順序：本工具採「年初提領、剩餘金額才參與當年市場報酬」的慣例。',
+    worked_y1_title: '首年｜照表操課', worked_y1_context: '期初 10,000,000　市場 +8%',
+    worked_y2_title: '熊市｜正常通膨調整', worked_y2_context: '期初 10,368,000　市場 −25%',
+    worked_y3_title: '兩條規則同時觸發', worked_y3_context: '期初 7,468,500　市場 +10%　前一年 −25%',
+    worked_y6_title: '繁榮規則加薪', worked_y6_context: '期初 11,683,615　市場 +15%',
+    step_withdraw: '提領', step_after: '提領後',
+    step_market: '市場 +8%', step_market2: '市場 −25%', step_market3: '市場 +10%', step_market6: '市場 +15%',
+    step_inflated: '通膨擬議', step_check: '檢查規則', step_in_range: '區間內',
+    step_freeze: '凍漲檢查', step_freeze_calc: '前年 −25% ✓　擬議率 5.63% > 4% ✓', step_freeze_result: '凍漲 → 410,000',
+    step_cpr: 'CPR 檢查', step_cpr_result: '砍 10% → 369,000',
+    step_pr: 'PR 檢查', step_pr_result: '加 10% → 393,400',
+    year_short: 'Y',
+    footer: 'GK 法則由 Jonathan Guyton 與 William Klinger 提出，原始版本建議搭配 65/35 股債組合與較長退休區間使用，且 CPR 規則僅於退休前 15 年生效。本工具為教學與情境探索用途，並非投資建議。'
+  },
+
+  'zh-CN': {
+    page_title: 'GK 动态提取模拟器',
+    h1_prefix: 'GK', h1_em: '动态提取', h1_suffix: '模拟器',
+    subtitle: '退休提取决策模型',
+    lang_label: '语言',
+    section01: '本金与基准', section02: '各年市场收益率', section03: '模拟结果', section04: '计算范例',
+    label_initial: '初始本金', label_wr: '初始提取率', label_inflation: '年通胀率', label_years: '模拟年数',
+    suffix_currency: '元', suffix_years: '年',
+    advanced_toggle: '高级规则参数',
+    label_cpr_ratio: 'CPR 触发倍率', label_cpr_cut: 'CPR 削减', label_pr_ratio: 'PR 触发倍率', label_pr_boost: 'PR 增加',
+    suffix_xinitial: '× 初始',
+    preset_label: '情景模板',
+    preset_example: '教学范例', preset_bullbear: '先牛后熊', preset_lostdecade: '失落十年',
+    preset_goodbad: '退休首年崩盘', preset_steady: '稳健增长', preset_reset: '全部归零',
+    calc_btn: '执行模拟',
+    stat_end: '期末本金', stat_total: '累计提取', stat_avg: '平均年提取', stat_triggers: '规则触发',
+    stat_vs_start: 'vs 起始', stat_years_total: '{n} 年合计', stat_initial_was: '起始为 {n}', stat_rules_total: '共 {n} 条规则',
+    legend_portfolio: '组合期末价值', legend_triggered: '规则触发年', legend_withdraw: '当年提取',
+    chart_y_portfolio: '组合价值 (万元)', chart_y_withdraw: '提取金额 (千元)',
+    chart_unit_portfolio: '万', chart_unit_withdraw: '千',
+    tooltip_portfolio: '组合', tooltip_withdraw: '提取',
+    tbl_year: '年度', tbl_start: '期初本金', tbl_inflated: '通胀草案', tbl_final: '最终提取',
+    tbl_wr: '提取率', tbl_return: '市场收益', tbl_end: '期末本金', tbl_flags: '触发规则',
+    flag_modwr: '冻涨', flag_cpr: '保全 −', flag_pr: '繁荣 +',
+    rule_i: '<strong>通胀调整</strong>：每年提取随通胀上调。',
+    rule_ii: '<strong>冻涨规则（Modified WR）</strong>：前一年市场为负且当前提取率高于初始时，跳过该年通胀调整。',
+    rule_iii: '<strong>资本保全（CPR）</strong>：提取率超过 <code>初始 × CPR 倍率</code> 时，砍削指定比例。',
+    rule_iv: '<strong>繁荣规则（PR）</strong>：提取率低于 <code>初始 × PR 倍率</code> 时，加码指定比例。',
+    example_intro: '以 <strong>1,000 万本金、初始提取率 4%、通胀 2.5%</strong> 为例，每年按下列五个步骤结算：',
+    flow1_title: '通胀调整草案',
+    flow1_desc: '将上一年提取金额 × (1 + 通胀)，得到本年「草案提取」。<span class="flow-meta">Y1 例外：直接 = 本金 × 初始提取率</span>',
+    flow2_title: '检查冻涨规则',
+    flow2_desc: '若前一年市场为负 <strong>且</strong> 草案提取率 > 初始 4% → 跳过通胀，沿用去年金额',
+    flow3_title: '检查 CPR / PR',
+    flow3_desc: '提取率 &gt; 4.8% → 砍 10%；&lt; 3.2% → 加 10%；落在区间内不调整',
+    flow4_title: '扣除提取', flow4_desc: '期初本金 − 最终提取 = 投资剩余金额',
+    flow5_title: '套用市场收益', flow5_desc: '剩余金额 × (1 + 该年收益率) = 期末本金',
+    example_note: '注意计算顺序：本工具采用「年初提取、剩余金额才参与当年市场收益」的惯例。',
+    worked_y1_title: '首年｜照表操作', worked_y1_context: '期初 10,000,000　市场 +8%',
+    worked_y2_title: '熊市｜正常通胀调整', worked_y2_context: '期初 10,368,000　市场 −25%',
+    worked_y3_title: '两条规则同时触发', worked_y3_context: '期初 7,468,500　市场 +10%　前一年 −25%',
+    worked_y6_title: '繁荣规则加薪', worked_y6_context: '期初 11,683,615　市场 +15%',
+    step_withdraw: '提取', step_after: '提取后',
+    step_market: '市场 +8%', step_market2: '市场 −25%', step_market3: '市场 +10%', step_market6: '市场 +15%',
+    step_inflated: '通胀草案', step_check: '检查规则', step_in_range: '区间内',
+    step_freeze: '冻涨检查', step_freeze_calc: '前年 −25% ✓　草案率 5.63% > 4% ✓', step_freeze_result: '冻涨 → 410,000',
+    step_cpr: 'CPR 检查', step_cpr_result: '砍 10% → 369,000',
+    step_pr: 'PR 检查', step_pr_result: '加 10% → 393,400',
+    year_short: 'Y',
+    footer: 'GK 规则由 Jonathan Guyton 与 William Klinger 提出，原始版本建议搭配 65/35 股债组合与较长退休区间使用，且 CPR 规则仅于退休前 15 年生效。本工具为教学与情景探索用途，并非投资建议。'
+  },
+
+  'ja': {
+    page_title: 'GK 動的引き出しシミュレーター',
+    h1_prefix: 'GK', h1_em: '動的引き出し', h1_suffix: 'シミュレーター',
+    subtitle: '退職後引き出し決定モデル',
+    lang_label: '言語',
+    section01: '資金と基準', section02: '各年の市場リターン', section03: 'シミュレーション結果', section04: '計算例',
+    label_initial: '初期資金', label_wr: '初期引き出し率', label_inflation: '年間インフレ率', label_years: 'シミュレーション年数',
+    suffix_currency: '円', suffix_years: '年',
+    advanced_toggle: '詳細ルール設定',
+    label_cpr_ratio: 'CPR 発動倍率', label_cpr_cut: 'CPR 削減', label_pr_ratio: 'PR 発動倍率', label_pr_boost: 'PR 増額',
+    suffix_xinitial: '× 初期',
+    preset_label: 'シナリオ',
+    preset_example: 'チュートリアル例', preset_bullbear: '強気→弱気', preset_lostdecade: '失われた10年',
+    preset_goodbad: '退職初年に暴落', preset_steady: '安定成長', preset_reset: 'リセット',
+    calc_btn: 'シミュレーション実行',
+    stat_end: '期末資金', stat_total: '累計引き出し', stat_avg: '平均年間引き出し', stat_triggers: 'ルール発動',
+    stat_vs_start: '初期比', stat_years_total: '{n}年合計', stat_initial_was: '初期: {n}', stat_rules_total: '計 {n} ルール',
+    legend_portfolio: 'ポートフォリオ期末価値', legend_triggered: 'ルール発動年', legend_withdraw: '年間引き出し',
+    chart_y_portfolio: 'ポートフォリオ (万円)', chart_y_withdraw: '引き出し (千円)',
+    chart_unit_portfolio: '万', chart_unit_withdraw: '千',
+    tooltip_portfolio: 'ポートフォリオ', tooltip_withdraw: '引き出し',
+    tbl_year: '年', tbl_start: '期首残高', tbl_inflated: 'インフレ案', tbl_final: '最終引き出し',
+    tbl_wr: '引出率', tbl_return: '市場リターン', tbl_end: '期末残高', tbl_flags: '発動ルール',
+    flag_modwr: '凍結', flag_cpr: 'CPR −', flag_pr: 'PR +',
+    rule_i: '<strong>インフレ調整</strong>：引き出し額は毎年インフレに応じて増加。',
+    rule_ii: '<strong>修正引き出しルール (Modified WR)</strong>：前年が負のリターン かつ 現引き出し率が初期を超える場合、その年のインフレ調整をスキップ。',
+    rule_iii: '<strong>資本保全 (CPR)</strong>：引き出し率が <code>初期 × CPR 倍率</code> を超えると、指定割合で削減。',
+    rule_iv: '<strong>繁栄ルール (PR)</strong>：引き出し率が <code>初期 × PR 倍率</code> を下回ると、指定割合で増額。',
+    example_intro: '<strong>1,000万円の元本、初期引き出し率 4%、インフレ 2.5%</strong> を例に、毎年以下の5ステップで計算します：',
+    flow1_title: 'インフレ調整案',
+    flow1_desc: '前年の引き出し額 × (1 + インフレ) = 今年の「案引き出し」。<span class="flow-meta">Y1 例外：= 元本 × 初期引出率</span>',
+    flow2_title: '凍結ルール確認',
+    flow2_desc: '前年市場が負 <strong>かつ</strong> 案引出率 > 初期 4% → インフレをスキップし、前年額を維持',
+    flow3_title: 'CPR / PR 確認',
+    flow3_desc: '引出率 &gt; 4.8% → 10%削減；&lt; 3.2% → 10%増額；範囲内 → 調整なし',
+    flow4_title: '引き出しを差引', flow4_desc: '期首残高 − 最終引き出し = 投資残額',
+    flow5_title: '市場リターン適用', flow5_desc: '残額 × (1 + リターン) = 期末残高',
+    example_note: '計算順序に注意：本ツールは「期首に引き出し、残額のみが当年のリターンを得る」慣例を採用。',
+    worked_y1_title: '初年度｜定石通り', worked_y1_context: '期首 10,000,000 · 市場 +8%',
+    worked_y2_title: '弱気相場｜通常調整', worked_y2_context: '期首 10,368,000 · 市場 −25%',
+    worked_y3_title: '2つのルール同時発動', worked_y3_context: '期首 7,468,500 · 市場 +10% · 前年 −25%',
+    worked_y6_title: '繁栄ルール増額', worked_y6_context: '期首 11,683,615 · 市場 +15%',
+    step_withdraw: '引き出し', step_after: '引出後',
+    step_market: '市場 +8%', step_market2: '市場 −25%', step_market3: '市場 +10%', step_market6: '市場 +15%',
+    step_inflated: 'インフレ案', step_check: 'ルール確認', step_in_range: '範囲内',
+    step_freeze: '凍結確認', step_freeze_calc: '前年 −25% ✓  案率 5.63% > 4% ✓', step_freeze_result: '凍結 → 410,000',
+    step_cpr: 'CPR 確認', step_cpr_result: '10%削減 → 369,000',
+    step_pr: 'PR 確認', step_pr_result: '10%増 → 393,400',
+    year_short: 'Y',
+    footer: 'GKルールは Jonathan Guyton と William Klinger により提唱されました。元の版では65/35株債ポートフォリオと長期の退職期間を想定し、CPR ルールは退職後最初の15年のみ有効です。本ツールは教育とシナリオ探索を目的とし、投資助言ではありません。'
+  },
+
+  'ko': {
+    page_title: 'GK 동적 인출 시뮬레이터',
+    h1_prefix: 'GK', h1_em: '동적 인출', h1_suffix: '시뮬레이터',
+    subtitle: '은퇴 인출 의사결정 모델',
+    lang_label: '언어',
+    section01: '원금 및 기준', section02: '연도별 시장 수익률', section03: '시뮬레이션 결과', section04: '계산 예시',
+    label_initial: '초기 원금', label_wr: '초기 인출률', label_inflation: '연 인플레이션', label_years: '시뮬레이션 연수',
+    suffix_currency: '원', suffix_years: '년',
+    advanced_toggle: '고급 규칙 설정',
+    label_cpr_ratio: 'CPR 발동 배율', label_cpr_cut: 'CPR 삭감', label_pr_ratio: 'PR 발동 배율', label_pr_boost: 'PR 증액',
+    suffix_xinitial: '× 초기',
+    preset_label: '시나리오',
+    preset_example: '튜토리얼 예시', preset_bullbear: '강세→약세', preset_lostdecade: '잃어버린 10년',
+    preset_goodbad: '은퇴 첫해 폭락', preset_steady: '꾸준한 성장', preset_reset: '모두 0으로',
+    calc_btn: '시뮬레이션 실행',
+    stat_end: '기말 원금', stat_total: '누적 인출', stat_avg: '평균 연간 인출', stat_triggers: '규칙 발동',
+    stat_vs_start: '초기 대비', stat_years_total: '{n}년 합계', stat_initial_was: '초기: {n}', stat_rules_total: '총 {n} 규칙',
+    legend_portfolio: '포트폴리오 기말 가치', legend_triggered: '규칙 발동 연도', legend_withdraw: '당해 인출',
+    chart_y_portfolio: '포트폴리오 (만원)', chart_y_withdraw: '인출액 (천원)',
+    chart_unit_portfolio: '만', chart_unit_withdraw: '천',
+    tooltip_portfolio: '포트폴리오', tooltip_withdraw: '인출',
+    tbl_year: '연도', tbl_start: '기초 잔액', tbl_inflated: '인플레 안', tbl_final: '최종 인출',
+    tbl_wr: '인출률', tbl_return: '시장 수익률', tbl_end: '기말 잔액', tbl_flags: '발동 규칙',
+    flag_modwr: '동결', flag_cpr: 'CPR −', flag_pr: 'PR +',
+    rule_i: '<strong>인플레이션 조정</strong>: 인출액은 매년 인플레이션에 따라 증가.',
+    rule_ii: '<strong>수정 인출 규칙 (Modified WR)</strong>: 전년 수익률이 음수이고 현재 인출률이 초기를 초과할 경우, 해당 연도의 인플레이션 조정을 건너뜀.',
+    rule_iii: '<strong>자본 보전 (CPR)</strong>: 인출률이 <code>초기 × CPR 배율</code>을 초과하면 지정 비율만큼 삭감.',
+    rule_iv: '<strong>번영 규칙 (PR)</strong>: 인출률이 <code>초기 × PR 배율</code> 미만이면 지정 비율만큼 증액.',
+    example_intro: '<strong>원금 10,000,000, 초기 인출률 4%, 인플레이션 2.5%</strong> 를 예로, 매년 다음 5단계로 계산:',
+    flow1_title: '인플레이션 조정 안',
+    flow1_desc: '전년 인출액 × (1 + 인플레이션) = 올해 "안 인출".<span class="flow-meta">Y1 예외: = 원금 × 초기 인출률</span>',
+    flow2_title: '동결 규칙 확인',
+    flow2_desc: '전년 시장이 음수 <strong>이고</strong> 안 인출률 > 초기 4% → 인플레이션 건너뛰고 전년 금액 유지',
+    flow3_title: 'CPR / PR 확인',
+    flow3_desc: '인출률 &gt; 4.8% → 10% 삭감; &lt; 3.2% → 10% 증액; 범위 내 → 변경 없음',
+    flow4_title: '인출 차감', flow4_desc: '기초 잔액 − 최종 인출 = 투자 잔액',
+    flow5_title: '시장 수익률 적용', flow5_desc: '잔액 × (1 + 수익률) = 기말 잔액',
+    example_note: '계산 순서 주의: 이 도구는 "연초 인출, 잔액만 당해 시장 수익을 얻음" 관례를 따름.',
+    worked_y1_title: '1년차 | 기본대로', worked_y1_context: '기초 10,000,000 · 시장 +8%',
+    worked_y2_title: '약세장 | 일반 조정', worked_y2_context: '기초 10,368,000 · 시장 −25%',
+    worked_y3_title: '두 규칙 동시 발동', worked_y3_context: '기초 7,468,500 · 시장 +10% · 전년 −25%',
+    worked_y6_title: '번영 규칙 증액', worked_y6_context: '기초 11,683,615 · 시장 +15%',
+    step_withdraw: '인출', step_after: '인출 후',
+    step_market: '시장 +8%', step_market2: '시장 −25%', step_market3: '시장 +10%', step_market6: '시장 +15%',
+    step_inflated: '인플레 안', step_check: '규칙 확인', step_in_range: '범위 내',
+    step_freeze: '동결 확인', step_freeze_calc: '전년 −25% ✓  안 인출률 5.63% > 4% ✓', step_freeze_result: '동결 → 410,000',
+    step_cpr: 'CPR 확인', step_cpr_result: '10% 삭감 → 369,000',
+    step_pr: 'PR 확인', step_pr_result: '10% 증액 → 393,400',
+    year_short: 'Y',
+    footer: 'GK 규칙은 Jonathan Guyton과 William Klinger가 제안했으며, 원본은 65/35 주식/채권 포트폴리오와 긴 은퇴 기간을 가정합니다. CPR 규칙은 은퇴 후 첫 15년에만 적용됩니다. 본 도구는 교육 및 시나리오 탐색 용도이며 투자 자문이 아닙니다.'
+  }
+};
+
+// ========== I18N STATE ==========
+let currentLang = 'zh-TW';
+function t(key) {
+  return (i18n[currentLang] && i18n[currentLang][key]) || (i18n['en'][key]) || key;
+}
+
+function detectInitialLang() {
+  const params = new URLSearchParams(window.location.search);
+  const urlLang = params.get('lang');
+  if (urlLang && i18n[urlLang]) return urlLang;
+  const browserLang = navigator.language || 'en';
+  if (browserLang.startsWith('zh-TW') || browserLang.startsWith('zh-Hant')) return 'zh-TW';
+  if (browserLang.startsWith('zh')) return 'zh-CN';
+  if (browserLang.startsWith('ja')) return 'ja';
+  if (browserLang.startsWith('ko')) return 'ko';
+  if (browserLang.startsWith('en')) return 'en';
+  return 'zh-TW';
+}
+
+function setLanguage(lang) {
+  if (!i18n[lang]) lang = 'en';
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.title = t('page_title');
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    el.textContent = t(el.dataset.i18n);
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    el.innerHTML = t(el.dataset.i18nHtml);
+  });
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+  // Update URL without reload
+  const url = new URL(window.location);
+  url.searchParams.set('lang', lang);
+  history.replaceState(null, '', url);
+  // Re-render the return-input labels and results, if any
+  renderReturnInputs(true);
+  if (!document.getElementById('results').classList.contains('hidden')) {
+    render();
+  }
+}
+
+// ========== SIMULATOR ==========
+let chartInstance = null;
+
+const presets = {
+  example:    [8, -25, 10, 25, 30, 15, -20, 8],
+  bullbear:   [12, 15, 18, 10, -15, -25, 5, 8],
+  lostdecade: [-5, 12, -10, 5, -8, 15, -3, 10, -7, 6],
+  goodbad:    [-30, -10, 5, 12, 8, 15, 10, 7],
+  steady:     [7, 7, 7, 7, 7, 7, 7, 7],
+  reset:      null
+};
+
+function getYearLabel(i) {
+  // English: "Yr 1"; CJK: "第 1 年" / "1年" / "1년차"
+  const lang = currentLang;
+  if (lang === 'en') return 'Year ' + i;
+  if (lang === 'ja') return i + '年目';
+  if (lang === 'ko') return i + '년차';
+  return '第 ' + i + ' 年';
+}
+
+function renderReturnInputs(preserveValues) {
+  const years = Math.max(1, Math.min(40, parseInt(document.getElementById('years').value) || 8));
+  const grid = document.getElementById('returnsGrid');
+  const existing = preserveValues
+    ? Array.from(grid.querySelectorAll('input')).map(i => i.value)
+    : Array.from(grid.querySelectorAll('input')).map(i => i.value);
+  grid.innerHTML = '';
+  for (let i = 1; i <= years; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'return-cell';
+    const val = existing[i - 1] !== undefined ? existing[i - 1] : (presets.example[i - 1] ?? 7);
+    cell.innerHTML = `
+      <label>${getYearLabel(i)}</label>
+      <input type="number" step="0.1" value="${val}" data-year="${i}">
+    `;
+    grid.appendChild(cell);
+  }
+  bindReturnColoring();
+}
+
+function bindReturnColoring() {
+  document.querySelectorAll('#returnsGrid input').forEach(input => {
+    const update = () => input.classList.toggle('neg', parseFloat(input.value) < 0);
+    update();
+    input.addEventListener('input', update);
+  });
+}
+
+function applyPreset(name) {
+  if (name === 'reset') {
+    document.querySelectorAll('#returnsGrid input').forEach(i => {
+      i.value = 0;
+      i.classList.remove('neg');
+    });
+    render();
+    return;
+  }
+  const data = presets[name];
+  if (!data) return;
+  const inputs = document.querySelectorAll('#returnsGrid input');
+  inputs.forEach((input, idx) => {
+    const val = idx < data.length ? data[idx] : 7;
+    input.value = val;
+    input.classList.toggle('neg', val < 0);
+  });
+  render();
+}
+
+function simulate() {
+  const initial = parseFloat(document.getElementById('initial').value);
+  const initialWR = parseFloat(document.getElementById('wr').value) / 100;
+  const inflation = parseFloat(document.getElementById('inflation').value) / 100;
+  const years = parseInt(document.getElementById('years').value);
+  const cprRatio = parseFloat(document.getElementById('cprRatio').value);
+  const cprCut = parseFloat(document.getElementById('cprCut').value) / 100;
+  const prRatio = parseFloat(document.getElementById('prRatio').value);
+  const prBoost = parseFloat(document.getElementById('prBoost').value) / 100;
+
+  const returns = Array.from(document.querySelectorAll('#returnsGrid input'))
+    .map(i => parseFloat(i.value) / 100);
+
+  const cprThreshold = initialWR * cprRatio;
+  const prThreshold = initialWR * prRatio;
+
+  const results = [];
+  let portfolio = initial;
+  let prevWithdrawal = initial * initialWR;
+  let prevReturn = null;
+
+  for (let y = 1; y <= years; y++) {
+    const r = returns[y - 1] || 0;
+    const startBal = portfolio;
+    if (startBal <= 0) break;
+
+    let withdrawal, inflated;
+    const flags = [];
+
+    if (y === 1) {
+      withdrawal = initial * initialWR;
+      inflated = withdrawal;
+    } else {
+      inflated = prevWithdrawal * (1 + inflation);
+      const inflatedWR = inflated / startBal;
+      let useInflation = true;
+      if (prevReturn !== null && prevReturn < 0 && inflatedWR > initialWR) {
+        useInflation = false;
+        flags.push('Modified WR');
+      }
+      withdrawal = useInflation ? inflated : prevWithdrawal;
+      const wrBefore = withdrawal / startBal;
+      if (wrBefore > cprThreshold) {
+        withdrawal = withdrawal * (1 - cprCut);
+        flags.push('CPR');
+      } else if (wrBefore < prThreshold) {
+        withdrawal = withdrawal * (1 + prBoost);
+        flags.push('PR');
+      }
+    }
+
+    withdrawal = Math.min(withdrawal, startBal);
+    const afterW = startBal - withdrawal;
+    const endBal = afterW * (1 + r);
+    const finalWR = startBal > 0 ? withdrawal / startBal : 0;
+
+    results.push({ year: y, startBal, inflated, withdrawal, wr: finalWR, marketReturn: r, endBal, flags });
+
+    portfolio = endBal;
+    prevWithdrawal = withdrawal;
+    prevReturn = r;
+  }
+  return { results, initial, initialWR };
+}
+
+function fmt(n) {
+  if (!isFinite(n)) return '—';
+  return new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }).format(Math.round(n));
+}
+function pct(n, digits = 2) {
+  if (!isFinite(n)) return '—';
+  return (n * 100).toFixed(digits) + '%';
+}
+
+function render() {
+  const { results, initial, initialWR } = simulate();
+  if (!results.length) return;
+
+  const last = results[results.length - 1];
+  const totalWithdrawn = results.reduce((s, r) => s + r.withdrawal, 0);
+  const triggerCount = results.filter(r => r.flags.length > 0).length;
+  const totalFlags = results.reduce((s, r) => s + r.flags.length, 0);
+  const endBalance = last.endBal;
+  const change = ((endBalance - initial) / initial) * 100;
+  const avgWithdraw = totalWithdrawn / results.length;
+  const initialW = initial * initialWR;
+
+  document.getElementById('stats').innerHTML = `
+    <div class="stat">
+      <div class="label">${t('stat_end')}</div>
+      <div class="value">${fmt(endBalance)}</div>
+      <div class="delta ${change >= 0 ? 'up' : 'down'}">${change >= 0 ? '+' : ''}${change.toFixed(1)}% ${t('stat_vs_start')}</div>
+    </div>
+    <div class="stat">
+      <div class="label">${t('stat_total')}</div>
+      <div class="value">${fmt(totalWithdrawn)}</div>
+      <div class="delta">${t('stat_years_total').replace('{n}', results.length)}</div>
+    </div>
+    <div class="stat">
+      <div class="label">${t('stat_avg')}</div>
+      <div class="value">${fmt(avgWithdraw)}</div>
+      <div class="delta">${t('stat_initial_was').replace('{n}', fmt(initialW))}</div>
+    </div>
+    <div class="stat">
+      <div class="label">${t('stat_triggers')}</div>
+      <div class="value">${triggerCount}</div>
+      <div class="delta">${t('stat_rules_total').replace('{n}', totalFlags)}</div>
+    </div>
+  `;
+
+  const tbody = document.getElementById('detailBody');
+  tbody.innerHTML = results.map(r => {
+    const flagsHtml = r.flags.map(f => {
+      const cls = f === 'Modified WR' ? 'modwr' : f === 'CPR' ? 'cpr' : 'pr';
+      const label = f === 'Modified WR' ? t('flag_modwr') : f === 'CPR' ? t('flag_cpr') : t('flag_pr');
+      return `<span class="flag ${cls}">${label}</span>`;
+    }).join('');
+    const triggered = r.flags.length > 0 ? 'triggered' : '';
+    return `
+      <tr class="${triggered}">
+        <td>${t('year_short')}${r.year}</td>
+        <td class="num">${fmt(r.startBal)}</td>
+        <td class="num muted">${fmt(r.inflated)}</td>
+        <td class="num strong">${fmt(r.withdrawal)}</td>
+        <td class="num">${pct(r.wr)}</td>
+        <td class="num ${r.marketReturn < 0 ? 'neg-text' : ''}">${r.marketReturn >= 0 ? '+' : ''}${(r.marketReturn * 100).toFixed(1)}%</td>
+        <td class="num">${fmt(r.endBal)}</td>
+        <td><div class="flags">${flagsHtml}</div></td>
+      </tr>
+    `;
+  }).join('');
+
+  // Chart with locale-appropriate units
+  const isEN = currentLang === 'en';
+  const pDiv = isEN ? 1000000 : 10000;
+  const wDiv = 1000;
+  const pUnit = t('chart_unit_portfolio');
+  const wUnit = t('chart_unit_withdraw');
+
+  const labels = results.map(r => t('year_short') + r.year);
+  const portfolio = results.map(r => isEN ? +(r.endBal / pDiv).toFixed(2) : Math.round(r.endBal / pDiv));
+  const withdraw = results.map(r => isEN ? +(r.withdrawal / wDiv).toFixed(1) : Math.round(r.withdrawal / wDiv));
+  const colors = results.map(r => r.flags.length > 0 ? '#B8612D' : '#1A2332');
+
+  if (chartInstance) chartInstance.destroy();
+  const ctx = document.getElementById('chart').getContext('2d');
+  chartInstance = new Chart(ctx, {
+    data: {
+      labels,
+      datasets: [
+        {
+          type: 'bar', label: t('legend_portfolio'),
+          data: portfolio, backgroundColor: colors,
+          borderRadius: 2, yAxisID: 'y', order: 2
+        },
+        {
+          type: 'line', label: t('legend_withdraw'),
+          data: withdraw, borderColor: '#8B3A1F', backgroundColor: '#8B3A1F',
+          borderWidth: 2, pointRadius: 4, pointHoverRadius: 6,
+          tension: 0.25, yAxisID: 'y1', order: 1
+        }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#1A2332',
+          titleFont: { family: 'IBM Plex Sans', weight: '500' },
+          bodyFont: { family: 'IBM Plex Mono' },
+          padding: 12,
+          callbacks: {
+            label: (c) => {
+              if (c.dataset.label === t('legend_portfolio')) {
+                return t('tooltip_portfolio') + ': ' + fmt(c.parsed.y * pDiv);
+              }
+              return t('tooltip_withdraw') + ': ' + fmt(c.parsed.y * wDiv);
+            }
+          }
+        }
+      },
+      scales: {
+        x: { ticks: { autoSkip: false, font: { family: 'IBM Plex Mono', size: 11 } }, grid: { display: false } },
+        y: {
+          position: 'left', beginAtZero: true,
+          title: { display: true, text: t('chart_y_portfolio'), font: { size: 11 } },
+          ticks: { font: { family: 'IBM Plex Mono', size: 11 }, callback: v => fmt(v) },
+          grid: { color: 'rgba(232, 226, 213, 0.6)' }
+        },
+        y1: {
+          position: 'right', beginAtZero: true,
+          title: { display: true, text: t('chart_y_withdraw'), font: { size: 11 } },
+          ticks: { font: { family: 'IBM Plex Mono', size: 11 } },
+          grid: { display: false }
+        }
+      }
+    }
+  });
+
+  document.getElementById('results').classList.remove('hidden');
+}
+
+// ========== EVENTS & INIT ==========
+document.getElementById('years').addEventListener('change', () => renderReturnInputs(true));
+document.getElementById('calcBtn').addEventListener('click', render);
+document.querySelectorAll('.preset-btn').forEach(btn => {
+  btn.addEventListener('click', () => applyPreset(btn.dataset.preset));
+});
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+});
+
+// Init
+setLanguage(detectInitialLang());
+renderReturnInputs(false);
+render();
+</script>
+</body>
+</html>
