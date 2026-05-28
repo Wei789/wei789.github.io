@@ -41,6 +41,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Noto+Serif+TC:wght@400;500&family=Noto+Serif+SC:wght@400;500&family=Noto+Serif+JP:wght@400;500&family=Noto+Serif+KR:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- Google AdSense（審核通過後請建立廣告單元並替換各 data-ad-slot；上線時移除 data-adtest="on"） -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1805145736120420" crossorigin="anonymous"></script>
 <style>
   :root {
     --bg: #F5F2EA;
@@ -762,9 +765,69 @@
     .worked-steps li { grid-template-columns: 80px 1fr; gap: 4px 12px; }
     .worked-steps .step-result { grid-column: 2; text-align: left; }
   }
+
+  /* === AdSense 廣告位 === */
+  .ad-slot {
+    background: var(--surface-2);
+    border: 1px dashed var(--border-strong);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .ad-slot::before {
+    content: "Advertisement";
+    display: block;
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    text-align: center;
+    padding: 6px 0 4px;
+  }
+
+  .ad-side {
+    position: fixed;
+    top: 96px;
+    width: 160px;
+    padding: 8px 8px 12px;
+    z-index: 10;
+  }
+  .ad-side ins.adsbygoogle {
+    display: block;
+    width: 160px;
+    height: 600px;
+  }
+  .ad-side.left  { left:  max(16px, calc((100vw - 1120px) / 2 - 184px)); }
+  .ad-side.right { right: max(16px, calc((100vw - 1120px) / 2 - 184px)); }
+
+  /* 視窗寬度不足以容納側邊廣告時自動隱藏 */
+  @media (max-width: 1480px) {
+    .ad-side { display: none; }
+  }
 </style>
 </head>
 <body>
+
+<!-- 左側廣告（160x600；視窗 ≤1480px 自動隱藏） -->
+<aside class="ad-slot ad-side left" aria-label="Sponsored">
+  <ins class="adsbygoogle"
+       data-ad-client="ca-pub-1805145736120420"
+       data-ad-slot="1111111111"
+       data-ad-format="vertical"
+       data-adtest="on"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</aside>
+
+<!-- 右側廣告（160x600；視窗 ≤1480px 自動隱藏） -->
+<aside class="ad-slot ad-side right" aria-label="Sponsored">
+  <ins class="adsbygoogle"
+       data-ad-client="ca-pub-1805145736120420"
+       data-ad-slot="2222222222"
+       data-ad-format="vertical"
+       data-adtest="on"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</aside>
+
 <div class="container">
 
 <header>
