@@ -1400,7 +1400,10 @@ const i18n = {
 // ========== I18N STATE ==========
 let currentLang = 'zh-TW';
 function t(key) {
-  return (i18n[currentLang] && i18n[currentLang][key]) || (i18n['en'][key]) || key;
+  const cur = i18n[currentLang];
+  if (cur && key in cur) return cur[key];
+  if (key in i18n['en']) return i18n['en'][key];
+  return key;
 }
 
 function detectInitialLang() {
