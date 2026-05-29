@@ -803,6 +803,17 @@
   @media (max-width: 1480px) {
     .ad-side { display: none; }
   }
+
+  /* 頁面內橫幅：僅在側邊廣告隱藏時（≤1480px，含手機）顯示 */
+  .ad-inline { display: none; }
+  .ad-inline ins.adsbygoogle { display: block; }
+  @media (max-width: 1480px) {
+    .ad-inline {
+      display: block;
+      margin: 16px 0 8px;
+      min-height: 100px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -844,6 +855,16 @@
     <button class="lang-btn" data-lang="ko">한국어</button>
   </div>
 </header>
+
+<!-- 頁面內橫幅廣告（響應式；僅 ≤1480px／手機顯示） -->
+<div class="ad-slot ad-inline" aria-label="Sponsored">
+  <ins class="adsbygoogle"
+       data-ad-client="ca-pub-1805145736120420"
+       data-ad-slot="3471256582"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
 
 <section>
   <h2><span class="num">01</span><span data-i18n="section01">本金與基準</span></h2>
