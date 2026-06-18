@@ -2186,17 +2186,45 @@ ${ipadOriXml}
       // Build PBXFileReference
       let fileRefSection = '';
       fileEntries.forEach(f => {
-        fileRefSection += `\t\t${f.refUUID} /* ${f.name} */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "${f.path}"; sourceTree = "<group>"; };\n`;
+        fileRefSection += `\t\t${f.refUUID} /* ${f.name} */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "${f.name}"; sourceTree = "<group>"; };\n`;
       });
       fileRefSection += `\t\t${infoPlistRefUUID} /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };\n`;
       fileRefSection += `\t\t${assetsRefUUID} /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };\n`;
       fileRefSection += `\t\t${productRefUUID} /* ${sanitizedName}.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "${sanitizedName}.app"; sourceTree = BUILT_PRODUCTS_DIR; };\n`;
 
-      // Build PBXGroup - source files
-      let srcChildren = fileEntries.map(f => `${f.refUUID} /* ${f.name} */`).join(',\n\t\t\t\t');
-      srcChildren += `,\n\t\t\t\t${infoPlistRefUUID} /* Info.plist */`;
-      srcChildren += `,\n\t\t\t\t${assetsRefUUID} /* Assets.xcassets */`;
-
+      // Build PBXGroup - 依檔案路徑建立巢狀群組，讓子資料夾在 Xcode 顯示為資料夾群組                                                                             
+      const groupTree = { dirs: {}, files: [] };                                 
+      fileEntries.forEach(f => {                                                 
+      const segs = f.path.split('/');                                          
+      let node = groupTree;                                                    
+      for (let i = 0; i < segs.length - 1; i++) {                              
+      if (!node.dirs[segs[i]]) node.dirs[segs[i]] = { dirs: {}, files: [] }; 
+      node = node.dirs[segs[i]];                                             
+      }                                                                        
+      node.files.push(f);                                                      
+      });                                                                        
+      
+      let subGroupSection = '';                                                  
+      function buildGroupChildren(node) {                                        
+      const children = [];                                                     
+      Object.keys(node.dirs).sort().forEach(dirName => {                       
+      const groupUUID = uuid();                                              
+      const inner = buildGroupChildren(node.dirs[dirName]);                  
+      subGroupSection += `\t\t${groupUUID} /* ${dirName} */ = {\n`           
+      + `\t\t\tisa = PBXGroup;\n`                                          
+      + `\t\t\tchildren = (\n\t\t\t\t${inner.join(',\n\t\t\t\t')},\n\t\t\t);\n`                                                                             
+      + `\t\t\tpath = "${dirName}";\n`                                     
+      + `\t\t\tsourceTree = "<group>";\n`                                  
+      + `\t\t};\n`;                                                        
+      children.push(`${groupUUID} /* ${dirName} */`);                        
+      });                                                                      
+      node.files.forEach(f => children.push(`${f.refUUID} /* ${f.name} */`));  
+      return children;                                                         
+      }                                                                          
+      const srcTopChildren = buildGroupChildren(groupTree);                      
+      srcTopChildren.push(`${infoPlistRefUUID} /* Info.plist */`);               
+      srcTopChildren.push(`${assetsRefUUID} /* Assets.xcassets */`);             
+      const srcChildren = srcTopChildren.join(',\n\t\t\t\t'); 
       // Build source file list for build phase
       const sourceFilesList = fileEntries.map(f => `${f.buildUUID} /* ${f.name} in Sources */`).join(',\n\t\t\t\t');
       const resourceFilesList = `${assetsBuildUUID} /* Assets.xcassets in Resources */`;
@@ -2250,7 +2278,7 @@ ${fileRefSection}/* End PBXFileReference section */
 \t\t\tpath = "${sanitizedName}";
 \t\t\tsourceTree = "<group>";
 \t\t};
-/* End PBXGroup section */
+${subGroupSection}/* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
 \t\t${targetUUID} /* ${sanitizedName} */ = {
