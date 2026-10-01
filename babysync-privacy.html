@@ -22,33 +22,65 @@
 </head>
 <body>
     <h1>Privacy Policy</h1>
-    <p class="date">Effective Date: March 3, 2026</p>
+    <p class="date">Effective Date: October 1, 2026</p>
 
     <h2>Overview</h2>
-    <p>BabySync+ is designed with your privacy as a top priority. We do not collect, store, or transmit any personal data to our servers. Your baby's data stays entirely on your device and in your private iCloud account.</p>
+    <p>BabySync+ helps parents and caregivers log a baby's feedings, diapers, sleep, solid food and growth. You can use the app without signing in, and your records then stay on your device. If you sign in with Apple, or join a family group, your records are also stored in the cloud so they survive reinstalling the app and can be shared. This policy explains what we collect, why, and the choices you have.</p>
 
-    <h2>Data Collection</h2>
-    <p><strong>We do not collect any data.</strong> BabySync+ does not require account creation, email registration, or any form of sign-up. The app functions entirely offline and locally on your device.</p>
+    <h2>Information We Collect</h2>
+    <p><strong>Records you enter.</strong> Feeding, diaper, sleep and solid-food logs (including ingredients, amounts and reactions), growth measurements (weight, height, head circumference), and the baby's nickname, birth date and gender. These are entered by you and are health-related. The baby's photo, if you add one, never leaves your device.</p>
+    <p><strong>Account information.</strong> When you sign in with Apple we receive your Apple account's email address (or Apple's private relay address, if you chose to hide your email) and your name if you share it. We also store a display name you choose, which other members of your family group can see, and the name shown next to each record you add.</p>
+    <p><strong>Identifiers.</strong> The app creates an account ID for you when it first opens, even if you never sign in. This is a random ID with no personal information. Signing in with Apple links that ID to your Apple account.</p>
+    <p><strong>Diagnostics.</strong> Crash reports and performance data, such as crash logs, device model and iOS version, collected by Firebase Crashlytics.</p>
+    <p><strong>Advertising data.</strong> The app shows ads provided by Google AdMob. The ad SDK may collect your IP address (from which it can estimate your general location), device identifiers, information about ads you have seen and how you interact with them.</p>
+    <p>We do not collect your precise location, contacts, photos, or microphone or camera data.</p>
 
-    <h2>Data Storage</h2>
-    <p>All data you enter (feeding logs, diaper records, sleep times, growth measurements) is stored:</p>
+    <h2>How We Use Information</h2>
     <ul>
-        <li><strong>Locally</strong> on your iPhone using Apple's SwiftData framework</li>
-        <li><strong>In your private iCloud</strong> via Apple's CloudKit, if iCloud is enabled on your device</li>
+        <li>To provide the app: storing your records, restoring them after a reinstall or on a new phone, and sharing them with the people you invite.</li>
+        <li>To show who recorded each entry in a family group.</li>
+        <li>To find and fix crashes and improve performance.</li>
+        <li>To show and measure ads.</li>
     </ul>
-    <p>We have no access to your iCloud data. Apple manages the encryption and security of your iCloud storage.</p>
+    <p>We do not sell your information, and we do not use your records for advertising.</p>
+
+    <h2>Where Your Data Is Stored</h2>
+    <ul>
+        <li><strong>On your device.</strong> All records are stored on your iPhone using Apple's SwiftData framework, in a container shared with the app's widgets.</li>
+        <li><strong>In the cloud.</strong> If you are signed in with Apple, or you join a family group, your records, baby profile and growth measurements are stored in Google Firebase (Cloud Firestore and Firebase Authentication), operated by Google. Access is limited to you and the members of your family group.</li>
+    </ul>
+    <p>BabySync+ no longer syncs through iCloud.</p>
+
+    <h2>Family Sharing</h2>
+    <p>You can create a family group and share a 6-character invite code. Anyone who joins with the code can see and add records, the baby's profile and growth measurements, and the display names of all members. Only share the code with people you trust. When you join a family group, you see the family's records instead of your own; your own records stay in your private space and return when you leave the group.</p>
+
+    <h2>Widgets</h2>
+    <p>Home Screen widgets and Live Activities use Apple's on-device frameworks. A widget button that logs an entry saves it on your device and, if you are signed in or in a family group, uploads it to the cloud in the same way as logging inside the app.</p>
 
     <h2>Third-Party Services</h2>
-    <p>BabySync+ does not integrate any third-party analytics, advertising, or tracking services. There are no ads in the app.</p>
+    <ul>
+        <li><strong>Apple</strong> provides Sign in with Apple. See Apple's privacy policy.</li>
+        <li><strong>Google Firebase</strong> provides authentication, cloud storage and crash reporting. See Google's privacy policy.</li>
+        <li><strong>Google AdMob</strong> provides the ads shown in the app. See Google's privacy policy and Google's page on how it uses information from apps that use its services.</li>
+    </ul>
 
-    <h2>Widgets, Siri & App Intents</h2>
-    <p>BabySync+ offers Home Screen widgets and Siri voice commands for convenience. These features use Apple's on-device frameworks (WidgetKit, AppIntents) and do not send data to any external server. Data is shared between the app and widgets through a local App Group container on your device.</p>
+    <h2>Tracking</h2>
+    <p>BabySync+ does not track you across other companies' apps and websites, and does not ask for App Tracking Transparency permission. Because that permission is not granted, the iOS advertising identifier is not available to the ad SDK.</p>
+
+    <h2>Data Retention and Deletion</h2>
+    <ul>
+        <li><strong>Delete a record.</strong> You can delete any record in the app at any time. It disappears for you and for everyone in your family group. Deleted records are permanently erased from our cloud storage when your account or family group is deleted.</li>
+        <li><strong>Delete your account.</strong> In Settings, choose Delete Account. This permanently deletes your account and your personal cloud records. If you are in a family group, the records you added stay with the other members, and the group is deleted if you are its last member. Signing in with the same Apple ID afterwards creates a new, empty account.</li>
+        <li><strong>If you never signed in.</strong> Choose Clear All Data in Settings to remove everything on your device and leave your family group. Deleting the app also removes the data on your device.</li>
+        <li><strong>Subscriptions.</strong> The app does not sell subscriptions or collect payment information.</li>
+    </ul>
+    <p>You can also email us to ask for access to, or deletion of, your data.</p>
+
+    <h2>Security</h2>
+    <p>Data is encrypted in transit, and cloud access is restricted to the people who belong to your account or family group. No method of storage is perfectly secure, so please keep your invite code private.</p>
 
     <h2>Children's Privacy</h2>
-    <p>BabySync+ is a parenting tool used by adults to track their baby's activities. The app does not collect any information directly from children. All data entry is performed by the parent or caregiver.</p>
-
-    <h2>Data Deletion</h2>
-    <p>You can delete any individual record within the app at any time. To remove all data, simply delete the app from your device. If iCloud sync is enabled, you can also remove the data from iCloud via Settings > Apple ID > iCloud > Manage Storage.</p>
+    <p>BabySync+ is a parenting tool used by adults to track their baby's activities. The app does not knowingly collect information directly from children. All data entry is performed by the parent or caregiver.</p>
 
     <h2>Changes to This Policy</h2>
     <p>We may update this privacy policy from time to time. Any changes will be reflected on this page with an updated effective date.</p>
