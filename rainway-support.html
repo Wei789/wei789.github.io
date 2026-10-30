@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RainWay 通勤知雨 - 技術支援與常見問題 (App Support)</title>
+  <style>
+    :root {
+      --bg-color: #f4f8fc;
+      --card-bg: #ffffff;
+      --text-main: #1d1d1f;
+      --text-secondary: #515154;
+      --accent: #0071e3;
+      --border: #e5e5ea;
+      --badge-bg: #eaf4ff;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: #0b0e14;
+        --card-bg: #1c1c1e;
+        --text-main: #f5f5f7;
+        --text-secondary: #a1a1a6;
+        --accent: #2997ff;
+        --border: #38383a;
+        --badge-bg: #002b4d;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang TC", "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.65;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px 16px 64px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .app-badge {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 12px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #56CCF2 0%, #2F80ED 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 16px rgba(47, 128, 237, 0.25);
+    }
+    .app-badge svg {
+      width: 36px;
+      height: 36px;
+    }
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin: 0 0 6px;
+    }
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 16px;
+      margin: 0 0 20px;
+    }
+    .nav-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--accent);
+      background-color: var(--badge-bg);
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .lang-title {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin: 36px 0 12px;
+      text-align: center;
+    }
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 22px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+    h2 {
+      font-size: 22px;
+      margin-top: 0;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    h3 {
+      font-size: 17px;
+      margin: 22px 0 8px;
+    }
+    p, li {
+      color: var(--text-secondary);
+      font-size: 15px;
+      overflow-wrap: anywhere;
+    }
+    ul, ol { padding-left: 20px; }
+    li { margin-bottom: 8px; }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+    .contact-box {
+      background-color: var(--badge-bg);
+      padding: 16px 20px;
+      border-radius: 12px;
+      margin: 16px 0;
+    }
+    .contact-box p {
+      margin: 4px 0;
+      color: var(--text-main);
+    }
+    footer {
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 13px;
+      margin-top: 32px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="app-badge" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M12 3C7.03 3 3 7.03 3 12H21C21 7.03 16.97 3 12 3Z" fill="#FFB300"/>
+        <path d="M12 12V18.5C12 19.88 10.88 21 9.5 21C8.12 21 7 19.88 7 18.5" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <h1>RainWay 通勤知雨</h1>
+    <p class="subtitle">技術支援與常見問題 · App Support & FAQ</p>
+    <div class="nav-bar">
+      <a href="#zh-Hant" class="btn">繁體中文</a>
+      <a href="#en" class="btn">English</a>
+      <a href="rainway-privacy.html" class="btn">隱私權政策 (Privacy Policy)</a>
+    </div>
+  </header>
+
+  <!-- ==================== 繁體中文 ==================== -->
+  <div id="zh-Hant" lang="zh-Hant">
+    <p class="lang-title">繁體中文</p>
+    <section class="card">
+      <h2>技術支援與常見問題</h2>
+      <p><strong>通勤知雨（RainWay）</strong>專為每天往返多個地點的通勤族與接送家長設計，同時呈現住家、學校、公司等日常站點在「去程」與「回程」時段的最高降雨機率，並用一句話告訴您今天要不要帶雨具。</p>
+
+      <div class="contact-box">
+        <p><strong>聯絡客服與問題回報：</strong><a href="mailto:Kaishacowcow@gmail.com">Kaishacowcow@gmail.com</a></p>
+        <p><small>開發者：CowCow · 我們通常會在 1–2 個工作天內回覆您的來信。</small></p>
+      </div>
+
+      <h3>快速上手指南</h3>
+      <ol>
+        <li><strong>設定通勤站點：</strong>點選主畫面右上角齒輪按鈕 ➔「通勤站點」➔「新增站點」，輸入行政區或地標名稱即可加入。點選站點可修改別名與圖示，點選「編輯」可拖曳排序（系統至少需保留 2 個站點）。</li>
+        <li><strong>設定通勤時段：</strong>在「通勤時段」選擇您的去程與回程時間（預設為 07:00–09:00 與 17:00–19:00），起訖整點皆包含在計算範圍內。</li>
+        <li><strong>開啟晨間推播：</strong>打開「每日晨間推播」，選擇提醒時間與星期，並選擇「每天都通知」或「僅有雨時通知」。下方會即時預覽下一則通知內容。</li>
+        <li><strong>加入桌面小工具：</strong>在 iPhone 主畫面空白處長按 ➔ 點選左上角「編輯」或「＋」➔ 搜尋「通勤知雨」➔ 選擇小型或中型的「通勤降雨」小工具 ➔ 點選「加入小工具」。</li>
+      </ol>
+
+      <h3>常見問題（FAQ）</h3>
+      <ul>
+        <li><strong>Q1：天氣預報多久會更新一次？</strong><br>
+          每次開啟 App、關閉設定面板或下拉重新整理時都會自動檢查更新（30 分鐘內已下載且涵蓋目前站點的預報會直接沿用）。桌面小工具則約每小時由 iOS 系統自動喚醒更新一次。</li>
+        <li><strong>Q2：離線或沒有網路時會顯示什麼？</strong><br>
+          App 主畫面會顯示最後一次下載的快取預報並標註「更新於」時間（若非當日下載會一併顯示月日）。若小工具的快取預報超過 12 小時未更新，小工具會提示「開啟通勤知雨以載入預報」，避免誤導。</li>
+        <li><strong>Q3：為什麼沒有收到晨間推播？</strong><br>
+          <ul>
+            <li>請先確認「<em>iOS 設定 ➔ 通勤知雨 ➔ 通知</em>」已開啟允許通知。若權限被關閉，App 設定面板內會顯示「前往設定」捷徑。</li>
+            <li>若選擇「僅有雨時通知」，當所有站點在去程與回程時段的降雨機率皆低於 30% 時，系統會保持安靜不打擾。</li>
+            <li>晨間通知採本機端排程，每次開啟 App 或小工具自動刷新時會預排未來 3 天的通知。建議將小工具放置於主畫面，讓排程能隨小工具刷新持續推進。</li>
+          </ul>
+        </li>
+        <li><strong>Q4：為什麼通知顯示「無法取得預報，請開啟 App 查看最新天氣」？</strong><br>
+          為了確保「沒響代表全線安全」的可靠性，超過 12 小時的舊預報不會用於判斷無雨，當有站點缺少預報資料時也會主動提醒您打開 App 更新。</li>
+        <li><strong>Q5：為什麼主畫面顯示「部分站點尚無預報」？</strong><br>
+          代表您可能有某個站點尚未下載到天氣資料（例如在離線狀態下新增了站點）。連上網路後在主畫面下拉重新整理即可。</li>
+        <li><strong>Q6：為什麼不需要定位權限（GPS）或註冊帳號？</strong><br>
+          所有站點皆透過地點搜尋手動設定，不僅能同時查看還沒抵達的目的地（如公司、學校），也完全不消耗背景定位電力、不收集您的行蹤。</li>
+        <li><strong>Q7：如何重置或刪除我的所有資料？</strong><br>
+          您的所有站點與設定僅儲存在手機本機端，直接刪除「通勤知雨」App 即可完整清除所有資料。</li>
+      </ul>
+
+      <h3>系統需求與資料來源</h3>
+      <p>支援安裝 iOS 17.0 以上之 iPhone。支援語系：繁體中文、英文。<br>
+      氣象資料來源：<a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> · 地點搜尋：Apple Maps。<br>
+      詳見我們的 <a href="rainway-privacy.html">隱私權政策</a>。</p>
+    </section>
+  </div>
+
+  <!-- ==================== English ==================== -->
+  <div id="en" lang="en">
+    <p class="lang-title">English</p>
+    <section class="card">
+      <h2>App Support & FAQ</h2>
+      <p><strong>RainWay</strong> is built for commuters and parents who travel between multiple places every day. It displays the highest chance of rain at each of your daily stops (home, school, office) during your morning and evening commute windows, and tells you in one line whether to bring rain gear.</p>
+
+      <div class="contact-box">
+        <p><strong>Contact Support:</strong> <a href="mailto:Kaishacowcow@gmail.com">Kaishacowcow@gmail.com</a></p>
+        <p><small>Developer: CowCow · We typically respond within 1–2 business days.</small></p>
+      </div>
+
+      <h3>Getting Started</h3>
+      <ol>
+        <li><strong>Set up your stops:</strong> Tap the gear button at the top right ➔ <em>Commute Stops</em> ➔ <em>Add Stop</em>, then search for any district, city, or landmark. Tap a stop to edit its nickname and icon; tap <em>Edit</em> to drag and reorder. At least 2 stops are required.</li>
+        <li><strong>Set your commute hours:</strong> In <em>Commute Hours</em>, choose your outbound and return windows (default 07:00–09:00 and 17:00–19:00). Both start and end hours are included.</li>
+        <li><strong>Morning alerts:</strong> Turn on <em>Daily Morning Alert</em>, pick an alert time and weekdays, and choose <em>Every day</em> or <em>Only when rain</em>. A preview of your next scheduled alert is shown right below.</li>
+        <li><strong>Add the Home Screen widget:</strong> Touch and hold an empty area on your Home Screen ➔ tap <strong>Edit</strong> or <strong>+</strong> ➔ search for <strong>RainWay</strong> ➔ select the Small or Medium <em>Commute Rain</em> widget ➔ tap <strong>Add Widget</strong>.</li>
+      </ol>
+
+      <h3>Frequently Asked Questions</h3>
+      <ul>
+        <li><strong>Q1: How often is the weather forecast updated?</strong><br>
+          The app checks for fresh data whenever you open it, close settings, or pull to refresh (forecasts downloaded within the last 30 minutes are reused). The Home Screen widget refreshes roughly once per hour as scheduled by iOS.</li>
+        <li><strong>Q2: What happens when I am offline?</strong><br>
+          The app displays the last cached forecast along with its "Updated" timestamp (including the date if it was fetched on a previous day). If the widget's cached forecast is more than 12 hours old, it displays "Open RainWay to load the forecast".</li>
+        <li><strong>Q3: Why didn't I receive a morning alert?</strong><br>
+          <ul>
+            <li>Check that notifications are enabled in <em>iOS Settings ➔ RainWay ➔ Notifications</em>.</li>
+            <li>In <em>Only when rain</em> mode, RainWay stays silent when every stop is below 30% rain probability in both commute windows.</li>
+            <li>Alerts are scheduled locally up to 3 days ahead whenever you open the app or the widget refreshes. Keeping the widget on your Home Screen helps keep your alerts continuously scheduled.</li>
+          </ul>
+        </li>
+        <li><strong>Q4: Why did an alert say the forecast is unavailable?</strong><br>
+          RainWay never relies on forecasts older than 12 hours for morning alerts and never assumes a day is dry if any stop lacks data. Simply open the app to refresh.</li>
+        <li><strong>Q5: Why doesn't RainWay ask for Location permission or an account?</strong><br>
+          Stops are added manually via search so you can check weather across all your destinations without draining battery on background GPS or creating an account.</li>
+        <li><strong>Q6: How do I delete my data?</strong><br>
+          All stops, settings, and cached forecasts are stored only on your device. Uninstalling the RainWay app removes all data immediately.</li>
+      </ul>
+
+      <h3>System Requirements & Data Sources</h3>
+      <p>Requires iPhone with iOS 17.0 or later. Languages: English and Traditional Chinese.<br>
+      Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> · Place search powered by Apple Maps.<br>
+      Read our <a href="rainway-privacy.html">Privacy Policy</a>.</p>
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2026 CowCow. All rights reserved. · <a href="rainway-privacy.html">Privacy Policy</a></p>
+  </footer>
+</div>
+
+</body>
+</html>
