@@ -43,7 +43,7 @@ th { background: var(--card); }
 <p><strong>Collected by the app (stored in Google Firebase on our behalf)</strong></p>
 <ul>
   <li><strong>Records you enter</strong> (health-related): feeding, diaper, sleep and solid-food logs, including amounts, durations, ingredients, reactions and notes; growth measurements (weight, height, head circumference).</li>
-  <li><strong>Daily notes</strong>: the text you write for a day. Photos you attach to a note never leave your device.</li>
+  <li><strong>Daily notes</strong>: the text you write for a day and the one photo you may attach to it (resized to at most 1600 pixels).</li>
   <li><strong>Baby profile</strong>: nickname, birth date and gender. The baby's photo, if you add one, never leaves your device.</li>
   <li><strong>Account information</strong>: if you sign in with Apple, your email address (or Apple's private relay address) and name if you share them; the display name you choose, shown to your family group and next to the records you add.</li>
   <li><strong>Identifiers</strong>: a random account ID created when the app first opens, even if you never sign in.</li>
@@ -52,12 +52,12 @@ th { background: var(--card); }
 <ul>
   <li><strong>Google Mobile Ads (AdMob)</strong>: IP address (from which approximate location can be inferred), device identifiers other than the advertising identifier, ad impressions and interactions, and diagnostic information.</li>
 </ul>
-<p>We do not collect your precise location, contacts, photos, microphone or camera data. We do not sell your information, and we do not use your records for advertising.</p>
+<p>We do not collect your precise location, contacts, microphone or camera data, or any photos other than the daily-note photos you choose to attach. We do not sell your information, and we do not use your records for advertising.</p>
 
 <h2>2. Where your data is stored and for how long</h2>
 <ul>
   <li><strong>On your device</strong>: all records are stored on your iPhone (SwiftData, in an App Group shared with the app's widgets). The baby photo and daily-note photos are stored in the app's documents folder. Settings are stored in UserDefaults.</li>
-  <li><strong>In the cloud</strong>: if you sign in with Apple or join a family group, records, daily-note text, the baby profile and growth measurements are stored in Google Cloud Firestore and Firebase Authentication. Only you and members of your family group can access them. BabySync+ does not use iCloud.</li>
+  <li><strong>In the cloud</strong>: if you sign in with Apple or join a family group, records, daily notes, the baby profile and growth measurements are stored in Google Cloud Firestore and Firebase Authentication, and daily-note photos in Cloud Storage for Firebase. Only you and members of your family group can access them. BabySync+ does not use iCloud.</li>
   <li><strong>Retention</strong>: data is kept until you delete it. Deleting a record removes it for you and your family group. <em>Delete Account</em> in Settings permanently deletes your account and personal cloud records; records you added to a family group stay with the other members, and the group is deleted when its last member leaves. <em>Clear All Data</em> (when not signed in) removes everything on the device and leaves your family group. Deleting the app removes on-device data.</li>
 </ul>
 
@@ -73,6 +73,7 @@ th { background: var(--card); }
   <tr><th>Service</th><th>What is sent</th><th>Privacy policy</th></tr>
   <tr><td>Sign in with Apple</td><td>Sign-in request; Apple returns your name and email if you share them</td><td><a href="https://www.apple.com/legal/privacy/">Apple</a></td></tr>
   <tr><td>Firebase Authentication, Cloud Firestore (firestore.googleapis.com)</td><td>Account ID, display name, records, daily-note text, baby profile, growth data, family membership and invite codes</td><td><a href="https://firebase.google.com/support/privacy">Firebase</a></td></tr>
+  <tr><td>Cloud Storage for Firebase (firebasestorage.googleapis.com)</td><td>Daily-note photos</td><td><a href="https://firebase.google.com/support/privacy">Firebase</a></td></tr>
   <tr><td>Google Mobile Ads (AdMob)</td><td>IP address, device information, ad interactions</td><td><a href="https://policies.google.com/privacy">Google</a> · <a href="https://policies.google.com/technologies/partner-sites">How Google uses data from partner apps</a></td></tr>
 </table>
 <p>Widget buttons that log an entry save it on the device and, if you are signed in or in a family group, upload it to Cloud Firestore in the same way as the app. Data is encrypted in transit (HTTPS).</p>
@@ -81,7 +82,7 @@ th { background: var(--card); }
 <p>The app shows ads from Google AdMob (banner, native and interstitial). BabySync+ does not track you across other companies' apps and websites and does not request App Tracking Transparency permission, so the iOS advertising identifier (IDFA) is not available to the ad SDK.</p>
 
 <h2>6. Family sharing</h2>
-<p>Creating a family group requires Sign in with Apple and generates a 6-character invite code. Anyone who joins with the code can see and add records, daily notes (text only), the baby profile, growth data and members' display names. Share the code only with people you trust. The family owner can remove a member or generate a new invite code at any time; a removed member's device clears the family's records. When the owner leaves or deletes their account, ownership passes to the member who joined first.</p>
+<p>Creating a family group requires Sign in with Apple and generates a 6-character invite code. Anyone who joins with the code can see and add records, daily notes and their photos, the baby profile, growth data and members' display names. Share the code only with people you trust. The family owner can remove a member or generate a new invite code at any time; a removed member's device clears the family's records. When the owner leaves or deletes their account, ownership passes to the member who joined first.</p>
 
 <h2>7. Children's privacy</h2>
 <p>BabySync+ is a tool for adults. It is not directed to children under 13 and does not knowingly collect information from children. Information about a baby is entered by the parent or caregiver.</p>
@@ -100,7 +101,7 @@ th { background: var(--card); }
 <p><strong>アプリが収集する情報（Google Firebaseに保存）</strong></p>
 <ul>
   <li><strong>入力した記録</strong>（健康関連）：授乳・おむつ・睡眠・離乳食の記録（量、時間、食材、反応、メモ）、成長記録（体重・身長・頭囲）。</li>
-  <li><strong>デイリーメモ</strong>：日ごとに書いたテキスト。メモに添付した写真は端末の外に出ません。</li>
+  <li><strong>デイリーメモ</strong>：日ごとに書いたテキストと、添付した写真1枚（長辺1600ピクセル以下に縮小）。</li>
   <li><strong>赤ちゃんのプロフィール</strong>：ニックネーム、生年月日、性別。写真は端末の外に出ません。</li>
   <li><strong>アカウント情報</strong>：Appleでサインインした場合のメールアドレス（または匿名リレーアドレス）と名前、家族に表示される表示名。</li>
   <li><strong>識別子</strong>：初回起動時に作成されるランダムなアカウントID。</li>
@@ -109,12 +110,12 @@ th { background: var(--card); }
 <ul>
   <li><strong>Google Mobile Ads（AdMob）</strong>：IPアドレス（おおよその位置を推定可能）、広告識別子以外のデバイス識別子、広告の表示・操作、診断情報。</li>
 </ul>
-<p>正確な位置情報、連絡先、写真、マイク・カメラのデータは収集しません。情報を販売したり、記録を広告に使用したりしません。</p>
+<p>正確な位置情報、連絡先、マイク・カメラのデータ、デイリーメモに添付した以外の写真は収集しません。情報を販売したり、記録を広告に使用したりしません。</p>
 
 <h2>2. 保存場所と保存期間</h2>
 <ul>
   <li><strong>端末内</strong>：記録はiPhone内（SwiftData、ウィジェットと共有するApp Group）に保存。赤ちゃんの写真とデイリーメモの写真はアプリの書類フォルダ、設定はUserDefaultsに保存。</li>
-  <li><strong>クラウド</strong>：サインイン時または家族参加時、Google Cloud FirestoreとFirebase Authenticationに保存。アクセスできるのは本人と家族メンバーのみ。iCloudは使用しません。</li>
+  <li><strong>クラウド</strong>：サインイン時または家族参加時、Google Cloud FirestoreとFirebase Authenticationに保存（デイリーメモの写真はCloud Storage for Firebase）。アクセスできるのは本人と家族メンバーのみ。iCloudは使用しません。</li>
   <li><strong>保存期間</strong>：削除するまで保存。設定の「アカウントを削除」でアカウントと個人のクラウド記録を完全に削除（家族に追加した記録は他のメンバーに残ります）。未サインイン時の「すべてのデータを消去」で端末内のデータを削除し家族から退出。アプリを削除すると端末内のデータも消えます。</li>
 </ul>
 
@@ -129,6 +130,7 @@ th { background: var(--card); }
 <ul>
   <li>Appleでサインイン：<a href="https://www.apple.com/jp/legal/privacy/">Appleのプライバシーポリシー</a></li>
   <li>Firebase Authentication／Cloud Firestore（firestore.googleapis.com）：アカウントID、表示名、記録、デイリーメモのテキスト、プロフィール、成長データ、家族情報、招待コード。<a href="https://firebase.google.com/support/privacy">Firebase</a></li>
+  <li>Cloud Storage for Firebase（firebasestorage.googleapis.com）：デイリーメモの写真。<a href="https://firebase.google.com/support/privacy">Firebase</a></li>
   <li>Google Mobile Ads：IPアドレス、デバイス情報、広告操作。<a href="https://policies.google.com/privacy?hl=ja">Google</a> · <a href="https://policies.google.com/technologies/partner-sites?hl=ja">パートナーのアプリからの情報の利用</a></li>
 </ul>
 <p>通信はHTTPSで暗号化されます。</p>
@@ -137,7 +139,7 @@ th { background: var(--card); }
 <p>Google AdMobの広告（バナー、ネイティブ、インタースティシャル）を表示します。他社のアプリやウェブサイトをまたいだトラッキングは行わず、App Tracking Transparencyの許可も要求しないため、広告識別子（IDFA）は広告SDKに提供されません。</p>
 
 <h2>6. 家族共有</h2>
-<p>家族の作成にはAppleでのサインインが必要で、6文字の招待コードが発行されます。コードで参加した人は記録、デイリーメモ（テキストのみ）、プロフィール、成長データ、メンバーの表示名を閲覧・追加できます。信頼できる人とだけ共有してください。オーナーはいつでもメンバーの削除や新しい招待コードの作成ができ、削除されたメンバーの端末からは家族の記録が消去されます。オーナーが退出またはアカウントを削除すると、最も早く参加したメンバーにオーナーが引き継がれます。</p>
+<p>家族の作成にはAppleでのサインインが必要で、6文字の招待コードが発行されます。コードで参加した人は記録、デイリーメモと写真、プロフィール、成長データ、メンバーの表示名を閲覧・追加できます。信頼できる人とだけ共有してください。オーナーはいつでもメンバーの削除や新しい招待コードの作成ができ、削除されたメンバーの端末からは家族の記録が消去されます。オーナーが退出またはアカウントを削除すると、最も早く参加したメンバーにオーナーが引き継がれます。</p>
 
 <h2>7. 子どものプライバシー</h2>
 <p>本アプリは大人向けのツールで、13歳未満の子どもを対象としておらず、子どもから意図的に情報を収集しません。</p>
@@ -156,7 +158,7 @@ th { background: var(--card); }
 <p><strong>Do ứng dụng thu thập (lưu trên Google Firebase)</strong></p>
 <ul>
   <li><strong>Nhật ký bạn nhập</strong> (liên quan sức khỏe): bú, tã, ngủ, ăn dặm (lượng, thời gian, nguyên liệu, phản ứng, ghi chú); cân nặng, chiều cao, vòng đầu.</li>
-  <li><strong>Ghi chú hằng ngày</strong>: văn bản bạn viết cho từng ngày. Ảnh đính kèm ghi chú không rời khỏi thiết bị.</li>
+  <li><strong>Ghi chú hằng ngày</strong>: văn bản bạn viết cho từng ngày và một ảnh đính kèm (thu nhỏ tối đa 1600 điểm ảnh).</li>
   <li><strong>Hồ sơ bé</strong>: tên gọi, ngày sinh, giới tính. Ảnh của bé không rời khỏi thiết bị.</li>
   <li><strong>Thông tin tài khoản</strong>: email (hoặc địa chỉ chuyển tiếp riêng của Apple) và tên khi đăng nhập bằng Apple; tên hiển thị trong nhóm gia đình.</li>
   <li><strong>Mã định danh</strong>: ID tài khoản ngẫu nhiên tạo khi mở ứng dụng lần đầu.</li>
@@ -165,12 +167,12 @@ th { background: var(--card); }
 <ul>
   <li><strong>Google Mobile Ads (AdMob)</strong>: địa chỉ IP (có thể suy ra vị trí gần đúng), mã định danh thiết bị (không phải IDFA), lượt hiển thị và tương tác quảng cáo, dữ liệu chẩn đoán.</li>
 </ul>
-<p>Chúng tôi không thu thập vị trí chính xác, danh bạ, ảnh, micrô hay camera; không bán dữ liệu và không dùng nhật ký của bạn cho quảng cáo.</p>
+<p>Chúng tôi không thu thập vị trí chính xác, danh bạ, micrô, camera hay ảnh nào ngoài ảnh bạn đính kèm ghi chú hằng ngày; không bán dữ liệu và không dùng nhật ký của bạn cho quảng cáo.</p>
 
 <h2>2. Nơi lưu trữ và thời gian lưu</h2>
 <ul>
   <li><strong>Trên thiết bị</strong>: nhật ký lưu trên iPhone (SwiftData, App Group dùng chung với widget); ảnh của bé và ảnh ghi chú trong thư mục tài liệu của ứng dụng; cài đặt trong UserDefaults.</li>
-  <li><strong>Trên đám mây</strong>: khi đăng nhập hoặc tham gia gia đình, dữ liệu lưu trên Google Cloud Firestore và Firebase Authentication; chỉ bạn và thành viên gia đình truy cập được. Không dùng iCloud.</li>
+  <li><strong>Trên đám mây</strong>: khi đăng nhập hoặc tham gia gia đình, dữ liệu lưu trên Google Cloud Firestore và Firebase Authentication, ảnh ghi chú lưu trên Cloud Storage for Firebase; chỉ bạn và thành viên gia đình truy cập được. Không dùng iCloud.</li>
   <li><strong>Thời gian lưu</strong>: đến khi bạn xóa. "Xóa tài khoản" trong Cài đặt xóa vĩnh viễn tài khoản và dữ liệu đám mây cá nhân (bản ghi đã thêm vào gia đình vẫn còn cho thành viên khác). "Xóa toàn bộ dữ liệu" (khi chưa đăng nhập) xóa dữ liệu trên máy và rời gia đình. Xóa ứng dụng sẽ xóa dữ liệu trên máy.</li>
 </ul>
 
@@ -185,6 +187,7 @@ th { background: var(--card); }
 <ul>
   <li>Đăng nhập bằng Apple: <a href="https://www.apple.com/legal/privacy/">Apple</a></li>
   <li>Firebase Authentication, Cloud Firestore (firestore.googleapis.com): ID tài khoản, tên hiển thị, nhật ký, văn bản ghi chú hằng ngày, hồ sơ bé, dữ liệu tăng trưởng, nhóm gia đình, mã mời. <a href="https://firebase.google.com/support/privacy">Firebase</a></li>
+  <li>Cloud Storage for Firebase (firebasestorage.googleapis.com): ảnh ghi chú hằng ngày. <a href="https://firebase.google.com/support/privacy">Firebase</a></li>
   <li>Google Mobile Ads: IP, thông tin thiết bị, tương tác quảng cáo. <a href="https://policies.google.com/privacy?hl=vi">Google</a> · <a href="https://policies.google.com/technologies/partner-sites?hl=vi">Cách Google sử dụng dữ liệu từ ứng dụng đối tác</a></li>
 </ul>
 <p>Dữ liệu được mã hóa khi truyền (HTTPS).</p>
@@ -193,7 +196,7 @@ th { background: var(--card); }
 <p>Ứng dụng hiển thị quảng cáo Google AdMob (banner, gốc, xen kẽ). BabySync+ không theo dõi bạn trên ứng dụng và trang web của công ty khác và không yêu cầu quyền App Tracking Transparency, nên SDK quảng cáo không nhận được IDFA.</p>
 
 <h2>6. Chia sẻ gia đình</h2>
-<p>Tạo nhóm gia đình cần Đăng nhập bằng Apple và sẽ tạo mã mời 6 ký tự. Người tham gia bằng mã có thể xem và thêm nhật ký, ghi chú hằng ngày (chỉ văn bản), hồ sơ bé, dữ liệu tăng trưởng và tên hiển thị của thành viên. Chỉ chia sẻ mã với người bạn tin tưởng. Chủ sở hữu có thể xóa thành viên hoặc tạo mã mời mới bất cứ lúc nào; thiết bị của thành viên bị xóa sẽ xóa dữ liệu của gia đình. Khi chủ sở hữu rời đi hoặc xóa tài khoản, quyền sở hữu được chuyển cho thành viên tham gia sớm nhất.</p>
+<p>Tạo nhóm gia đình cần Đăng nhập bằng Apple và sẽ tạo mã mời 6 ký tự. Người tham gia bằng mã có thể xem và thêm nhật ký, ghi chú hằng ngày kèm ảnh, hồ sơ bé, dữ liệu tăng trưởng và tên hiển thị của thành viên. Chỉ chia sẻ mã với người bạn tin tưởng. Chủ sở hữu có thể xóa thành viên hoặc tạo mã mời mới bất cứ lúc nào; thiết bị của thành viên bị xóa sẽ xóa dữ liệu của gia đình. Khi chủ sở hữu rời đi hoặc xóa tài khoản, quyền sở hữu được chuyển cho thành viên tham gia sớm nhất.</p>
 
 <h2>7. Quyền riêng tư của trẻ em</h2>
 <p>BabySync+ dành cho người lớn, không hướng đến trẻ dưới 13 tuổi và không cố ý thu thập thông tin từ trẻ em.</p>
@@ -212,7 +215,7 @@ th { background: var(--card); }
 <p><strong>App 收集（存放在 Google Firebase）</strong></p>
 <ul>
   <li><strong>你输入的记录</strong>（与健康相关）：喂奶、尿布、睡眠、辅食（份量、时长、食材、反应、备注）；体重、身高、头围。</li>
-  <li><strong>每日备注</strong>：你为每一天写的文字。备注附加的照片不会离开你的设备。</li>
+  <li><strong>每日备注</strong>：你为每一天写的文字，以及附加的 1 张照片（长边缩小到 1600 像素以内）。</li>
   <li><strong>宝宝资料</strong>：昵称、生日、性别。宝宝照片不会离开你的设备。</li>
   <li><strong>账户信息</strong>：使用 Apple 登录时的电子邮件（或 Apple 隐藏邮件地址）与姓名；家庭成员看得到的显示名称。</li>
   <li><strong>标识符</strong>：首次打开 App 时建立的随机账户 ID。</li>
@@ -221,12 +224,12 @@ th { background: var(--card); }
 <ul>
   <li><strong>Google Mobile Ads（AdMob）</strong>：IP 地址（可推估大略位置）、广告标识符以外的设备标识符、广告展示与互动、诊断信息。</li>
 </ul>
-<p>我们不收集精确位置、通讯录、照片、麦克风或相机数据；不出售你的信息，也不会把你的记录用于广告。</p>
+<p>我们不收集精确位置、通讯录、麦克风或相机数据，也不收集每日备注附加照片以外的照片；不出售你的信息，也不会把你的记录用于广告。</p>
 
 <h2>2. 数据存放位置与保存期间</h2>
 <ul>
   <li><strong>设备上</strong>：记录保存在 iPhone（SwiftData，与小组件共用的 App Group）；宝宝照片与每日备注照片在 App 的文档文件夹；设置在 UserDefaults。</li>
-  <li><strong>云端</strong>：登录或加入家庭后，存放在 Google Cloud Firestore 与 Firebase Authentication，只有你与家庭成员能访问。不使用 iCloud。</li>
+  <li><strong>云端</strong>：登录或加入家庭后，存放在 Google Cloud Firestore 与 Firebase Authentication（每日备注照片在 Cloud Storage for Firebase），只有你与家庭成员能访问。不使用 iCloud。</li>
   <li><strong>保存期间</strong>：保存到你删除为止。设置中的「删除账户」会永久删除账户与个人云端记录（你在家庭中新增的记录会留给其他成员）；未登录时的「清除所有数据」会删除设备上的数据并退出家庭；删除 App 会清除设备上的数据。</li>
 </ul>
 
@@ -241,6 +244,7 @@ th { background: var(--card); }
 <ul>
   <li>通过 Apple 登录：<a href="https://www.apple.com.cn/legal/privacy/">Apple 隐私政策</a></li>
   <li>Firebase Authentication、Cloud Firestore（firestore.googleapis.com）：账户 ID、显示名称、记录、每日备注文字、宝宝资料、成长数据、家庭与邀请码。<a href="https://firebase.google.com/support/privacy">Firebase</a></li>
+  <li>Cloud Storage for Firebase（firebasestorage.googleapis.com）：每日备注照片。<a href="https://firebase.google.com/support/privacy">Firebase</a></li>
   <li>Google Mobile Ads：IP、设备信息、广告互动。<a href="https://policies.google.com/privacy?hl=zh-CN">Google</a> · <a href="https://policies.google.com/technologies/partner-sites?hl=zh-CN">Google 如何使用合作伙伴应用的信息</a></li>
 </ul>
 <p>传输过程以 HTTPS 加密。</p>
@@ -249,7 +253,7 @@ th { background: var(--card); }
 <p>App 显示 Google AdMob 广告（横幅、原生、插页）。BabySync+ 不会跨其他公司的 App 与网站追踪你，也不请求 App 追踪透明度（ATT）权限，因此广告 SDK 取不到广告标识符（IDFA）。</p>
 
 <h2>6. 家庭共享</h2>
-<p>创建家庭需要使用 Apple 登录，并会产生 6 位字符邀请码。凭邀请码加入的人可以查看与新增记录、每日备注（仅文字）、宝宝资料、成长数据与成员显示名称。请只分享给你信任的人。拥有者可随时移除成员或产生新邀请码，被移除成员的设备会清除家庭的记录。拥有者离开或删除账户时，会把拥有者身份交给最早加入的成员。</p>
+<p>创建家庭需要使用 Apple 登录，并会产生 6 位字符邀请码。凭邀请码加入的人可以查看与新增记录、每日备注与照片、宝宝资料、成长数据与成员显示名称。请只分享给你信任的人。拥有者可随时移除成员或产生新邀请码，被移除成员的设备会清除家庭的记录。拥有者离开或删除账户时，会把拥有者身份交给最早加入的成员。</p>
 
 <h2>7. 儿童隐私</h2>
 <p>BabySync+ 是给成人使用的工具，不以 13 岁以下儿童为对象，也不会有意向儿童收集信息。</p>
@@ -268,7 +272,7 @@ th { background: var(--card); }
 <p><strong>App 收集（存放在 Google Firebase）</strong></p>
 <ul>
   <li><strong>你輸入的紀錄</strong>（與健康相關）：餵奶、尿布、睡眠、副食品（份量、時長、食材、反應、備註）；體重、身高、頭圍。</li>
-  <li><strong>每日備註</strong>：你為每一天寫的文字。備註附加的照片不會離開你的裝置。</li>
+  <li><strong>每日備註</strong>：你為每一天寫的文字，以及附加的 1 張照片（長邊縮小到 1600 像素以內）。</li>
   <li><strong>寶寶資料</strong>：暱稱、生日、性別。寶寶照片不會離開你的裝置。</li>
   <li><strong>帳號資料</strong>：使用 Apple 登入時的電子郵件（或 Apple 隱藏電子郵件地址）與姓名；家庭成員看得到的顯示名稱。</li>
   <li><strong>識別碼</strong>：第一次開啟 App 時建立的隨機帳號 ID。</li>
@@ -277,12 +281,12 @@ th { background: var(--card); }
 <ul>
   <li><strong>Google Mobile Ads（AdMob）</strong>：IP 位址（可推估大略位置）、廣告識別碼以外的裝置識別碼、廣告曝光與互動、診斷資料。</li>
 </ul>
-<p>我們不收集精確位置、聯絡人、照片、麥克風或相機資料；不販售你的資料，也不會把你的紀錄用於廣告。</p>
+<p>我們不收集精確位置、聯絡人、麥克風或相機資料，也不收集每日備註附加照片以外的照片；不販售你的資料，也不會把你的紀錄用於廣告。</p>
 
 <h2>2. 資料存放位置與保存期間</h2>
 <ul>
   <li><strong>裝置上</strong>：紀錄存在 iPhone（SwiftData，與小工具共用的 App Group）；寶寶照片與每日備註照片在 App 的文件資料夾；設定在 UserDefaults。</li>
-  <li><strong>雲端</strong>：登入或加入家庭後，存放在 Google Cloud Firestore 與 Firebase Authentication，只有你與家庭成員能存取。不使用 iCloud。</li>
+  <li><strong>雲端</strong>：登入或加入家庭後，存放在 Google Cloud Firestore 與 Firebase Authentication（每日備註照片在 Cloud Storage for Firebase），只有你與家庭成員能存取。不使用 iCloud。</li>
   <li><strong>保存期間</strong>：保存到你刪除為止。設定中的「刪除帳號」會永久刪除帳號與個人雲端紀錄（你在家庭中新增的紀錄會留給其他成員）；未登入時的「清除所有資料」會刪除裝置上的資料並退出家庭；刪除 App 會清除裝置上的資料。</li>
 </ul>
 
@@ -297,6 +301,7 @@ th { background: var(--card); }
 <ul>
   <li>使用 Apple 登入：<a href="https://www.apple.com/tw/legal/privacy/">Apple 隱私權政策</a></li>
   <li>Firebase Authentication、Cloud Firestore（firestore.googleapis.com）：帳號 ID、顯示名稱、紀錄、每日備註文字、寶寶資料、成長資料、家庭與邀請碼。<a href="https://firebase.google.com/support/privacy">Firebase</a></li>
+  <li>Cloud Storage for Firebase（firebasestorage.googleapis.com）：每日備註照片。<a href="https://firebase.google.com/support/privacy">Firebase</a></li>
   <li>Google Mobile Ads：IP、裝置資訊、廣告互動。<a href="https://policies.google.com/privacy?hl=zh-TW">Google</a> · <a href="https://policies.google.com/technologies/partner-sites?hl=zh-TW">Google 如何使用合作夥伴應用程式的資訊</a></li>
 </ul>
 <p>傳輸過程以 HTTPS 加密。</p>
@@ -305,7 +310,7 @@ th { background: var(--card); }
 <p>App 顯示 Google AdMob 廣告（橫幅、原生、插頁）。BabySync+ 不會跨其他公司的 App 與網站追蹤你，也不要求「App 追蹤透明度」權限，因此廣告 SDK 取不到廣告識別碼（IDFA）。</p>
 
 <h2>6. 家庭共享</h2>
-<p>建立家庭需要使用 Apple 登入，並會產生 6 字元邀請碼。用邀請碼加入的人可以查看與新增紀錄、每日備註（只有文字）、寶寶資料、成長資料與成員顯示名稱。請只分享給你信任的人。擁有者可隨時移除成員或產生新邀請碼，被移除成員的裝置會清除家庭的紀錄。擁有者離開或刪除帳號時，會把擁有者身分交給最早加入的成員。</p>
+<p>建立家庭需要使用 Apple 登入，並會產生 6 字元邀請碼。用邀請碼加入的人可以查看與新增紀錄、每日備註與照片、寶寶資料、成長資料與成員顯示名稱。請只分享給你信任的人。擁有者可隨時移除成員或產生新邀請碼，被移除成員的裝置會清除家庭的紀錄。擁有者離開或刪除帳號時，會把擁有者身分交給最早加入的成員。</p>
 
 <h2>7. 兒童隱私</h2>
 <p>BabySync+ 是給成人使用的工具，不以 13 歲以下兒童為對象，也不會有意向兒童收集資料。</p>
