@@ -1,89 +1,231 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BabySync+ Support</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #000; color: #e0e0e0;
-            line-height: 1.7; padding: 24px;
-            max-width: 720px; margin: 0 auto;
-        }
-        h1 { color: #fff; font-size: 28px; margin: 32px 0 8px; }
-        h2 { color: #fff; font-size: 20px; margin: 28px 0 12px; }
-        h3 { color: #ccc; font-size: 16px; margin: 20px 0 8px; }
-        p, li { margin-bottom: 12px; font-size: 15px; }
-        ul { padding-left: 20px; }
-        a { color: #58a6ff; }
-        .faq { background: #111; border-radius: 12px; padding: 16px 20px; margin-bottom: 16px; }
-        .faq h3 { margin: 0 0 8px; }
-        .faq p:last-child { margin-bottom: 0; }
-        .contact-box {
-            background: #0d1b2a; border: 1px solid #1e3a5f; border-radius: 12px;
-            padding: 20px; margin-top: 24px; text-align: center;
-        }
-        .contact-box a { font-size: 18px; font-weight: 600; }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BabySync+ Support</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1d1d1f; --muted: #6e6e73; --card: #f5f5f7; --border: #d2d2d7; --link: #0066cc;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #000000; --fg: #e8e8ed; --muted: #98989d; --card: #1c1c1e; --border: #38383a; --link: #4da3ff; }
+}
+* { box-sizing: border-box; }
+body { margin: 0 auto; max-width: 760px; padding: 24px 16px 64px; background: var(--bg); color: var(--fg);
+  font: 16px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Hiragino Sans", "Noto Sans", sans-serif; }
+a { color: var(--link); }
+nav { display: flex; flex-wrap: wrap; gap: 8px 16px; padding: 12px 16px; background: var(--card); border-radius: 12px; font-size: 14px; }
+section.lang { border-top: 1px solid var(--border); margin-top: 40px; padding-top: 8px; }
+h1 { font-size: 28px; margin: 24px 0 4px; }
+h2 { font-size: 20px; margin: 28px 0 8px; }
+h3 { font-size: 16px; margin: 0 0 6px; }
+.lead { color: var(--muted); margin-top: 0; }
+.faq { background: var(--card); border-radius: 12px; padding: 14px 16px; margin-bottom: 12px; }
+.faq p { margin: 0; }
+.contact { border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+li { margin-bottom: 6px; }
+</style>
 </head>
 <body>
-    <h1>BabySync+ Support</h1>
-    <p>We're here to help. Find answers to common questions below, or reach out to us directly.</p>
+<nav aria-label="Language">
+  <a href="#en">English</a><a href="#ja">日本語</a><a href="#vi">Tiếng Việt</a><a href="#zh-Hans">简体中文</a><a href="#zh-Hant">繁體中文</a>
+  <a href="babysync-privacy.html">Privacy Policy</a>
+</nav>
 
-    <h2>Frequently Asked Questions</h2>
+<!-- ============ English ============ -->
+<section class="lang" id="en" lang="en">
+<h1>BabySync+ Support</h1>
+<p class="lead">Log feedings, diapers, sleep, solid foods and growth with one hand — right from the Home Screen widget.</p>
+<p>App Store: <a href="https://apps.apple.com/tw/app/babysync/id6759586973">https://apps.apple.com/tw/app/babysync/id6759586973</a></p>
 
-    <div class="faq">
-        <h3>How do I add the widget to my Home Screen?</h3>
-        <p>Long press on your Home Screen, tap the "+" button in the top-left corner, search for "BabySync", and choose the Small or Medium widget size.</p>
-    </div>
+<h2>Getting started</h2>
+<ol>
+  <li><strong>Set up the baby profile</strong>: enter a nickname, birth date and gender (a photo is optional and stays on your device).</li>
+  <li><strong>Log a record</strong>: on Home, tap Feeding, Diaper, Sleep or Solid Food. Tap a record to see or edit details.</li>
+  <li><strong>Add the widget</strong>: long-press the Home Screen, tap +, search "BabySync" and add the Small or Medium widget. Bottle, diaper and sleep are logged without opening the app; the breastfeeding button opens the app.</li>
+  <li><strong>Share with family</strong>: Settings › Account › Sign in with Apple, then Settings › Family Sharing to create a family and get a 6-character invite code. Other caregivers enter the code to join.</li>
+  <li><strong>Feeding reminder</strong>: Settings › Feeding Reminder, then choose 1–6 hours.</li>
+  <li><strong>Growth chart</strong>: Settings › Growth Chart to add weight, height and head circumference and compare with WHO percentiles.</li>
+  <li><strong>Daily note</strong>: on Home, tap the Today's Note card, or tap the note button next to any day in History. Write how the day went and attach up to 4 photos.</li>
+  <li><strong>Solid food ingredients</strong>: when logging solid food, type to search all ingredients. Long-press an ingredient to delete it. Open a solid-food record to add, rename or remove its ingredients.</li>
+</ol>
 
-    <div class="faq">
-        <h3>How do I use Siri to log activities?</h3>
-        <p>You can say commands like:</p>
-        <ul>
-            <li>"Log bottle feeding BabySync"</li>
-            <li>"Log diaper change BabySync"</li>
-            <li>"Start sleep BabySync"</li>
-        </ul>
-        <p>You can also find and customize these shortcuts in the Shortcuts app.</p>
-    </div>
+<h2>FAQ</h2>
+<div class="faq"><h3>Do I need an account?</h3><p>No. Everything works without signing in, and records are stored on your device. Sign in with Apple to back up your records so they return after reinstalling or on a new phone. Creating a family requires Sign in with Apple; joining one only needs the invite code.</p></div>
+<div class="faq"><h3>How do I move my records to a new iPhone?</h3><p>Sign in with Apple on the old phone first (Settings › Account). On the new phone, sign in with the same Apple ID and your records are restored. Records are not synced through iCloud.</p></div>
+<div class="faq"><h3>How fast do family records sync?</h3><p>In real time while the app is open and online. Records logged from the widget are uploaded right away when possible; otherwise they are added the next time you open the app.</p></div>
+<div class="faq"><h3>Can I use it offline?</h3><p>Yes. Records are saved on the device immediately and uploaded when the connection returns.</p></div>
+<div class="faq"><h3>I'm not getting feeding reminders.</h3><p>Check that Feeding Reminder is on in the app, then open iOS Settings › Notifications › BabySync and allow notifications. The reminder fires the chosen number of hours after the last feeding.</p></div>
+<div class="faq"><h3>The widget doesn't show my latest record.</h3><p>The widget refreshes after each log. If it looks stale, open the app once, or remove and re-add the widget. Make sure the app has been opened at least once after installing.</p></div>
+<div class="faq"><h3>How do I delete a record?</h3><p>Swipe left on a record in the list and tap Delete. In a family, the record is removed for everyone.</p></div>
+<div class="faq"><h3>How do I delete my account or all data?</h3><p>Settings › Account › Delete Account (when signed in) permanently deletes your account and personal cloud records. When not signed in, the same row is Clear All Data, which removes everything on this device and leaves your family.</p></div>
+<div class="faq"><h3>Do daily-note photos sync with my family?</h3><p>No. The note text syncs with your family, but photos stay only on the device that added them. They are not backed up, so deleting the app removes them.</p></div>
+<div class="faq"><h3>How do I remove a family member or change the invite code?</h3><p>Only the family owner can. Open Settings › Family Sharing, tap the ⋯ button next to a member and choose Remove from Family, or tap Generate New Code; the old code stops working. If the owner leaves, ownership passes to the member who joined first.</p></div>
+<div class="faq"><h3>Can I export my records?</h3><p>Yes. Settings › Export Data creates a text report you can share or save.</p></div>
+<div class="faq"><h3>Why are there ads?</h3><p>Ads keep the app free. A full-screen ad may appear only when you close a record screen after saving your 3rd or 6th record of the day in the app — no more than once every 5 minutes, and never between 10 PM and 6 AM. Records logged from the widget are not counted.</p></div>
 
-    <div class="faq">
-        <h3>Does my data sync between devices?</h3>
-        <p>Yes. If you have iCloud enabled, your data automatically syncs across all your devices signed in with the same Apple ID. No setup required.</p>
-    </div>
+<h2>Contact support</h2>
+<div class="contact"><p>Email: <a href="mailto:kaishacowcow@gmail.com">kaishacowcow@gmail.com</a><br>Expected reply time: within 1 week</p></div>
 
-    <div class="faq">
-        <h3>Do I need to create an account?</h3>
-        <p>No. BabySync+ works immediately with no sign-up, no email, and no account creation.</p>
-    </div>
+<h2>Requirements</h2>
+<p>iPhone with iOS 18 or later. Languages: English, Japanese, Vietnamese, Simplified Chinese, Traditional Chinese.</p>
+</section>
 
-    <div class="faq">
-        <h3>How do I set up feeding reminders?</h3>
-        <p>Go to Settings (gear icon) > Notification Settings > enable "Feeding Reminder" and choose an interval from 1 to 6 hours. The widget will show a countdown to the next feeding.</p>
-    </div>
+<!-- ============ 日本語 ============ -->
+<section class="lang" id="ja" lang="ja">
+<h1>BabySync+ サポート</h1>
+<p class="lead">授乳・おむつ・睡眠・離乳食・成長を片手で記録。ホーム画面のウィジェットから。</p>
+<p>App Store：<a href="https://apps.apple.com/tw/app/babysync/id6759586973">https://apps.apple.com/tw/app/babysync/id6759586973</a></p>
 
-    <div class="faq">
-        <h3>How do I view growth charts?</h3>
-        <p>Go to Settings > Growth Chart. You'll need to set up a baby profile first (name, birth date, gender). Then you can add weight and height records to see them plotted against WHO percentile curves.</p>
-    </div>
+<h2>はじめかた</h2>
+<ol>
+  <li><strong>プロフィール設定</strong>：ニックネーム、生年月日、性別を入力（写真は任意、端末内のみに保存）。</li>
+  <li><strong>記録する</strong>：ホームで授乳・おむつ・睡眠・離乳食をタップ。記録をタップすると詳細の確認・編集ができます。</li>
+  <li><strong>ウィジェットを追加</strong>：ホーム画面を長押し › ＋ › 「BabySync」を検索し、小または中サイズを追加。哺乳瓶・おむつ・睡眠はアプリを開かずに記録、母乳ボタンはアプリを開きます。</li>
+  <li><strong>家族と共有</strong>：設定 › アカウントでAppleでサインインし、設定 › 家族共有で家族を作成すると6文字の招待コードが表示されます。</li>
+  <li><strong>授乳リマインダー</strong>：設定 › 授乳リマインダーで1〜6時間を選択。</li>
+  <li><strong>成長曲線</strong>：設定 › 成長曲線で体重・身長・頭囲を追加し、WHOパーセンタイルと比較。</li>
+  <li><strong>デイリーメモ</strong>：ホームの「今日のメモ」カード、または履歴の各日の横にあるメモボタンをタップ。その日の様子を書き、写真を4枚まで添付できます。</li>
+  <li><strong>離乳食の食材</strong>：記録時に入力するとすべての食材から検索できます。食材を長押しすると削除。離乳食の記録を開くと食材の追加・名前の変更・削除ができます。</li>
+</ol>
 
-    <div class="faq">
-        <h3>How do I delete a record?</h3>
-        <p>On the Home Screen, swipe left on any activity in the Recent Records list and tap Delete. You can also tap any record to view its details and make edits.</p>
-    </div>
+<h2>よくある質問</h2>
+<div class="faq"><h3>アカウントは必要？</h3><p>不要です。サインインなしですべての記録機能が使え、記録は端末に保存されます。Appleでサインインするとバックアップされ、再インストールや機種変更後も復元できます。家族の作成にはサインインが必要ですが、参加は招待コードだけでできます。</p></div>
+<div class="faq"><h3>新しいiPhoneに記録を移すには？</h3><p>先に旧端末でAppleでサインインし、新端末で同じApple IDでサインインすると記録が復元されます。iCloud経由の同期はしません。</p></div>
+<div class="faq"><h3>家族の記録はどのくらいで同期される？</h3><p>アプリを開いてオンラインの間はリアルタイムです。ウィジェットからの記録は可能ならすぐにアップロードされ、できない場合は次にアプリを開いたときに反映されます。</p></div>
+<div class="faq"><h3>オフラインでも使える？</h3><p>使えます。記録はすぐ端末に保存され、接続が戻るとアップロードされます。</p></div>
+<div class="faq"><h3>リマインダーが届かない</h3><p>アプリで授乳リマインダーがオンか確認し、iOSの設定 › 通知 › BabySync で通知を許可してください。</p></div>
+<div class="faq"><h3>ウィジェットに最新の記録が出ない</h3><p>記録ごとに更新されます。古いままの場合はアプリを一度開くか、ウィジェットを追加し直してください。</p></div>
+<div class="faq"><h3>記録を削除するには？</h3><p>リストの記録を左にスワイプして「削除」。家族の場合は全員から削除されます。</p></div>
+<div class="faq"><h3>アカウントやデータを削除するには？</h3><p>設定 › アカウント › アカウントを削除（サインイン時）でアカウントと個人のクラウド記録を完全に削除します。未サインイン時は「すべてのデータを消去」で端末内のデータを削除し家族から退出します。</p></div>
+<div class="faq"><h3>デイリーメモの写真は家族と同期される？</h3><p>いいえ。テキストは家族と同期されますが、写真は追加した端末にのみ保存され、バックアップされません。アプリを削除すると写真も消えます。</p></div>
+<div class="faq"><h3>メンバーの削除や招待コードの変更は？</h3><p>家族のオーナーのみ可能です。設定 › 家族共有でメンバーの横の「⋯」ボタンから「家族から削除」を選ぶ、または「新しいコードを作成」をタップ（古いコードは使えなくなります）。オーナーが退出すると、最も早く参加したメンバーに引き継がれます。</p></div>
+<div class="faq"><h3>記録を書き出せる？</h3><p>設定 › データを書き出す でテキストレポートを作成できます。</p></div>
+<div class="faq"><h3>広告について</h3><p>広告により無料で提供しています。全画面広告は、アプリでその日3件目・6件目の記録を保存して画面を閉じたときのみ、5分に1回まで表示され、22時〜6時は表示しません。ウィジェットからの記録は数えません。</p></div>
 
-    <div class="faq">
-        <h3>How do I delete all my data?</h3>
-        <p>Delete the app from your device. To also remove iCloud data, go to iOS Settings > Apple ID > iCloud > Manage Storage and remove BabySync+ data.</p>
-    </div>
+<h2>お問い合わせ</h2>
+<div class="contact"><p>メール：<a href="mailto:kaishacowcow@gmail.com">kaishacowcow@gmail.com</a><br>返信の目安：1週間以内</p></div>
 
-    <h2>Contact Us</h2>
-    <div class="contact-box">
-        <p>Still need help? We'd love to hear from you.</p>
-        <a href="mailto:kaishacowcow@gmail.com">kaishacowcow@gmail.com</a>
-    </div>
+<h2>動作環境</h2>
+<p>iOS 18以降のiPhone。対応言語：英語、日本語、ベトナム語、簡体字中国語、繁体字中国語。</p>
+</section>
+
+<!-- ============ Tiếng Việt ============ -->
+<section class="lang" id="vi" lang="vi">
+<h1>Hỗ trợ BabySync+</h1>
+<p class="lead">Ghi nhận bú, tã, giấc ngủ, ăn dặm và tăng trưởng bằng một tay — ngay từ widget trên Màn hình chính.</p>
+<p>App Store: <a href="https://apps.apple.com/tw/app/babysync/id6759586973">https://apps.apple.com/tw/app/babysync/id6759586973</a></p>
+
+<h2>Bắt đầu</h2>
+<ol>
+  <li><strong>Hồ sơ bé</strong>: nhập tên gọi, ngày sinh, giới tính (ảnh không bắt buộc, chỉ lưu trên máy).</li>
+  <li><strong>Ghi nhận</strong>: ở Trang chủ, chạm Cho bú, Tã, Giấc ngủ hoặc Ăn dặm. Chạm vào bản ghi để xem hoặc sửa.</li>
+  <li><strong>Thêm widget</strong>: nhấn giữ Màn hình chính › + › tìm "BabySync" › thêm cỡ Nhỏ hoặc Vừa. Bú bình, tã và giấc ngủ ghi nhận không cần mở app; nút bú mẹ sẽ mở app.</li>
+  <li><strong>Chia sẻ gia đình</strong>: Cài đặt › Tài khoản › Đăng nhập bằng Apple, rồi Cài đặt › Chia sẻ gia đình để tạo gia đình và nhận mã mời 6 ký tự.</li>
+  <li><strong>Nhắc nhở cho bú</strong>: Cài đặt › Nhắc nhở cho bú, chọn 1–6 giờ.</li>
+  <li><strong>Biểu đồ tăng trưởng</strong>: Cài đặt › Biểu đồ tăng trưởng để thêm cân nặng, chiều cao, vòng đầu và so sánh với WHO.</li>
+  <li><strong>Ghi chú hằng ngày</strong>: ở Trang chủ, chạm thẻ Ghi chú hôm nay, hoặc chạm nút ghi chú bên cạnh từng ngày trong Lịch sử. Viết về ngày của bé và đính kèm tối đa 4 ảnh.</li>
+  <li><strong>Nguyên liệu ăn dặm</strong>: khi ghi ăn dặm, gõ để tìm trong tất cả nguyên liệu; nhấn giữ một nguyên liệu để xóa. Mở bản ghi ăn dặm để thêm, đổi tên hoặc xóa nguyên liệu.</li>
+</ol>
+
+<h2>Câu hỏi thường gặp</h2>
+<div class="faq"><h3>Có cần tài khoản không?</h3><p>Không. Mọi tính năng ghi nhận hoạt động khi chưa đăng nhập, dữ liệu lưu trên máy. Đăng nhập bằng Apple để sao lưu và khôi phục khi cài lại hoặc đổi máy. Tạo gia đình cần đăng nhập; tham gia chỉ cần mã mời.</p></div>
+<div class="faq"><h3>Chuyển dữ liệu sang iPhone mới?</h3><p>Đăng nhập bằng Apple trên máy cũ trước, sau đó đăng nhập cùng Apple ID trên máy mới. Dữ liệu không đồng bộ qua iCloud.</p></div>
+<div class="faq"><h3>Dữ liệu gia đình đồng bộ nhanh không?</h3><p>Theo thời gian thực khi app đang mở và có mạng. Bản ghi từ widget được tải lên ngay nếu có thể, nếu không sẽ được thêm khi mở app lần sau.</p></div>
+<div class="faq"><h3>Dùng khi không có mạng?</h3><p>Được. Bản ghi lưu ngay trên máy và tải lên khi có kết nối lại.</p></div>
+<div class="faq"><h3>Không nhận được nhắc nhở?</h3><p>Kiểm tra Nhắc nhở cho bú đã bật trong app, rồi vào Cài đặt iOS › Thông báo › BabySync và cho phép thông báo.</p></div>
+<div class="faq"><h3>Widget không hiện bản ghi mới nhất?</h3><p>Widget cập nhật sau mỗi lần ghi. Nếu chưa đổi, hãy mở app một lần hoặc thêm lại widget.</p></div>
+<div class="faq"><h3>Xóa một bản ghi?</h3><p>Vuốt sang trái trên bản ghi và chạm Xóa. Trong gia đình, bản ghi bị xóa cho tất cả.</p></div>
+<div class="faq"><h3>Xóa tài khoản hoặc toàn bộ dữ liệu?</h3><p>Cài đặt › Tài khoản › Xóa tài khoản (khi đã đăng nhập) xóa vĩnh viễn tài khoản và dữ liệu đám mây cá nhân. Khi chưa đăng nhập, mục này là Xóa toàn bộ dữ liệu, xóa dữ liệu trên máy và rời gia đình.</p></div>
+<div class="faq"><h3>Ảnh trong ghi chú có đồng bộ với gia đình không?</h3><p>Không. Văn bản được đồng bộ, còn ảnh chỉ lưu trên thiết bị đã thêm ảnh và không được sao lưu. Xóa ứng dụng sẽ xóa ảnh.</p></div>
+<div class="faq"><h3>Xóa thành viên hoặc đổi mã mời?</h3><p>Chỉ chủ sở hữu gia đình mới làm được. Vào Cài đặt › Chia sẻ gia đình, chạm nút ⋯ bên cạnh thành viên và chọn Xóa khỏi gia đình, hoặc chạm Tạo mã mới (mã cũ sẽ không dùng được nữa). Khi chủ sở hữu rời đi, quyền được chuyển cho thành viên tham gia sớm nhất.</p></div>
+<div class="faq"><h3>Xuất dữ liệu được không?</h3><p>Được. Cài đặt › Xuất dữ liệu tạo báo cáo văn bản.</p></div>
+<div class="faq"><h3>Vì sao có quảng cáo?</h3><p>Quảng cáo giúp app miễn phí. Quảng cáo toàn màn hình chỉ có thể xuất hiện khi bạn đóng màn hình ghi nhận sau khi lưu bản ghi thứ 3 hoặc thứ 6 trong ngày trên ứng dụng, tối đa 5 phút một lần, không hiển thị từ 22 giờ đến 6 giờ. Bản ghi từ widget không được tính.</p></div>
+
+<h2>Liên hệ hỗ trợ</h2>
+<div class="contact"><p>Email: <a href="mailto:kaishacowcow@gmail.com">kaishacowcow@gmail.com</a><br>Thời gian phản hồi dự kiến: trong vòng 1 tuần</p></div>
+
+<h2>Yêu cầu hệ thống</h2>
+<p>iPhone chạy iOS 18 trở lên. Ngôn ngữ: tiếng Anh, Nhật, Việt, Trung giản thể, Trung phồn thể.</p>
+</section>
+
+<!-- ============ 简体中文 ============ -->
+<section class="lang" id="zh-Hans" lang="zh-Hans">
+<h1>BabySync+ 支持</h1>
+<p class="lead">单手记录喂奶、尿布、睡眠、辅食与成长，在主屏幕小组件上就能完成。</p>
+<p>App Store：<a href="https://apps.apple.com/tw/app/babysync/id6759586973">https://apps.apple.com/tw/app/babysync/id6759586973</a></p>
+
+<h2>快速上手</h2>
+<ol>
+  <li><strong>设置宝宝资料</strong>：输入昵称、生日、性别（照片可选，只存在设备上）。</li>
+  <li><strong>新增记录</strong>：在首页点喂奶、尿布、睡眠或辅食；点记录可查看或编辑。</li>
+  <li><strong>添加小组件</strong>：长按主屏幕 › 点 + › 搜索「BabySync」› 添加小或中尺寸。瓶喂、尿布、睡眠不用打开 App 就能记录；亲喂按钮会打开 App。</li>
+  <li><strong>家庭共享</strong>：设置 › 账户 › 通过 Apple 登录，再到设置 › 家庭共享创建家庭，取得 6 位字符邀请码。</li>
+  <li><strong>喂奶提醒</strong>：设置 › 喂奶提醒，选择 1–6 小时。</li>
+  <li><strong>成长曲线</strong>：设置 › 成长曲线，新增体重、身高、头围并对照 WHO 百分位。</li>
+  <li><strong>每日备注</strong>：在首页点「今日备注」卡片，或在历史记录中点每一天旁边的备注按钮，写下当天的状况，最多附 4 张照片。</li>
+  <li><strong>辅食食材</strong>：记录辅食时输入文字可搜索所有食材；长按食材可删除。打开辅食记录可新增、改名或移除食材。</li>
+</ol>
+
+<h2>常见问题</h2>
+<div class="faq"><h3>需要注册账户吗？</h3><p>不需要。未登录也能使用所有记录功能，记录保存在设备上。使用 Apple 登录可备份，重装或换手机后可恢复。创建家庭需要登录，加入家庭只需要邀请码。</p></div>
+<div class="faq"><h3>换新 iPhone 怎么转移记录？</h3><p>先在旧手机使用 Apple 登录，再在新手机用同一个 Apple ID 登录即可恢复。记录不通过 iCloud 同步。</p></div>
+<div class="faq"><h3>家庭记录多久同步？</h3><p>App 打开且联网时实时同步。从小组件记录的数据会尽量立即上传，否则会在下次打开 App 时加入。</p></div>
+<div class="faq"><h3>没有网络能用吗？</h3><p>可以。记录会立即存在设备上，恢复联网后上传。</p></div>
+<div class="faq"><h3>收不到喂奶提醒？</h3><p>确认 App 中已开启喂奶提醒，再到 iOS 设置 › 通知 › BabySync 允许通知。</p></div>
+<div class="faq"><h3>小组件没显示最新记录？</h3><p>每次记录后都会更新。若没更新，打开一次 App，或移除后重新添加小组件。</p></div>
+<div class="faq"><h3>怎么删除一笔记录？</h3><p>在列表中把记录向左滑并点删除。在家庭中会对所有成员删除。</p></div>
+<div class="faq"><h3>怎么删除账户或所有数据？</h3><p>已登录时：设置 › 账户 › 删除账户，会永久删除账户与个人云端记录。未登录时同一栏为「清除所有数据」，会删除设备上的数据并退出家庭。</p></div>
+<div class="faq"><h3>每日备注的照片会和家人同步吗？</h3><p>不会。文字会与家人同步，照片只存在添加照片的那台设备上，也不会备份；删除 App 会一并删除照片。</p></div>
+<div class="faq"><h3>怎么移除家庭成员或更换邀请码？</h3><p>只有家庭拥有者可以。到设置 › 家庭共享，点成员旁边的「⋯」按钮并选择「从家庭移除」，或点「产生新邀请码」（旧邀请码会失效）。拥有者离开时，会交给最早加入的成员。</p></div>
+<div class="faq"><h3>可以导出记录吗？</h3><p>可以。设置 › 导出数据会产生文字报告。</p></div>
+<div class="faq"><h3>为什么有广告？</h3><p>广告让 App 可以免费使用。全屏广告只会在你于 App 中保存当天第 3、第 6 笔记录并关闭记录画面时出现，最多 5 分钟一次，晚上 10 点到早上 6 点不显示。小组件的记录不计算在内。</p></div>
+
+<h2>联系支持</h2>
+<div class="contact"><p>邮箱：<a href="mailto:kaishacowcow@gmail.com">kaishacowcow@gmail.com</a><br>预计回复时间：1 周内</p></div>
+
+<h2>系统要求</h2>
+<p>iOS 18 或以上的 iPhone。语言：英文、日文、越南文、简体中文、繁体中文。</p>
+</section>
+
+<!-- ============ 繁體中文 ============ -->
+<section class="lang" id="zh-Hant" lang="zh-Hant">
+<h1>BabySync+ 支援</h1>
+<p class="lead">單手記錄餵奶、尿布、睡眠、副食品與成長，在主畫面小工具上就能完成。</p>
+<p>App Store：<a href="https://apps.apple.com/tw/app/babysync/id6759586973">https://apps.apple.com/tw/app/babysync/id6759586973</a></p>
+
+<h2>快速上手</h2>
+<ol>
+  <li><strong>設定寶寶資料</strong>：輸入暱稱、生日、性別（照片可選，只存在裝置上）。</li>
+  <li><strong>新增紀錄</strong>：在首頁點餵奶、尿布、睡眠或副食品；點紀錄可查看或編輯。</li>
+  <li><strong>加入小工具</strong>：長按主畫面 › 點 ＋ › 搜尋「BabySync」› 加入小或中尺寸。瓶餵、尿布、睡眠不用打開 App 就能記錄；親餵按鈕會打開 App。</li>
+  <li><strong>家庭共享</strong>：設定 › 帳號 › 使用 Apple 登入，再到設定 › 家庭共享建立家庭，取得 6 字元邀請碼。</li>
+  <li><strong>餵奶提醒</strong>：設定 › 餵奶提醒，選擇 1–6 小時。</li>
+  <li><strong>成長曲線</strong>：設定 › 成長曲線，新增體重、身高、頭圍並對照 WHO 百分位。</li>
+  <li><strong>每日備註</strong>：在首頁點「今日備註」卡片，或在歷史紀錄中點每一天旁邊的備註按鈕，寫下當天的狀況，最多附 4 張照片。</li>
+  <li><strong>副食品食材</strong>：記錄副食品時輸入文字可搜尋所有食材；長按食材可刪除。打開副食品紀錄可新增、改名或移除食材。</li>
+</ol>
+
+<h2>常見問題</h2>
+<div class="faq"><h3>需要註冊帳號嗎？</h3><p>不需要。不登入也能使用所有記錄功能，紀錄存在裝置上。使用 Apple 登入可備份，重灌或換手機後可還原。建立家庭需要登入，加入家庭只需要邀請碼。</p></div>
+<div class="faq"><h3>換新 iPhone 怎麼轉移紀錄？</h3><p>先在舊手機使用 Apple 登入，再在新手機用同一個 Apple ID 登入即可還原。紀錄不透過 iCloud 同步。</p></div>
+<div class="faq"><h3>家庭紀錄多久同步？</h3><p>App 開啟且連網時即時同步。從小工具記錄的資料會盡量立即上傳，否則會在下次打開 App 時加入。</p></div>
+<div class="faq"><h3>沒有網路能用嗎？</h3><p>可以。紀錄會立即存在裝置上，恢復連線後上傳。</p></div>
+<div class="faq"><h3>收不到餵奶提醒？</h3><p>確認 App 中已開啟餵奶提醒，再到 iOS 設定 › 通知 › BabySync 允許通知。</p></div>
+<div class="faq"><h3>小工具沒顯示最新紀錄？</h3><p>每次記錄後都會更新。若沒更新，打開一次 App，或移除後重新加入小工具。</p></div>
+<div class="faq"><h3>怎麼刪除一筆紀錄？</h3><p>在列表中把紀錄向左滑並點刪除。在家庭中會對所有成員刪除。</p></div>
+<div class="faq"><h3>怎麼刪除帳號或所有資料？</h3><p>已登入時：設定 › 帳號 › 刪除帳號，會永久刪除帳號與個人雲端紀錄。未登入時同一欄為「清除所有資料」，會刪除裝置上的資料並退出家庭。</p></div>
+<div class="faq"><h3>每日備註的照片會和家人同步嗎？</h3><p>不會。文字會與家人同步，照片只存在加入照片的那台裝置上，也不會備份；刪除 App 會一併刪除照片。</p></div>
+<div class="faq"><h3>怎麼移除家庭成員或更換邀請碼？</h3><p>只有家庭擁有者可以。到設定 › 家庭共享，點成員旁邊的「⋯」按鈕並選擇「從家庭移除」，或點「產生新邀請碼」（舊邀請碼會失效）。擁有者離開時，會交給最早加入的成員。</p></div>
+<div class="faq"><h3>可以匯出紀錄嗎？</h3><p>可以。設定 › 匯出資料會產生文字報告。</p></div>
+<div class="faq"><h3>為什麼有廣告？</h3><p>廣告讓 App 可以免費使用。全螢幕廣告只會在你於 App 中儲存當天第 3、第 6 筆紀錄並關閉紀錄畫面時出現，最多 5 分鐘一次，晚上 10 點到早上 6 點不顯示。小工具的紀錄不計算在內。</p></div>
+
+<h2>聯絡支援</h2>
+<div class="contact"><p>信箱：<a href="mailto:kaishacowcow@gmail.com">kaishacowcow@gmail.com</a><br>預計回覆時間：1 週內</p></div>
+
+<h2>系統需求</h2>
+<p>iOS 18 或以上的 iPhone。語言：英文、日文、越南文、簡體中文、繁體中文。</p>
+</section>
 </body>
 </html>
