@@ -1,68 +1,188 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WealthPoise Privacy Policy</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #000; color: #e0e0e0;
-            line-height: 1.7; padding: 24px;
-            max-width: 720px; margin: 0 auto;
-        }
-        h1 { color: #fff; font-size: 28px; margin: 32px 0 8px; }
-        h2 { color: #fff; font-size: 20px; margin: 28px 0 8px; }
-        p, li { margin-bottom: 12px; font-size: 15px; }
-        ul { padding-left: 20px; }
-        .date { color: #888; font-size: 13px; margin-bottom: 24px; }
-        a { color: #58a6ff; }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>WealthPoise Privacy Policy</title>
+<style>
+:root{--bg:#f7f8fa;--card:#ffffff;--text:#1c1d21;--muted:#5d6270;--accent:#0a66d8;--border:#e3e6eb;--code:#eef1f5}
+@media (prefers-color-scheme:dark){:root{--bg:#111215;--card:#1b1d22;--text:#eceef2;--muted:#a3a8b4;--accent:#5aa7ff;--border:#2c2f36;--code:#24272e}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","PingFang SC","Hiragino Sans","Noto Sans CJK TC",sans-serif;-webkit-text-size-adjust:100%}
+header,main,footer{max-width:760px;margin:0 auto;padding:0 16px}
+header{padding-top:32px}
+h1{font-size:1.75rem;line-height:1.25;margin:0 0 4px}
+h2{font-size:1.3rem;margin:40px 0 8px;padding-top:8px;border-top:1px solid var(--border)}
+h3{font-size:1.05rem;margin:24px 0 6px}
+p,li{color:var(--text)}
+.muted{color:var(--muted);font-size:.92rem}
+a{color:var(--accent)}
+nav.lang{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 8px}
+nav.lang a{padding:4px 12px;border:1px solid var(--border);border-radius:999px;text-decoration:none;background:var(--card);font-size:.92rem}
+section.lang-block{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:8px 20px 20px;margin:24px 0}
+section.lang-block>h2:first-child{border-top:none;margin-top:16px}
+table{width:100%;border-collapse:collapse;font-size:.92rem;margin:8px 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--border);padding:6px 8px;text-align:left;vertical-align:top}
+th{background:var(--code)}
+details{border:1px solid var(--border);border-radius:10px;padding:8px 12px;margin:8px 0;background:var(--bg)}
+summary{font-weight:600;cursor:pointer}
+code{background:var(--code);padding:1px 5px;border-radius:5px;font-size:.9em}
+footer{padding:24px 16px 48px}
+</style>
 </head>
 <body>
-    <h1>Privacy Policy</h1>
-    <p class="date">Effective Date: October 6, 2026</p>
+<header>
+<h1>WealthPoise Privacy Policy</h1>
+<p class="muted">隱私權政策 · 隐私政策 · プライバシーポリシー</p>
+<nav class="lang" aria-label="Language"><a href="#en" hreflang="en">English</a><a href="#zh-Hant" hreflang="zh-Hant">繁體中文</a><a href="#zh-Hans" hreflang="zh-Hans">简体中文</a><a href="#ja" hreflang="ja">日本語</a></nav>
+</header>
+<main>
+<section class="lang-block" id="en" lang="en">
 
-    <h2>Overview</h2>
-    <p>WealthPoise is designed with your privacy as a top priority. We do not operate any servers, and we do not collect, store, or transmit your portfolio data. Your portfolio data stays on your device and in your private iCloud account. The app shows ads provided by Google AdMob, which collects limited device data as described below.</p>
+<h2>Privacy Policy</h2>
+<p class="muted">Effective date: November 5, 2026 · Developer: CowCow</p>
+<p>WealthPoise is a portfolio rebalancing calculator and net worth tracker for iPhone. We do not operate any servers and we never receive your portfolio data. The app shows ads from Google AdMob, which collects limited device data as described below.</p>
 
-    <h2>Data Collection</h2>
-    <p><strong>We do not collect your portfolio data.</strong> WealthPoise does not require account creation, email registration, or any form of sign-up.</p>
-    <p><strong>Advertising data.</strong> The app shows ads provided by Google AdMob. The ad SDK may collect your IP address (from which it can estimate your general location), device identifiers, information about ads you have seen and how you interact with them. Your portfolio data is never shared with the ad SDK.</p>
+<h3>1. Data we collect</h3>
+<p><strong>None.</strong> We do not collect, store or transmit any personal data to our own servers. WealthPoise does not require an account, email address or sign-up.</p>
 
-    <h2>Data Storage</h2>
-    <p>All data you enter (portfolio assets, cash holdings, liabilities, monthly snapshots, and settings) is stored:</p>
-    <ul>
-        <li><strong>Locally</strong> on your device using Apple's SwiftData framework</li>
-        <li><strong>In your private iCloud</strong> via Apple's CloudKit, if iCloud is enabled on your device</li>
-    </ul>
-    <p>We have no access to your iCloud data. Apple manages the encryption and security of your iCloud storage.</p>
+<h3>2. Data collected by third-party SDKs</h3>
+<p>The app includes the Google Mobile Ads SDK (AdMob) and the Google User Messaging Platform (UMP) SDK. They may collect:</p>
+<table><thead><tr><th>Data</th><th>Used for</th><th>Collected by</th></tr></thead><tbody><tr><td>Coarse location (estimated from IP address)</td><td>Ads, ad measurement, analytics, consent</td><td>Google Mobile Ads, Google UMP</td></tr><tr><td>Device identifiers</td><td>Ads, ad measurement, analytics</td><td>Google Mobile Ads</td></tr><tr><td>Product interaction (ad views and taps)</td><td>Ads, ad measurement, analytics</td><td>Google Mobile Ads, Google UMP</td></tr><tr><td>Advertising data (ads you have seen)</td><td>Ads, ad measurement, analytics</td><td>Google Mobile Ads</td></tr><tr><td>Crash, performance and other diagnostic data</td><td>Analytics, ad delivery</td><td>Google Mobile Ads, Google UMP</td></tr></tbody></table>
+<p>Your holdings, amounts, cash, liabilities and snapshots are never shared with these SDKs. See <a href="https://policies.google.com/privacy">Google's Privacy Policy</a> and <a href="https://policies.google.com/technologies/partner-sites">how Google uses information from apps that use its services</a>.</p>
 
-    <h2>Financial Data</h2>
-    <p>WealthPoise retrieves stock prices and exchange rates from Yahoo Finance to update your portfolio valuations. These requests are made directly from your device and contain only the ticker symbols or currency pairs being looked up, not your holdings, amounts, or any personal information. We do not act as an intermediary and do not log or store any of these requests.</p>
+<h3>3. Where your data is stored and how to delete it</h3>
+<ul><li>Everything you enter (stocks, cash, liabilities, monthly snapshots, settings) is stored on your device with Apple's SwiftData.</li><li>If iCloud is on, the same data syncs through your <strong>private</strong> iCloud database (Apple CloudKit). We cannot access it. Exchange rates are cached on the device only.</li><li>Home and Lock Screen widgets read a summary (net worth, today's change, allocation status) from a shared container on your device. When you hide amounts in the app, no amounts are written for widgets.</li><li>Backup files are created only when you tap Export Backup, and are saved where you choose.</li><li>Data is kept until you delete it. Delete individual items in the app, delete the app to remove local data, and remove iCloud data in iOS Settings &gt; [your name] &gt; iCloud &gt; Manage Account Storage.</li></ul>
 
-    <h2>Third-Party Services</h2>
-    <ul>
-        <li><strong>Google AdMob</strong> provides the ads shown in the app. See <a href="https://policies.google.com/privacy">Google's Privacy Policy</a> and <a href="https://policies.google.com/technologies/partner-sites">how Google uses information from apps that use its services</a>.</li>
-        <li><strong>Yahoo Finance</strong> provides stock prices and exchange rates, as described above.</li>
-        <li><strong>Apple iCloud</strong> stores and syncs your portfolio data in your private iCloud account.</li>
-    </ul>
-    <p>WealthPoise does not integrate any analytics services.</p>
+<h3>4. Permissions</h3>
+<ul><li><strong>Notifications</strong>: requested only when you turn on Deviation Alert, for deviation alerts and settlement day reminders.</li><li><strong>Background App Refresh</strong>: updates prices and exchange rates while the app is not open.</li><li><strong>iCloud</strong>: syncs your data between your own devices.</li><li>Not requested: location, camera, photos, contacts, health, microphone, App Tracking Transparency.</li></ul>
 
-    <h2>Advertising Choices</h2>
-    <p>If you are in the European Economic Area, the United Kingdom, or Switzerland, the app asks for your consent before showing personalized ads, using Google's consent message. You can review or change your choice at any time from Settings &gt; Ad Privacy Settings in the app.</p>
+<h3>5. Network connections</h3>
+<ul><li><strong>Yahoo Finance</strong> (query2.finance.yahoo.com): stock search, prices and exchange rates. Requests contain only ticker symbols or currency pairs, never your holdings or amounts. <a href="https://legal.yahoo.com/us/en/yahoo/privacy/index.html">Yahoo Privacy Policy</a>.</li><li><strong>Google</strong> (AdMob and UMP): ads and consent, as described in section 2. <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</li><li><strong>Apple iCloud</strong>: sync. <a href="https://www.apple.com/legal/privacy/">Apple Privacy Policy</a>.</li></ul>
 
-    <h2>Tracking</h2>
-    <p>WealthPoise does not track you across other companies' apps and websites, and does not ask for App Tracking Transparency permission. Because that permission is not granted, the iOS advertising identifier is not available to the ad SDK.</p>
+<h3>6. Ads and tracking</h3>
+<p>WealthPoise shows native ads in lists and, after you confirm rebalance orders, an occasional full-screen ad (at most once every 4 hours). In the EEA, the UK and Switzerland, the app asks for your consent with Google's consent message before showing personalized ads; you can change your choice in Settings &gt; Ad Privacy Settings. WealthPoise does not ask for App Tracking Transparency permission and does not track you across other companies' apps or websites, so the iOS advertising identifier is not available to the ad SDK.</p>
 
-    <h2>Data Deletion</h2>
-    <p>You can delete any individual record within the app at any time. To remove all data, simply delete the app from your device. If iCloud sync is enabled, you can also remove the data from iCloud via Settings > Apple ID > iCloud > Manage Storage.</p>
+<h3>7. Children</h3>
+<p>WealthPoise is not directed to children under 13 and we do not knowingly collect personal information from children.</p>
 
-    <h2>Changes to This Policy</h2>
-    <p>We may update this privacy policy from time to time. Any changes will be reflected on this page with an updated effective date.</p>
+<h3>8. Your rights and contact</h3>
+<p>Because we hold no personal data, there is nothing for us to access, correct or delete on your behalf; you control all data in the app and in your iCloud. For data collected by Google, see Google's Privacy Policy. Questions: <a href="mailto:kaishacowcow@gmail.com">kaishacowcow@gmail.com</a>.</p>
 
-    <h2>Contact</h2>
-    <p>If you have questions about this privacy policy, please contact us at <a href="mailto:kaishacowcow@gmail.com">kaishacowcow@gmail.com</a>.</p>
+<h3>9. Changes</h3>
+<p>We will post any changes on this page and update the effective date.</p>
+
+</section>
+<section class="lang-block" id="zh-Hant" lang="zh-Hant">
+
+<h2>隱私權政策</h2>
+<p class="muted">生效日期：2026 年 11 月 5 日 · 開發者：CowCow</p>
+<p>WealthPoise 是 iPhone 上的投資組合再平衡計算與淨資產追蹤工具。我們沒有任何伺服器，也從不接收你的投資組合資料。App 會顯示 Google AdMob 的廣告，廣告 SDK 會收集有限的裝置資料，說明如下。</p>
+
+<h3>1. 我們收集的資料</h3>
+<p><strong>不收集。</strong>我們不收集、不儲存，也不傳送任何個人資料到我們的伺服器。WealthPoise 不需要帳號、電子郵件或註冊。</p>
+
+<h3>2. 第三方 SDK 收集的資料</h3>
+<p>App 內含 Google Mobile Ads SDK（AdMob）與 Google User Messaging Platform（UMP）SDK，可能收集：</p>
+<table><thead><tr><th>資料</th><th>用途</th><th>收集者</th></tr></thead><tbody><tr><td>大略位置（由 IP 位址推估）</td><td>廣告、廣告成效衡量、分析、同意聲明</td><td>Google Mobile Ads、Google UMP</td></tr><tr><td>裝置識別碼</td><td>廣告、廣告成效衡量、分析</td><td>Google Mobile Ads</td></tr><tr><td>產品互動（廣告的瀏覽與點擊）</td><td>廣告、廣告成效衡量、分析</td><td>Google Mobile Ads、Google UMP</td></tr><tr><td>廣告資料（看過哪些廣告）</td><td>廣告、廣告成效衡量、分析</td><td>Google Mobile Ads</td></tr><tr><td>當機、效能與其他診斷資料</td><td>分析、廣告投放</td><td>Google Mobile Ads、Google UMP</td></tr></tbody></table>
+<p>你的持股、金額、現金、負債與快照都不會提供給這些 SDK。詳見 <a href="https://policies.google.com/privacy">Google 隱私權政策</a>與<a href="https://policies.google.com/technologies/partner-sites">Google 如何使用合作夥伴網站或應用程式的資訊</a>。</p>
+
+<h3>3. 資料存在哪、存多久、怎麼刪</h3>
+<ul><li>你輸入的所有資料（股票、現金、負債、每月快照、設定）以 Apple 的 SwiftData 存在你的裝置上。</li><li>開啟 iCloud 時，同一份資料會透過你<strong>私人</strong>的 iCloud 資料庫（Apple CloudKit）同步，我們無法存取。匯率只快取在裝置上。</li><li>主畫面與鎖定畫面小工具從裝置上的共用容器讀取摘要（淨資產、今日漲跌、配置狀態）。你在 App 內隱藏金額時，不會寫入任何金額給小工具。</li><li>備份檔只在你按下「匯出備份」時建立，並存到你選擇的位置。</li><li>資料保存到你刪除為止。可在 App 內刪除單筆資料；刪除 App 會移除裝置上的資料；iCloud 資料可到 iOS「設定」&gt;［你的名字］&gt; iCloud &gt;「管理帳號儲存空間」刪除。</li></ul>
+
+<h3>4. 權限</h3>
+<ul><li><strong>通知</strong>：只有在你開啟「資產偏差提醒」時才會要求，用於偏離提醒與結算日提醒。</li><li><strong>背景 App 重新整理</strong>：在 App 未開啟時更新股價與匯率。</li><li><strong>iCloud</strong>：在你自己的裝置之間同步資料。</li><li>不要求：定位、相機、照片、聯絡人、健康、麥克風、App 追蹤透明度。</li></ul>
+
+<h3>5. 網路連線</h3>
+<ul><li><strong>Yahoo Finance</strong>（query2.finance.yahoo.com）：股票搜尋、股價與匯率。請求只包含股票代號或幣別對，不包含你的持股或金額。<a href="https://legal.yahoo.com/us/en/yahoo/privacy/index.html">Yahoo 隱私權政策</a>。</li><li><strong>Google</strong>（AdMob 與 UMP）：廣告與同意聲明，見第 2 節。<a href="https://policies.google.com/privacy">Google 隱私權政策</a>。</li><li><strong>Apple iCloud</strong>：同步。<a href="https://www.apple.com/legal/privacy/">Apple 隱私權政策</a>。</li></ul>
+
+<h3>6. 廣告與追蹤</h3>
+<p>WealthPoise 會在清單中顯示原生廣告，並在你確認再平衡下單後偶爾顯示全螢幕廣告（最多每 4 小時一次）。在歐洲經濟區、英國與瑞士，App 會先以 Google 的同意聲明徵求你的同意，才顯示個人化廣告；你可以在「設定」&gt;「廣告隱私設定」更改。WealthPoise 不要求「App 追蹤透明度」權限，也不會跨其他公司的 App 或網站追蹤你，因此廣告 SDK 無法取得 iOS 廣告識別碼。</p>
+
+<h3>7. 兒童隱私</h3>
+<p>WealthPoise 不以 13 歲以下兒童為對象，我們不會在知情的情況下收集兒童的個人資料。</p>
+
+<h3>8. 你的權利與聯絡方式</h3>
+<p>我們沒有保存任何個人資料，因此沒有需要代你查詢、更正或刪除的資料；App 與你的 iCloud 中的資料完全由你掌控。Google 收集的資料請見 Google 隱私權政策。有任何問題請來信：<a href="mailto:kaishacowcow@gmail.com">kaishacowcow@gmail.com</a>。</p>
+
+<h3>9. 政策變更</h3>
+<p>政策如有變更，會公布在本頁並更新生效日期。</p>
+
+</section>
+<section class="lang-block" id="zh-Hans" lang="zh-Hans">
+
+<h2>隐私政策</h2>
+<p class="muted">生效日期：2026 年 11 月 5 日 · 开发者：CowCow</p>
+<p>WealthPoise 是 iPhone 上的投资组合再平衡计算与净资产追踪工具。我们没有任何服务器，也从不接收你的投资组合数据。App 会显示 Google AdMob 的广告，广告 SDK 会收集有限的设备数据，说明如下。</p>
+
+<h3>1. 我们收集的数据</h3>
+<p><strong>不收集。</strong>我们不收集、不存储，也不传送任何个人数据到我们的服务器。WealthPoise 不需要账号、电子邮件或注册。</p>
+
+<h3>2. 第三方 SDK 收集的数据</h3>
+<p>App 内含 Google Mobile Ads SDK（AdMob）与 Google User Messaging Platform（UMP）SDK，可能收集：</p>
+<table><thead><tr><th>数据</th><th>用途</th><th>收集者</th></tr></thead><tbody><tr><td>大致位置（由 IP 地址推估）</td><td>广告、广告效果衡量、分析、同意声明</td><td>Google Mobile Ads、Google UMP</td></tr><tr><td>设备标识符</td><td>广告、广告效果衡量、分析</td><td>Google Mobile Ads</td></tr><tr><td>产品交互（广告的浏览与点击）</td><td>广告、广告效果衡量、分析</td><td>Google Mobile Ads、Google UMP</td></tr><tr><td>广告数据（看过哪些广告）</td><td>广告、广告效果衡量、分析</td><td>Google Mobile Ads</td></tr><tr><td>崩溃、性能与其他诊断数据</td><td>分析、广告投放</td><td>Google Mobile Ads、Google UMP</td></tr></tbody></table>
+<p>你的持仓、金额、现金、负债与快照都不会提供给这些 SDK。详见 <a href="https://policies.google.com/privacy">Google 隐私权政策</a>与<a href="https://policies.google.com/technologies/partner-sites">Google 如何使用合作伙伴网站或应用的信息</a>。</p>
+
+<h3>3. 数据存在哪、存多久、怎么删</h3>
+<ul><li>你输入的所有数据（股票、现金、负债、每月快照、设置）以 Apple 的 SwiftData 存在你的设备上。</li><li>开启 iCloud 时，同一份数据会通过你<strong>私人</strong>的 iCloud 数据库（Apple CloudKit）同步，我们无法访问。汇率只缓存在设备上。</li><li>主屏幕与锁定屏幕小组件从设备上的共享容器读取摘要（净资产、今日涨跌、配置状态）。你在 App 内隐藏金额时，不会写入任何金额给小组件。</li><li>备份文件只在你点按“导出备份”时建立，并存到你选择的位置。</li><li>数据保存到你删除为止。可在 App 内删除单笔数据；删除 App 会移除设备上的数据；iCloud 数据可到 iOS“设置”&gt;［你的名字］&gt; iCloud &gt;“管理账户储存空间”删除。</li></ul>
+
+<h3>4. 权限</h3>
+<ul><li><strong>通知</strong>：只有在你开启“资产偏差提醒”时才会请求，用于偏离提醒与结算日提醒。</li><li><strong>后台 App 刷新</strong>：在 App 未打开时更新股价与汇率。</li><li><strong>iCloud</strong>：在你自己的设备之间同步数据。</li><li>不请求：定位、相机、照片、通讯录、健康、麦克风、App 跟踪透明度。</li></ul>
+
+<h3>5. 网络连接</h3>
+<ul><li><strong>Yahoo Finance</strong>（query2.finance.yahoo.com）：股票搜索、股价与汇率。请求只包含股票代码或币种对，不包含你的持仓或金额。<a href="https://legal.yahoo.com/us/en/yahoo/privacy/index.html">Yahoo 隐私政策</a>。</li><li><strong>Google</strong>（AdMob 与 UMP）：广告与同意声明，见第 2 节。<a href="https://policies.google.com/privacy">Google 隐私权政策</a>。</li><li><strong>Apple iCloud</strong>：同步。<a href="https://www.apple.com/legal/privacy/">Apple 隐私政策</a>。</li></ul>
+
+<h3>6. 广告与跟踪</h3>
+<p>WealthPoise 会在列表中显示原生广告，并在你确认再平衡下单后偶尔显示全屏广告（最多每 4 小时一次）。在欧洲经济区、英国与瑞士，App 会先以 Google 的同意声明征求你的同意，才显示个性化广告；你可以在“设置”&gt;“广告隐私设置”更改。WealthPoise 不请求“App 跟踪透明度”权限，也不会跨其他公司的 App 或网站跟踪你，因此广告 SDK 无法取得 iOS 广告标识符。</p>
+
+<h3>7. 儿童隐私</h3>
+<p>WealthPoise 不以 13 岁以下儿童为对象，我们不会在知情的情况下收集儿童的个人信息。</p>
+
+<h3>8. 你的权利与联系方式</h3>
+<p>我们没有保存任何个人数据，因此没有需要代你查询、更正或删除的数据；App 与你的 iCloud 中的数据完全由你掌控。Google 收集的数据请见 Google 隐私权政策。有任何问题请来信：<a href="mailto:kaishacowcow@gmail.com">kaishacowcow@gmail.com</a>。</p>
+
+<h3>9. 政策变更</h3>
+<p>政策如有变更，会公布在本页并更新生效日期。</p>
+
+</section>
+<section class="lang-block" id="ja" lang="ja">
+
+<h2>プライバシーポリシー</h2>
+<p class="muted">施行日：2026年11月5日 · 開発者：CowCow</p>
+<p>WealthPoise は iPhone 向けのポートフォリオ・リバランス計算と純資産管理のアプリです。当方はサーバーを運用しておらず、ポートフォリオのデータを受け取ることはありません。アプリには Google AdMob の広告が表示され、広告 SDK が以下のとおり限られたデバイス情報を収集します。</p>
+
+<h3>1. 当方が収集するデータ</h3>
+<p><strong>ありません。</strong>個人データを収集・保存せず、当方のサーバーへ送信することもありません。アカウント、メールアドレス、登録は不要です。</p>
+
+<h3>2. サードパーティ SDK が収集するデータ</h3>
+<p>アプリには Google Mobile Ads SDK（AdMob）と Google User Messaging Platform（UMP）SDK が含まれ、次の情報を収集する場合があります。</p>
+<table><thead><tr><th>データ</th><th>用途</th><th>収集元</th></tr></thead><tbody><tr><td>おおよその位置情報（IP アドレスから推定）</td><td>広告、広告効果測定、分析、同意取得</td><td>Google Mobile Ads、Google UMP</td></tr><tr><td>デバイス識別子</td><td>広告、広告効果測定、分析</td><td>Google Mobile Ads</td></tr><tr><td>製品の操作（広告の表示とタップ）</td><td>広告、広告効果測定、分析</td><td>Google Mobile Ads、Google UMP</td></tr><tr><td>広告データ（表示された広告）</td><td>広告、広告効果測定、分析</td><td>Google Mobile Ads</td></tr><tr><td>クラッシュ、パフォーマンス、その他の診断データ</td><td>分析、広告配信</td><td>Google Mobile Ads、Google UMP</td></tr></tbody></table>
+<p>保有銘柄、金額、現金、負債、スナップショットがこれらの SDK に渡ることはありません。詳しくは<a href="https://policies.google.com/privacy">Google プライバシーポリシー</a>と<a href="https://policies.google.com/technologies/partner-sites">Google のサービスを使用するサイトやアプリから収集した情報の Google による使用</a>をご覧ください。</p>
+
+<h3>3. データの保存場所・保存期間・削除方法</h3>
+<ul><li>入力したデータ（株式、現金、負債、毎月のスナップショット、設定）は Apple の SwiftData でデバイスに保存されます。</li><li>iCloud がオンの場合、同じデータがあなたの<strong>プライベートな</strong> iCloud データベース（Apple CloudKit）で同期されます。当方はアクセスできません。為替レートはデバイスにのみキャッシュされます。</li><li>ホーム画面とロック画面のウィジェットは、デバイス上の共有領域から概要（純資産、今日の損益、配分の状態）を読み込みます。アプリで金額を隠している場合、ウィジェット用に金額は書き込まれません。</li><li>バックアップファイルは「バックアップを書き出す」をタップしたときだけ作成され、指定した場所に保存されます。</li><li>データは削除するまで保持されます。アプリ内で個別に削除でき、アプリを削除するとデバイス上のデータが消えます。iCloud のデータは iOS の「設定」&gt;［ユーザ名］&gt; iCloud &gt;「アカウントのストレージを管理」から削除できます。</li></ul>
+
+<h3>4. 権限</h3>
+<ul><li><strong>通知</strong>：「乖離アラート」をオンにしたときだけ許可を求めます。乖離アラートと決算日リマインダーに使います。</li><li><strong>Appのバックグラウンド更新</strong>：アプリを開いていないときに株価と為替レートを更新します。</li><li><strong>iCloud</strong>：ご自身のデバイス間でデータを同期します。</li><li>要求しないもの：位置情報、カメラ、写真、連絡先、ヘルスケア、マイク、App Tracking Transparency。</li></ul>
+
+<h3>5. 通信先</h3>
+<ul><li><strong>Yahoo Finance</strong>（query2.finance.yahoo.com）：銘柄検索、株価、為替レート。送信するのは銘柄コードと通貨ペアだけで、保有銘柄や金額は含みません。<a href="https://legal.yahoo.com/us/en/yahoo/privacy/index.html">Yahoo プライバシーポリシー</a>。</li><li><strong>Google</strong>（AdMob と UMP）：広告と同意取得。第2項をご覧ください。<a href="https://policies.google.com/privacy">Google プライバシーポリシー</a>。</li><li><strong>Apple iCloud</strong>：同期。<a href="https://www.apple.com/legal/privacy/">Apple プライバシーポリシー</a>。</li></ul>
+
+<h3>6. 広告とトラッキング</h3>
+<p>WealthPoise はリスト内にネイティブ広告を表示し、リバランスの注文を確定した後にまれに全画面広告を表示します（最大 4 時間に 1 回）。欧州経済領域、英国、スイスでは、パーソナライズ広告を表示する前に Google の同意メッセージで同意を求めます。選択は「設定」&gt;「広告のプライバシー設定」で変更できます。WealthPoise は App Tracking Transparency の許可を求めず、他社のアプリや Web サイトをまたいだトラッキングも行わないため、広告 SDK は iOS の広告識別子を取得できません。</p>
+
+<h3>7. 子どものプライバシー</h3>
+<p>WealthPoise は 13 歳未満の子どもを対象としておらず、子どもの個人情報を故意に収集することはありません。</p>
+
+<h3>8. ユーザーの権利とお問い合わせ</h3>
+<p>当方は個人データを保持していないため、代わりに開示・訂正・削除するデータはありません。アプリと iCloud のデータはご自身で管理できます。Google が収集するデータについては Google プライバシーポリシーをご覧ください。お問い合わせ：<a href="mailto:kaishacowcow@gmail.com">kaishacowcow@gmail.com</a></p>
+
+<h3>9. 変更</h3>
+<p>変更がある場合は本ページに掲載し、施行日を更新します。</p>
+
+</section>
+</main>
+<footer class="muted"><a href="https://wei789.github.io/wealthpoise-support.html">WealthPoise Support / 支援</a> · <a href="mailto:kaishacowcow@gmail.com">kaishacowcow@gmail.com</a></footer>
 </body>
 </html>

@@ -1,89 +1,144 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WealthPoise Support</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #000; color: #e0e0e0;
-            line-height: 1.7; padding: 24px;
-            max-width: 720px; margin: 0 auto;
-        }
-        h1 { color: #fff; font-size: 28px; margin: 32px 0 8px; }
-        h2 { color: #fff; font-size: 20px; margin: 28px 0 12px; }
-        h3 { color: #ccc; font-size: 16px; margin: 20px 0 8px; }
-        p, li { margin-bottom: 12px; font-size: 15px; }
-        ul { padding-left: 20px; }
-        a { color: #58a6ff; }
-        .faq { background: #111; border-radius: 12px; padding: 16px 20px; margin-bottom: 16px; }
-        .faq h3 { margin: 0 0 8px; }
-        .faq p:last-child { margin-bottom: 0; }
-        .contact-box {
-            background: #0d1b2a; border: 1px solid #1e3a5f; border-radius: 12px;
-            padding: 20px; margin-top: 24px; text-align: center;
-        }
-        .contact-box a { font-size: 18px; font-weight: 600; }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>WealthPoise Support</title>
+<style>
+:root{--bg:#f7f8fa;--card:#ffffff;--text:#1c1d21;--muted:#5d6270;--accent:#0a66d8;--border:#e3e6eb;--code:#eef1f5}
+@media (prefers-color-scheme:dark){:root{--bg:#111215;--card:#1b1d22;--text:#eceef2;--muted:#a3a8b4;--accent:#5aa7ff;--border:#2c2f36;--code:#24272e}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","PingFang SC","Hiragino Sans","Noto Sans CJK TC",sans-serif;-webkit-text-size-adjust:100%}
+header,main,footer{max-width:760px;margin:0 auto;padding:0 16px}
+header{padding-top:32px}
+h1{font-size:1.75rem;line-height:1.25;margin:0 0 4px}
+h2{font-size:1.3rem;margin:40px 0 8px;padding-top:8px;border-top:1px solid var(--border)}
+h3{font-size:1.05rem;margin:24px 0 6px}
+p,li{color:var(--text)}
+.muted{color:var(--muted);font-size:.92rem}
+a{color:var(--accent)}
+nav.lang{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 8px}
+nav.lang a{padding:4px 12px;border:1px solid var(--border);border-radius:999px;text-decoration:none;background:var(--card);font-size:.92rem}
+section.lang-block{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:8px 20px 20px;margin:24px 0}
+section.lang-block>h2:first-child{border-top:none;margin-top:16px}
+table{width:100%;border-collapse:collapse;font-size:.92rem;margin:8px 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--border);padding:6px 8px;text-align:left;vertical-align:top}
+th{background:var(--code)}
+details{border:1px solid var(--border);border-radius:10px;padding:8px 12px;margin:8px 0;background:var(--bg)}
+summary{font-weight:600;cursor:pointer}
+code{background:var(--code);padding:1px 5px;border-radius:5px;font-size:.9em}
+footer{padding:24px 16px 48px}
+</style>
 </head>
 <body>
-    <h1>WealthPoise Support</h1>
-    <p>We're here to help. Find answers to common questions below, or reach out to us directly.</p>
+<header>
+<h1>WealthPoise Support</h1>
+<p class="muted">支援 · 支持 · サポート</p>
+<nav class="lang" aria-label="Language"><a href="#en" hreflang="en">English</a><a href="#zh-Hant" hreflang="zh-Hant">繁體中文</a><a href="#zh-Hans" hreflang="zh-Hans">简体中文</a><a href="#ja" hreflang="ja">日本語</a></nav>
+</header>
+<main>
+<section class="lang-block" id="en" lang="en">
 
-    <h2>Frequently Asked Questions</h2>
+<h2>WealthPoise Support</h2>
+<p>WealthPoise tells you whether your portfolio is off target and exactly how many shares to buy, and tracks your net worth over time.</p>
+<p><a href="https://apps.apple.com/app/id6761033109">Download on the App Store</a></p>
 
-    <div class="faq">
-        <h3>What markets does WealthPoise support?</h3>
-        <p>WealthPoise supports stocks and ETFs from Taiwan (TWSE), United States (NYSE/NASDAQ), Hong Kong (HKEX), and Japan (TSE) markets.</p>
-    </div>
+<h3>Getting started</h3>
+<ol>
+<li>On <strong>Today</strong>, tap <strong>Add Asset</strong>, search a ticker (for example VOO or 2330), enter the quantity and target percentage.</li>
+<li>In <strong>Holdings</strong>, tap <strong>+</strong> to add cash or liabilities. Targets should add up to 100%.</li>
+<li>Back on <strong>Today</strong>, the status card shows whether you are within range. Tap <strong>Add Funds &amp; Rebalance</strong>, enter an amount and follow the suggestions.</li>
+<li>After you place the orders with your broker, tap <strong>I've Placed These Orders</strong> to update your holdings.</li>
+<li>Open <strong>Settings</strong> with the gear on Today to choose a display currency, deviation alert and settlement day.</li>
+</ol>
 
-    <div class="faq">
-        <h3>What are the two rebalancing modes?</h3>
-        <p><strong>New Funds:</strong> Allocate new money optimally across your portfolio without selling any existing positions.</p>
-        <p><strong>Full Rebalance:</strong> Get precise buy and sell recommendations to bring your portfolio back to its target allocation.</p>
-    </div>
+<h3>Frequently asked questions</h3>
+<details><summary>Which markets and currencies are supported?</summary><p>Stocks and ETFs from Taiwan, the United States, Hong Kong and Japan. Currencies: TWD, USD, JPY, EUR, GBP, HKD and CNY. Each holding uses the currency of its quote (for example USD-traded Taiwan ETFs) and is converted to your display currency.</p></details><details><summary>How often are prices updated?</summary><p>When you open Today (at most every 5 minutes), whenever you pull down to refresh, and in the background when iOS allows it (roughly every few hours). Quotes come from Yahoo Finance and may be delayed by 15–20 minutes.</p></details><details><summary>It says exchange rates are missing.</summary><p>This can happen right after your data syncs to a new device. Pull down on Today to refresh; amounts in other currencies are converted once the rates arrive.</p></details><details><summary>What is the difference between New Funds and Full Rebalance?</summary><p>New Funds only buys with the money you add and never sells. Full Rebalance suggests both buys and sells to match your targets. Turn on Allow Fractional Shares for a holding to get fractional suggestions.</p></details><details><summary>How do monthly snapshots work?</summary><p>On or after your settlement day (Settings, day 1–28), WealthPoise records your total assets, liabilities and net worth automatically once prices are up to date. You can also settle manually from Trends. Snapshots power the net worth chart.</p></details><details><summary>My widget is not updating or shows no data.</summary><p>Open the app once after adding holdings. Widgets are updated when prices refresh, after background refresh and when you leave the app. If you hide amounts in the app, widgets show percentages only.</p></details><details><summary>I'm not getting deviation alerts.</summary><p>Turn on Deviation Alert in Settings, set a threshold and allow notifications. Also check iOS Settings &gt; Notifications &gt; WealthPoise. Each holding alerts at most once a day.</p></details><details><summary>Do I need an account? How does sync work?</summary><p>No account is needed. If you are signed in to iCloud, your data syncs across your devices automatically. If iCloud is unavailable, a banner tells you, and you can use Export Backup in Settings.</p></details><details><summary>How do I back up or move my data?</summary><p>Settings &gt; Export Backup saves a file. On another device, Settings &gt; Import Backup restores it and replaces the current data.</p></details><details><summary>How do I delete my data?</summary><p>Swipe to delete items in Holdings or Trends. Deleting the app removes local data. To remove iCloud data, go to iOS Settings &gt; [your name] &gt; iCloud &gt; Manage Account Storage.</p></details>
 
-    <div class="faq">
-        <h3>How are stock prices updated?</h3>
-        <p>Prices are fetched automatically from financial data providers. You can also trigger a manual refresh. Note that price data may be delayed by 15-20 minutes.</p>
-    </div>
+<h3>Contact</h3>
+<p>Email <a href="mailto:kaishacowcow@gmail.com?subject=WealthPoise%20Support">kaishacowcow@gmail.com</a>. We usually reply within 3 business days. Please include your iOS version and app version (Settings &gt; About).</p>
 
-    <div class="faq">
-        <h3>Which currencies are supported?</h3>
-        <p>WealthPoise supports TWD, USD, JPY, EUR, GBP, HKD, and CNY. Exchange rates are updated automatically, and you can view your entire portfolio in any of these currencies.</p>
-    </div>
+<h3>Version and requirements</h3>
+<p>Version 3.4 · iPhone with iOS 17 or later · <a href="https://wei789.github.io/wealthpoise-privacy.html">Privacy Policy</a></p>
 
-    <div class="faq">
-        <h3>Does my data sync between devices?</h3>
-        <p>Yes. If you have iCloud enabled, your portfolio data automatically syncs across all your devices signed in with the same Apple ID. No setup required.</p>
-    </div>
+</section>
+<section class="lang-block" id="zh-Hant" lang="zh-Hant">
 
-    <div class="faq">
-        <h3>How do deviation alerts work?</h3>
-        <p>Go to Settings > enable "Deviation Alert" and set a threshold percentage. When any asset drifts beyond that threshold from its target allocation, you'll receive a notification.</p>
-    </div>
+<h2>WealthPoise 支援</h2>
+<p>WealthPoise 告訴你投資組合偏了沒、每檔該買幾股，並記錄淨資產的變化。</p>
+<p><a href="https://apps.apple.com/app/id6761033109">在 App Store 下載</a></p>
 
-    <div class="faq">
-        <h3>How do I set up periodic rebalance reminders?</h3>
-        <p>Go to Settings > enable "Periodic Reminder" and choose an interval (30, 60, 90, 180, or 360 days). You'll receive a notification reminding you to review your portfolio.</p>
-    </div>
+<h3>快速上手</h3>
+<ol>
+<li>在<strong>今日</strong>點<strong>新增資產</strong>，搜尋股票代號（例如 2330 或 VOO），輸入數量與目標比例。</li>
+<li>在<strong>持股</strong>點 <strong>+</strong> 新增現金或負債。目標比例加總要是 100%。</li>
+<li>回到<strong>今日</strong>，狀態卡會顯示是否在目標範圍內。點<strong>投入資金並再平衡</strong>，輸入金額，照建議下單。</li>
+<li>在券商下單後點<strong>我已下單，更新持股</strong>，持股數量與現金會自動更新。</li>
+<li>點「今日」右上角的齒輪開啟<strong>設定</strong>，選擇顯示幣別、偏離提醒與結算日。</li>
+</ol>
 
-    <div class="faq">
-        <h3>What is the Monthly Settlement Day?</h3>
-        <p>The settlement day is when WealthPoise takes a monthly snapshot of your total assets, liabilities, and net worth. You can change this day in Settings. This data powers the net worth chart in the History tab.</p>
-    </div>
+<h3>常見問題</h3>
+<details><summary>支援哪些市場與幣別？</summary><p>台股、美股、港股、日股的股票與 ETF。幣別：台幣、美元、日圓、歐元、英鎊、港幣、人民幣。每檔持股以報價幣別記錄（例如台股美元櫃台），再換算成你的顯示幣別。</p></details><details><summary>股價多久更新一次？</summary><p>打開「今日」時（最多每 5 分鐘一次）、下拉重新整理時，以及 iOS 允許時的背景更新（約數小時一次）。報價來自 Yahoo Finance，可能延遲 15–20 分鐘。</p></details><details><summary>顯示缺少匯率？</summary><p>資料剛同步到新裝置時可能發生。在「今日」下拉重新整理，匯率到齊後外幣金額就會換算。</p></details><details><summary>「投入新資金」和「完全重配」有什麼不同？</summary><p>「投入新資金」只用新加入的錢買進，不賣出；「完全重配」同時建議買進與賣出，讓配置回到目標。持股開啟「允許碎股」後會給碎股建議。</p></details><details><summary>每月快照怎麼運作？</summary><p>到了結算日（設定中選 1–28 日）之後，股價更新完成時 WealthPoise 會自動記錄總資產、負債與淨資產；也可以在「趨勢」手動結算。快照用來畫淨資產走勢圖。</p></details><details><summary>小工具沒更新或沒有資料？</summary><p>新增持股後先打開 App 一次。小工具會在股價更新、背景更新與離開 App 時更新。在 App 隱藏金額時，小工具只顯示百分比。</p></details><details><summary>沒收到偏離提醒？</summary><p>在設定開啟「資產偏差提醒」、設定門檻並允許通知，也檢查 iOS「設定」&gt;「通知」&gt; WealthPoise。同一檔持股每天最多提醒一次。</p></details><details><summary>需要帳號嗎？怎麼同步？</summary><p>不需要帳號。登入 iCloud 時，資料會自動在你的裝置間同步。iCloud 無法使用時 App 會提示，也可以用設定裡的「匯出備份」。</p></details><details><summary>怎麼備份或搬到新手機？</summary><p>「設定」&gt;「匯出備份」會存成檔案；在另一台裝置用「設定」&gt;「匯入備份」還原，會取代目前的資料。</p></details><details><summary>怎麼刪除資料？</summary><p>在「持股」或「趨勢」滑動刪除單筆資料。刪除 App 會移除裝置上的資料；iCloud 資料請到 iOS「設定」&gt;［你的名字］&gt; iCloud &gt;「管理帳號儲存空間」刪除。</p></details>
 
-    <div class="faq">
-        <h3>How do I delete all my data?</h3>
-        <p>Delete the app from your device. To also remove iCloud data, go to iOS Settings > Apple ID > iCloud > Manage Storage and remove WealthPoise data.</p>
-    </div>
+<h3>聯絡我們</h3>
+<p>來信 <a href="mailto:kaishacowcow@gmail.com?subject=WealthPoise%20Support">kaishacowcow@gmail.com</a>，通常 3 個工作天內回覆。請附上 iOS 版本與 App 版本（設定 &gt; 關於）。</p>
 
-    <h2>Contact Us</h2>
-    <div class="contact-box">
-        <p>Still need help? We'd love to hear from you.</p>
-        <a href="mailto:kaishacowcow@gmail.com">kaishacowcow@gmail.com</a>
-    </div>
+<h3>版本與系統需求</h3>
+<p>版本 3.4 · iPhone，iOS 17 以上 · <a href="https://wei789.github.io/wealthpoise-privacy.html">隱私權政策</a></p>
+
+</section>
+<section class="lang-block" id="zh-Hans" lang="zh-Hans">
+
+<h2>WealthPoise 支持</h2>
+<p>WealthPoise 告诉你投资组合偏了没有、每只该买几股，并记录净资产的变化。</p>
+<p><a href="https://apps.apple.com/app/id6761033109">在 App Store 下载</a></p>
+
+<h3>快速上手</h3>
+<ol>
+<li>在<strong>今日</strong>点<strong>添加资产</strong>，搜索股票代码（例如 0700 或 VOO），输入数量与目标比例。</li>
+<li>在<strong>持仓</strong>点 <strong>+</strong> 添加现金或负债。目标比例合计要是 100%。</li>
+<li>回到<strong>今日</strong>，状态卡会显示是否在目标范围内。点<strong>投入资金并再平衡</strong>，输入金额，按建议下单。</li>
+<li>在券商下单后点<strong>我已下单</strong>，持仓数量与现金会自动更新。</li>
+<li>点“今日”右上角的齿轮打开<strong>设置</strong>，选择显示币种、偏离提醒与结算日。</li>
+</ol>
+
+<h3>常见问题</h3>
+<details><summary>支持哪些市场与币种？</summary><p>台股、美股、港股、日股的股票与 ETF。币种：新台币、美元、日元、欧元、英镑、港币、人民币。每只持仓以报价币种记录（例如港股人民币柜台），再换算成你的显示币种。</p></details><details><summary>股价多久更新一次？</summary><p>打开“今日”时（最多每 5 分钟一次）、下拉刷新时，以及 iOS 允许时的后台更新（约数小时一次）。报价来自 Yahoo Finance，可能延迟 15–20 分钟。</p></details><details><summary>显示缺少汇率？</summary><p>数据刚同步到新设备时可能发生。在“今日”下拉刷新，汇率到齐后外币金额就会换算。</p></details><details><summary>“投入新资金”和“完全重配”有什么不同？</summary><p>“投入新资金”只用新加入的钱买入，不卖出；“完全重配”同时建议买入与卖出，让配置回到目标。持仓开启“允许碎股”后会给碎股建议。</p></details><details><summary>每月快照怎么运作？</summary><p>到了结算日（设置中选 1–28 日）之后，股价更新完成时 WealthPoise 会自动记录总资产、负债与净资产；也可以在“趋势”手动结算。快照用来绘制净资产走势图。</p></details><details><summary>小组件没更新或没有数据？</summary><p>添加持仓后先打开 App 一次。小组件会在股价更新、后台更新与离开 App 时更新。在 App 隐藏金额时，小组件只显示百分比。</p></details><details><summary>没收到偏离提醒？</summary><p>在设置开启“资产偏差提醒”、设置阈值并允许通知，也检查 iOS“设置”&gt;“通知”&gt; WealthPoise。同一只持仓每天最多提醒一次。</p></details><details><summary>需要账号吗？怎么同步？</summary><p>不需要账号。登录 iCloud 时，数据会自动在你的设备间同步。iCloud 无法使用时 App 会提示，也可以用设置里的“导出备份”。</p></details><details><summary>怎么备份或搬到新手机？</summary><p>“设置”&gt;“导出备份”会存成文件；在另一台设备用“设置”&gt;“导入备份”还原，会取代当前的数据。</p></details><details><summary>怎么删除数据？</summary><p>在“持仓”或“趋势”滑动删除单笔数据。删除 App 会移除设备上的数据；iCloud 数据请到 iOS“设置”&gt;［你的名字］&gt; iCloud &gt;“管理账户储存空间”删除。</p></details>
+
+<h3>联系我们</h3>
+<p>来信 <a href="mailto:kaishacowcow@gmail.com?subject=WealthPoise%20Support">kaishacowcow@gmail.com</a>，通常 3 个工作日内回复。请附上 iOS 版本与 App 版本（设置 &gt; 关于）。</p>
+
+<h3>版本与系统要求</h3>
+<p>版本 3.4 · iPhone，iOS 17 或更高版本 · <a href="https://wei789.github.io/wealthpoise-privacy.html">隐私政策</a></p>
+
+</section>
+<section class="lang-block" id="ja" lang="ja">
+
+<h2>WealthPoise サポート</h2>
+<p>WealthPoise は、ポートフォリオが目標からズレていないか、銘柄ごとに何株買えばいいかを示し、純資産の推移を記録します。</p>
+<p><a href="https://apps.apple.com/app/id6761033109">App Store でダウンロード</a></p>
+
+<h3>はじめかた</h3>
+<ol>
+<li><strong>今日</strong>で<strong>資産を追加</strong>をタップし、銘柄コード（例：7203、VOO）を検索して数量と目標比率を入力します。</li>
+<li><strong>保有銘柄</strong>の <strong>+</strong> から現金や負債を追加します。目標比率の合計は 100% にします。</li>
+<li><strong>今日</strong>に戻ると、ステータスカードに目標範囲内かどうかが表示されます。<strong>資金を追加してリバランス</strong>をタップし、金額を入れて提案どおりに注文します。</li>
+<li>証券会社で注文したら<strong>注文済み・保有数を更新</strong>をタップすると、保有数と現金が更新されます。</li>
+<li>「今日」右上の歯車から<strong>設定</strong>を開き、表示通貨、乖離アラート、決算日を選びます。</li>
+</ol>
+
+<h3>よくある質問</h3>
+<details><summary>対応している市場と通貨は？</summary><p>日本・米国・台湾・香港の株式と ETF。通貨：円、米ドル、台湾ドル、ユーロ、英ポンド、香港ドル、人民元。各銘柄は相場の通貨で記録し、表示通貨に換算します。</p></details><details><summary>株価はどのくらいの頻度で更新されますか？</summary><p>「今日」を開いたとき（最大 5 分に 1 回）、下に引いて更新したとき、iOS が許可したときのバックグラウンド更新（数時間に 1 回程度）です。相場データは Yahoo Finance から取得しており、15〜20 分遅れる場合があります。</p></details><details><summary>「為替レートがありません」と表示されます。</summary><p>新しいデバイスにデータが同期された直後に起こることがあります。「今日」で下に引いて更新すると、レートの取得後に外貨の金額が換算されます。</p></details><details><summary>「新規資金」と「完全リバランス」の違いは？</summary><p>「新規資金」は追加したお金だけで買い付け、売却はしません。「完全リバランス」は目標に合わせて買いと売りの両方を提案します。銘柄で「端数株を許可」をオンにすると端株単位で提案します。</p></details><details><summary>毎月のスナップショットの仕組みは？</summary><p>決算日（設定で 1〜28 日）以降、株価が最新になると総資産・負債・純資産を自動で記録します。「推移」から手動で決算することもできます。スナップショットは純資産グラフに使われます。</p></details><details><summary>ウィジェットが更新されない・表示されない</summary><p>銘柄を追加したら一度アプリを開いてください。ウィジェットは株価の更新時、バックグラウンド更新後、アプリを閉じたときに更新されます。アプリで金額を隠すと、ウィジェットも比率だけを表示します。</p></details><details><summary>乖離アラートが届きません</summary><p>設定で「乖離アラート」をオンにしてしきい値を設定し、通知を許可してください。iOS の「設定」&gt;「通知」&gt; WealthPoise も確認してください。同じ銘柄の通知は 1 日 1 回までです。</p></details><details><summary>アカウントは必要ですか？同期の仕組みは？</summary><p>アカウントは不要です。iCloud にサインインしていれば、データはデバイス間で自動同期されます。iCloud が使えない場合はアプリに表示されるので、設定の「バックアップを書き出す」をご利用ください。</p></details><details><summary>バックアップや機種変更の方法は？</summary><p>「設定」&gt;「バックアップを書き出す」でファイルを保存し、別のデバイスで「設定」&gt;「バックアップを読み込む」から復元します。現在のデータは置き換えられます。</p></details><details><summary>データを削除するには？</summary><p>「保有銘柄」や「推移」でスワイプして個別に削除できます。アプリを削除するとデバイス上のデータが消えます。iCloud のデータは iOS の「設定」&gt;［ユーザ名］&gt; iCloud &gt;「アカウントのストレージを管理」から削除してください。</p></details>
+
+<h3>お問い合わせ</h3>
+<p><a href="mailto:kaishacowcow@gmail.com?subject=WealthPoise%20Support">kaishacowcow@gmail.com</a> までメールでご連絡ください。通常 3 営業日以内に返信します。iOS のバージョンとアプリのバージョン（設定 &gt; アプリについて）をお書き添えください。</p>
+
+<h3>バージョンと動作環境</h3>
+<p>バージョン 3.4 · iOS 17 以降の iPhone · <a href="https://wei789.github.io/wealthpoise-privacy.html">プライバシーポリシー</a></p>
+
+</section>
+</main>
+<footer class="muted"><a href="https://wei789.github.io/wealthpoise-privacy.html">Privacy Policy / 隱私權政策</a> · <a href="mailto:kaishacowcow@gmail.com">kaishacowcow@gmail.com</a></footer>
 </body>
 </html>
