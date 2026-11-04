@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鄭惟臣 Weichen Cheng · iOS Engineer</title>
+<meta name="description" content="iOS 工程師鄭惟臣（Weichen Cheng）：10 年 Swift、7 款上架 App 累積 5.6 萬下載、AI 輔助開發。">
+<meta property="og:title" content="鄭惟臣 Weichen Cheng · iOS Engineer">
+<meta property="og:description" content="10 年 iOS · 7 款上架 App · 5.6 萬下載 · AI 輔助開發">
+<meta property="og:type" content="website">
+<link rel="icon" href="icons/babysync.png">
+<style>
+:root{
+  --bg:#f7f5f0;--bg2:#ffffff;--fg:#1a1a1a;--fg2:#5a5a5a;--line:#e3dfd6;
+  --accent:#1f6f8b;--accent2:#e8f1f5;--chip:#efece6;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 8px 24px -12px rgba(0,0,0,.15);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#14161a;--bg2:#1d2026;--fg:#ecebe7;--fg2:#a2a39f;--line:#2c3038;
+    --accent:#6fb7d2;--accent2:#1b2b33;--chip:#262a31;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14161a;--bg2:#1d2026;--fg:#ecebe7;--fg2:#a2a39f;--line:#2c3038;
+  --accent:#6fb7d2;--accent2:#1b2b33;--chip:#262a31;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box}
+.stat,.card,.step,.skill,.job{min-width:0;overflow-wrap:anywhere}
+html,body{overflow-x:hidden}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);
+  font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang TC","Noto Sans TC","Segoe UI",Roboto,sans-serif;
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
+.brand{font-weight:700;letter-spacing:.3px;color:var(--fg)}
+nav a{color:var(--fg2);margin-left:18px;font-size:14px}
+nav a:hover{color:var(--fg);text-decoration:none}
+.nav-links{display:none}
+@media(min-width:720px){.nav-links{display:block}}
+.lang{border:1px solid var(--line);background:var(--bg2);color:var(--fg);border-radius:999px;padding:4px 12px;font-size:13px;cursor:pointer;margin-left:16px}
+section{padding:56px 0}
+h1{font-size:clamp(22px,3vw,28px);line-height:1.25;margin:0 0 8px;letter-spacing:-.2px;font-weight:600}
+h2{font-size:24px;margin:0 0 20px;letter-spacing:-.3px}
+h3{font-size:17px;margin:0 0 4px}
+.lead{font-size:18px;color:var(--fg2);max-width:640px;margin:0 0 22px}
+.tag{display:inline-block;font-size:13px;color:var(--accent);background:var(--accent2);border-radius:999px;padding:3px 12px;margin-bottom:14px;font-weight:600}
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:10px;padding:10px 16px;font-weight:600;font-size:15px;border:1px solid var(--line);background:var(--bg2);color:var(--fg);box-shadow:var(--shadow)}
+.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.btn:hover{text-decoration:none;transform:translateY(-1px)}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:36px}
+@media(min-width:720px){.stats{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.stat{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow)}
+.stat b{display:block;font-size:28px;letter-spacing:-.5px;line-height:1.1}
+.stat span{font-size:13px;color:var(--fg2)}
+.grid{display:grid;gap:14px;grid-template-columns:1fr}
+@media(min-width:620px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.card{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow);display:flex;gap:14px;align-items:flex-start}
+.card img{width:64px;height:64px;border-radius:15px;flex:none;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.card .body{min-width:0}
+.card p{margin:4px 0 8px;color:var(--fg2);font-size:14.5px}
+.card .meta{font-size:12.5px;color:var(--fg2)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{font-size:12px;background:var(--chip);border-radius:6px;padding:2px 8px;color:var(--fg2)}
+.links{margin-top:8px;font-size:14px}
+.links a+a{margin-left:12px}
+.steps{display:grid;gap:14px;grid-template-columns:1fr}
+@media(min-width:720px){.steps{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.step{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+.step .n{display:inline-block;width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;text-align:center;line-height:28px;font-weight:700;font-size:14px;margin-bottom:10px}
+.step p{margin:0;color:var(--fg2);font-size:14.5px}
+.timeline{border-left:2px solid var(--line);margin-left:6px;padding-left:22px}
+.job{position:relative;margin-bottom:22px}
+.job::before{content:"";position:absolute;left:-29px;top:8px;width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid var(--bg)}
+.job .when{font-size:13px;color:var(--fg2)}
+.job ul{margin:6px 0 0;padding-left:18px;color:var(--fg2);font-size:14.5px}
+.job li{margin-bottom:2px}
+.skills{display:grid;gap:12px;grid-template-columns:1fr}
+@media(min-width:720px){.skills{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.skill{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.skill h3{font-size:14px;color:var(--fg2);text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px}
+footer{border-top:1px solid var(--line);padding:32px 0 48px;color:var(--fg2);font-size:14px}
+footer .row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}
+.muted{color:var(--fg2)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top">Weichen Cheng</a>
+    <nav>
+      <span class="nav-links">
+        <a href="#apps" data-i18n="nav_apps">作品</a>
+        <a href="#ai" data-i18n="nav_ai">開發方式</a>
+        <a href="#experience" data-i18n="nav_exp">經歷</a>
+        <a href="#skills" data-i18n="nav_skills">技能</a>
+        <a href="#contact" data-i18n="nav_contact">聯絡</a>
+      </span>
+      <button class="lang" id="langBtn" type="button" aria-label="Switch language">EN</button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="wrap">
+  <span class="tag" data-i18n="hero_tag">iOS 工程師 · 台北 · 接受遠端與接案</span>
+  <h1><span data-i18n="hero_name">鄭惟臣</span> <span class="muted" style="font-weight:500">Weichen Cheng</span></h1>
+  <p class="lead" data-i18n="hero_lead">做 iOS 十年，7 款 App 在 App Store 上架並維護中。習慣從需求、架構、測試一路做到上架與變現，近期以 Claude Code 搭配自己寫的開發規範工作。</p>
+  <div class="cta">
+    <a class="btn primary" href="https://apps.apple.com/tw/developer/weichen-cheng/id1193049632" target="_blank" rel="noopener" data-i18n="cta_apps">App Store 作品</a>
+    <a class="btn" href="mailto:revok117@hotmail.com" data-i18n="cta_mail">Email 聯絡</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>14</b><span data-i18n="st_years">年軟體開發，10 年 iOS</span></div>
+    <div class="stat"><b>7</b><span data-i18n="st_apps">款上架 App，1 款送審中</span></div>
+    <div class="stat"><b>56K</b><span data-i18n="st_dl">累積首次下載（App Store Connect）</span></div>
+    <div class="stat"><b>90%+</b><span data-i18n="st_cov">近期專案測試覆蓋率</span></div>
+  </div>
+</section>
+
+<section class="wrap" id="apps">
+  <h2 data-i18n="apps_h">上架作品</h2>
+  <p class="lead" style="font-size:16px" data-i18n="apps_lead">全部由我一人設計、開發、測試、上架與維護。App Store 開發者名稱「Weichen Cheng」。</p>
+  <div class="grid">
+    <div class="card">
+      <img src="icons/babysync.png" alt="BabySync+ icon">
+      <div class="body">
+        <h3>BabySync+</h3>
+        <p data-i18n="app_babysync">寶寶照護紀錄：餵奶、尿布、睡眠、副食品、生長曲線。Widget 一鍵記錄、動態島計時、家人即時同步、訂閱制 Plus。</p>
+        <div class="chips"><span class="chip">SwiftUI</span><span class="chip">SwiftData</span><span class="chip">WidgetKit</span><span class="chip">Live Activity</span><span class="chip">Firebase</span><span class="chip">StoreKit 2</span></div>
+        <div class="meta" data-i18n="meta_babysync">2026 · 5 語系 · 1,255 個測試 · 約 3.1 萬行</div>
+        <div class="links"><a href="https://apps.apple.com/tw/app/babysync/id6759586973" target="_blank" rel="noopener">App Store ↗</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="icons/wealthpoise.png" alt="WealthPoise icon">
+      <div class="body">
+        <h3>WealthPoise</h3>
+        <p data-i18n="app_wealthpoise">投資組合再平衡：台／美／港／日股票與 ETF、兩種再平衡模式、7 種幣別、淨值月快照、偏離警示、iCloud 同步。</p>
+        <div class="chips"><span class="chip">SwiftUI</span><span class="chip">SwiftData</span><span class="chip">CloudKit</span><span class="chip">Swift Charts</span><span class="chip">fastlane</span></div>
+        <div class="meta" data-i18n="meta_wealthpoise">2026 · 4 語系 · v1.0 → v3.3</div>
+        <div class="links"><a href="https://apps.apple.com/tw/app/wealthpoise/id6761033109" target="_blank" rel="noopener">App Store ↗</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="icons/carspeedtest.png" alt="CarSpeedTest icon">
+      <div class="body">
+        <h3>CarSpeedTest</h3>
+        <p data-i18n="app_carspeedtest">GPS 零百加速計時：起步自動計時、速度曲線、iCloud 同步紀錄。2020 年上架維護至今。</p>
+        <div class="chips"><span class="chip">UIKit</span><span class="chip">Combine</span><span class="chip">Core Location</span><span class="chip">AdMob</span></div>
+        <div class="meta" data-i18n="meta_carspeedtest">累積下載 54,968 · 175 個地區 · 188 個測試、覆蓋率 99.4%</div>
+        <div class="links"><a href="https://apps.apple.com/tw/app/carspeedtest/id1539375221" target="_blank" rel="noopener">App Store ↗</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="icons/rainway.png" alt="RainWay icon">
+      <div class="body">
+        <h3>RainWay <span class="muted" style="font-weight:500" data-i18n="rainway_name">通勤知雨</span></h3>
+        <p data-i18n="app_rainway">多站點通勤降雨機率與帶傘建議，主畫面與 Widget 一眼看完。無後端、不需 GPS 權限。</p>
+        <div class="chips"><span class="chip">SwiftUI</span><span class="chip">WidgetKit</span><span class="chip">WeatherKit</span><span class="chip">MapKit</span></div>
+        <div class="meta" data-i18n="meta_rainway">2026 · 235 個測試、覆蓋率 94.7% · App Store 審核中</div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="icons/glucosetimer.png" alt="Glucose Timer icon">
+      <div class="body">
+        <h3>Glucose Timer</h3>
+        <p data-i18n="app_glucose">飯後血糖計時提醒：一鍵開始用餐、自動判斷餐別、兩小時後推播、長按通知直接記錄、紅綠燈日曆。資料只存本機。</p>
+        <div class="chips"><span class="chip">SwiftUI</span><span class="chip">SwiftData</span><span class="chip">WidgetKit</span><span class="chip">AppIntents</span></div>
+        <div class="meta" data-i18n="meta_glucose">2025 · 4 語系</div>
+        <div class="links"><a href="https://apps.apple.com/tw/app/glucose-timer/id6755944934" target="_blank" rel="noopener">App Store ↗</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="icons/lightread.png" alt="LightRead icon">
+      <div class="body">
+        <h3>LightRead</h3>
+        <p data-i18n="app_lightread">極簡新聞閱讀器：標題一覽、隱藏不想看的來源、無干擾閱讀、選擇新聞地區。</p>
+        <div class="chips"><span class="chip">SwiftUI</span><span class="chip">TCA</span><span class="chip">WebKit</span></div>
+        <div class="meta" data-i18n="meta_lightread">2025 · 4 語系</div>
+        <div class="links"><a href="https://apps.apple.com/tw/app/lightread/id6753268332" target="_blank" rel="noopener">App Store ↗</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="icons/spino.png" alt="Spino icon">
+      <div class="body">
+        <h3>Spino</h3>
+        <p data-i18n="app_spino">轉盤決策：自訂選項、轉盤動畫、儲存常用清單。Core Graphics 自繪轉盤。</p>
+        <div class="chips"><span class="chip">UIKit</span><span class="chip">Core Graphics</span><span class="chip">Core Animation</span></div>
+        <div class="meta" data-i18n="meta_spino">2025 · 5 語系</div>
+        <div class="links"><a href="https://apps.apple.com/tw/app/spino/id6753718277" target="_blank" rel="noopener">App Store ↗</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="icons/calcfx.png" alt="Calc FX icon">
+      <div class="body">
+        <h3>Calc FX</h3>
+        <p data-i18n="app_calcfx">旅行匯率計算機：多幣別一鍵換算、每 24 小時更新、離線可用。</p>
+        <div class="chips"><span class="chip">SwiftUI</span><span class="chip">AdMob</span></div>
+        <div class="meta" data-i18n="meta_calcfx">2024 · 7 語系</div>
+        <div class="links"><a href="https://apps.apple.com/tw/app/calc-fx/id6738332392" target="_blank" rel="noopener">App Store ↗</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="ai">
+  <h2 data-i18n="ai_h">開發方式</h2>
+  <p class="lead" style="font-size:16px" data-i18n="ai_lead">AI 產出程式與文件，我定規則、驗證與把關。規範寫成 AI 能照做的文件，變更先提案，測試與上架都自動化。</p>
+  <div class="steps">
+    <div class="step"><span class="n">1</span><h3 data-i18n="ai1_h">規範寫給 AI 執行</h3><p data-i18n="ai1_p">每個專案都有 CLAUDE.md：分支流程、合併條件（可編譯、測試全過、文件更新）、測試規則、程式碼準則。Claude Code 與 Cursor 照著做。</p></div>
+    <div class="step"><span class="n">2</span><h3 data-i18n="ai2_h">變更先提案再動工</h3><p data-i18n="ai2_p">用 OpenSpec 管理變更提案；測試依需求撰寫而不是反推現況，外部依賴全部可注入，覆蓋率目標 90% 以上。</p></div>
+    <div class="step"><span class="n">3</span><h3 data-i18n="ai3_h">上架也自動化</h3><p data-i18n="ai3_p">自訂 Claude Code skills 產生多語系上架文案、截圖與隱私權頁，fastlane 一鍵上傳。最多 7 語系。</p></div>
+  </div>
+</section>
+
+<section class="wrap" id="experience">
+  <h2 data-i18n="exp_h">工作經歷</h2>
+  <div class="timeline">
+    <div class="job"><h3 data-i18n="j1_h">百阜科技 · iOS 工程師</h3><div class="when">2023.03 – 2026.11</div>
+      <ul><li data-i18n="j1_1">博弈遊戲 App：iOS 原生端（UIKit / SwiftUI）與 Unity 遊戲內容介接</li><li data-i18n="j1_2">聊天軟體 App、影片播放 App；MVVM / MVVM-C；多品牌版本 App 上架維護</li><li data-i18n="j1_3">在團隊導入 AI 輔助開發；團隊 3~6 人</li></ul></div>
+    <div class="job"><h3 data-i18n="j2_h">即準數位科技（MixerBox）· iOS 工程師</h3><div class="when">2022.07 – 2023.02</div>
+      <ul><li data-i18n="j2_1">MixerBox 新聞 App：修正 bug、新增功能、固定節奏送審上架；Firebase Crashlytics</li></ul></div>
+    <div class="job"><h3 data-i18n="j3_h">希格斯資訊科技 · APP 工程師</h3><div class="when">2020.12 – 2022.07</div>
+      <ul><li data-i18n="j3_1">RxSwift + MVVM 實作登入、註冊、充值、提現、交易紀錄與第三方 web game 串接</li><li data-i18n="j3_2">從零建立 CI/CD（Jenkins + fastlane）；導入 SwiftLint 與 Crashlytics</li></ul></div>
+    <div class="job"><h3 data-i18n="j4_h">趣遊科技 · 高級工程師</h3><div class="when">2018.05 – 2020.11</div>
+      <ul><li data-i18n="j4_1">建立新博弈 App 的架構（MVVM）並開發，重構既有 App；團隊 3~4 人</li></ul></div>
+    <div class="job"><h3 data-i18n="j5_h">昕力／傑亮資訊 · 軟體工程師</h3><div class="when">2016.05 – 2018.05</div>
+      <ul><li data-i18n="j5_1">遠傳健康＋：HealthKit 與 Google Fit 整合、推播、Core Bluetooth 健康裝置串接</li><li data-i18n="j5_2">饕客夯（Facebook SDK、Google Maps SDK）；富邦保單平板工具（Xamarin + C#）</li></ul></div>
+    <div class="job"><h3 data-i18n="j6_h">功典資訊 · 軟體工程師（後端）</h3><div class="when">2014.09 – 2016.04</div>
+      <ul><li data-i18n="j6_1">電商行銷分析系統：ASP.NET Web API 2、Quartz.NET、Entity Framework 6、MSSQL、MongoDB</li></ul></div>
+    <div class="job"><h3 data-i18n="j7_h">精誠資訊 · 軟體工程師</h3><div class="when">2012.06 – 2014.07</div>
+      <ul><li data-i18n="j7_1">銀行系統與理專財富管理系統（C#、Java）</li></ul></div>
+  </div>
+</section>
+
+<section class="wrap" id="skills">
+  <h2 data-i18n="sk_h">技能</h2>
+  <div class="skills">
+    <div class="skill"><h3 data-i18n="sk1_h">語言與 UI</h3>Swift（10 年）、SwiftUI、UIKit、Combine、Observation、RxSwift、MVVM / MVVM-C、The Composable Architecture</div>
+    <div class="skill"><h3 data-i18n="sk2_h">Apple 框架</h3>SwiftData、Core Data、CloudKit、WidgetKit、ActivityKit、AppIntents、StoreKit 2、WeatherKit、MapKit、Core Location、Core Bluetooth、HealthKit、Swift Charts</div>
+    <div class="skill"><h3 data-i18n="sk3_h">測試與交付</h3>Swift Testing、XCTest、ViewInspector、依賴注入；fastlane、Jenkins、SwiftLint、SPM、Git；App Store 審核、隱私權標籤、ATT、訂閱</div>
+    <div class="skill"><h3 data-i18n="sk4_h">服務與其他</h3>Firebase（Auth、Firestore、Storage、Crashlytics）、Google Mobile Ads、Unity 介接；C#、ASP.NET Web API、MSSQL、MongoDB、Xamarin</div>
+  </div>
+</section>
+
+<section class="wrap" id="contact">
+  <h2 data-i18n="ct_h">聯絡</h2>
+  <p class="lead" style="font-size:16px" data-i18n="ct_lead">歡迎討論 iOS 正職機會或 App 接案。</p>
+  <div class="cta">
+    <a class="btn primary" href="mailto:revok117@hotmail.com">revok117@hotmail.com</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap row">
+    <span>© 2026 Weichen Cheng</span>
+    <span data-i18n="ft_note">數字來源：App Store Connect，2026 年 11 月。</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var en = {
+    nav_apps:"Apps", nav_ai:"How I work", nav_exp:"Experience", nav_skills:"Skills", nav_contact:"Contact",
+    hero_tag:"iOS Engineer · Taipei · open to remote and freelance",
+    hero_name:"",
+    hero_lead:"Ten years of iOS, with 7 apps live on the App Store. I usually take an app from requirements and architecture through tests to release and monetization, and lately work with Claude Code under my own engineering rules.",
+    cta_apps:"Apps on the App Store", cta_mail:"Email me",
+    st_years:"years in software, 10 in iOS", st_apps:"apps shipped, 1 in review", st_dl:"lifetime downloads (App Store Connect)", st_cov:"test coverage on recent projects",
+    apps_h:"Shipped apps", apps_lead:"Designed, built, tested, released and maintained by me. App Store developer \"Weichen Cheng\".",
+    app_babysync:"Baby-care tracker: feeds, diapers, sleep, solids, growth charts. One-tap widget logging, Dynamic Island timers, real-time family sync, Plus subscription.",
+    meta_babysync:"2026 · 5 languages · 1,255 tests · ~31K lines",
+    app_wealthpoise:"Portfolio rebalancing: TW/US/HK/JP stocks and ETFs, two rebalancing modes, 7 currencies, monthly net-worth snapshots, drift alerts, iCloud sync.",
+    meta_wealthpoise:"2026 · 4 languages · v1.0 → v3.3",
+    app_carspeedtest:"GPS 0–100 km/h timer: auto start on launch, speed curve, iCloud-synced history. Live since 2020 and still maintained.",
+    meta_carspeedtest:"54,968 downloads · 175 regions · 188 tests, 99.4% coverage",
+    rainway_name:"",
+    app_rainway:"Rain probability and umbrella advice for every stop on your commute, at a glance in the app and widget. No backend, no GPS permission.",
+    meta_rainway:"2026 · 235 tests, 94.7% coverage · in App Review",
+    app_glucose:"Post-meal glucose reminder: one-tap meal start, automatic meal type, 2-hour push, log from the notification, traffic-light calendar. On-device only.",
+    meta_glucose:"2025 · 4 languages",
+    app_lightread:"Minimal news reader: headlines at a glance, hide sources, distraction-free reading, choose your region.",
+    meta_lightread:"2025 · 4 languages",
+    app_spino:"Decision wheel: custom options, spin animation, saved lists. Wheel drawn with Core Graphics.",
+    meta_spino:"2025 · 5 languages",
+    app_calcfx:"Travel currency calculator: one-tap multi-currency conversion, rates refreshed every 24 hours, works offline.",
+    meta_calcfx:"2024 · 7 languages",
+    ai_h:"How I work",
+    ai_lead:"AI writes code and docs; I set the rules, verify and sign off. Rules live in documents AI can follow, changes start as proposals, and tests and releases are automated.",
+    ai1_h:"Rules written for AI to follow", ai1_p:"Every project has a CLAUDE.md: branching, merge gates (builds, all tests pass, docs updated), test rules, code standards. Claude Code and Cursor follow it.",
+    ai2_h:"Propose before changing", ai2_p:"Changes go through OpenSpec proposals. Tests are written from requirements, not from current output; every external dependency is injectable; coverage target 90%+.",
+    ai3_h:"Releases are automated too", ai3_p:"Custom Claude Code skills generate localized store metadata, screenshots and privacy pages; fastlane uploads them in one command. Up to 7 languages.",
+    exp_h:"Experience",
+    j1_h:"Baifu Technology · iOS Engineer", j1_1:"Gaming apps: native iOS shell (UIKit / SwiftUI) bridged to Unity game content", j1_2:"Chat app and video-player app; MVVM / MVVM-C; multiple branded variants maintained on the App Store", j1_3:"Introduced AI-assisted development to the team; team of 3–6",
+    j2_h:"MixerBox · iOS Engineer", j2_1:"MixerBox News app: bug fixes, new features, regular releases; Firebase Crashlytics",
+    j3_h:"Higgs Information Technology · App Engineer", j3_1:"Login, sign-up, deposit, withdrawal, transaction history and third-party web-game integration with RxSwift + MVVM", j3_2:"CI/CD from scratch (Jenkins + fastlane); introduced SwiftLint and Crashlytics",
+    j4_h:"Quyou Technology · Senior Engineer", j4_1:"Designed the MVVM architecture of a new gaming app and built it while refactoring the existing one; team of 3–4",
+    j5_h:"TPIsoftware · Software Engineer", j5_1:"FarEasTone Health+: HealthKit and Google Fit integration, push, Core Bluetooth health devices", j5_2:"Kinmen food guide (Facebook SDK, Google Maps SDK); Fubon insurance tablet apps (Xamarin + C#)",
+    j6_h:"Migo · Backend Engineer", j6_1:"E-commerce marketing analytics: ASP.NET Web API 2, Quartz.NET, Entity Framework 6, MSSQL, MongoDB",
+    j7_h:"SYSTEX · Software Engineer", j7_1:"Banking and wealth-management systems (C#, Java)",
+    sk_h:"Skills", sk1_h:"Languages & UI", sk2_h:"Apple frameworks", sk3_h:"Testing & delivery", sk4_h:"Services & other",
+    ct_h:"Contact", ct_lead:"Open to iOS roles and freelance app projects.",
+    ft_note:"Figures from App Store Connect, November 2026."
+  };
+  var zh = {};
+  var nodes = document.querySelectorAll("[data-i18n]");
+  nodes.forEach(function(n){ zh[n.getAttribute("data-i18n")] = n.textContent; });
+  var btn = document.getElementById("langBtn");
+  function apply(lang){
+    var dict = lang === "en" ? en : zh;
+    nodes.forEach(function(n){
+      var k = n.getAttribute("data-i18n");
+      if (k in dict) n.textContent = dict[k];
+    });
+    document.documentElement.lang = lang === "en" ? "en" : "zh-TW";
+    btn.textContent = lang === "en" ? "中文" : "EN";
+    try { localStorage.setItem("lang", lang); } catch(e){}
+  }
+  var saved = null;
+  try { saved = localStorage.getItem("lang"); } catch(e){}
+  if (!saved && !/^zh/i.test(navigator.language || "")) saved = "en";
+  if (saved === "en") apply("en");
+  btn.addEventListener("click", function(){
+    apply(document.documentElement.lang === "en" ? "zh" : "en");
+  });
+})();
+</script>
+</body>
+</html>
