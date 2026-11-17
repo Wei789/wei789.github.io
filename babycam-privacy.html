@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BabyCam 隱私權政策 / Privacy Policy</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --text: #1c1c1e;
+  --muted: #6b6b70;
+  --accent: #4f6fd9;
+  --line: #e3e3e8;
+  --card: #f5f6fa;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111114;
+    --text: #f2f2f5;
+    --muted: #a0a0a8;
+    --accent: #8aa4ff;
+    --line: #2c2c32;
+    --card: #1c1c21;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.7 -apple-system, BlinkMacSystemFont, "PingFang TC", "Helvetica Neue", sans-serif;
+}
+main { max-width: 760px; margin: 0 auto; padding: 24px 16px 64px; }
+nav { display: flex; gap: 16px; flex-wrap: wrap; font-size: 15px; }
+a { color: var(--accent); }
+h1 { font-size: 28px; line-height: 1.3; margin: 24px 0 8px; }
+h2 { font-size: 20px; margin: 32px 0 8px; padding-top: 8px; border-top: 1px solid var(--line); }
+.meta { color: var(--muted); font-size: 14px; }
+.summary { background: var(--card); border-radius: 12px; padding: 12px 16px; }
+table { width: 100%; border-collapse: collapse; font-size: 15px; }
+th, td { text-align: left; vertical-align: top; padding: 8px; border-bottom: 1px solid var(--line); }
+section + section { margin-top: 56px; }
+</style>
+</head>
+<body>
+<main>
+<nav>
+  <a href="#zh-Hant">繁體中文</a>
+  <a href="#en">English</a>
+  <a href="babycam-support.html">支援 / Support</a>
+</nav>
+
+<section id="zh-Hant" lang="zh-Hant">
+<h1>BabyCam 隱私權政策</h1>
+<p class="meta">生效日期：2026 年 11 月 17 日　開發者：CowCow</p>
+
+<p class="summary"><strong>重點：</strong>BabyCam 不收集、也不傳送任何個人資料到我們的伺服器。我們沒有伺服器。寶寶的畫面與聲音只在你自己的兩台裝置之間，透過同一個區域網路（Wi‑Fi）直接傳送，不上傳雲端、不錄影、不儲存。</p>
+
+<h2>我們收集哪些資料</h2>
+<p><strong>開發者收集：</strong>無。</p>
+<p><strong>第三方 SDK 收集：</strong>無。App 使用的唯一第三方元件是開源的 WebRTC 函式庫（stasel/WebRTC），只用來在你的兩台裝置之間傳送影音，不收集資料、不追蹤。</p>
+
+<h2>影像與聲音</h2>
+<ul>
+  <li>寶寶端拍到的畫面與收到的聲音，只會直接送到你已配對的父母端裝置。</li>
+  <li>傳送只發生在同一個區域網路內，不經過任何網際網路伺服器。</li>
+  <li>連線全程加密，已配對的裝置會互相驗證身分。</li>
+  <li>App 不錄影、不錄音，也不儲存任何畫面或聲音。</li>
+</ul>
+
+<h2>存在你裝置上的資料</h2>
+<table>
+  <tr><th>資料</th><th>存在哪</th><th>用途</th></tr>
+  <tr><td>配對資訊（隨機產生的配對金鑰、寶寶端識別碼）</td><td>裝置的鑰匙圈（Keychain）</td><td>讓已配對的裝置之後能自動、安全地重新連線</td></tr>
+  <tr><td>上次選擇的角色（寶寶端／父母端）、提醒設定</td><td>App 的本機設定</td><td>下次打開時沿用你的選擇</td></tr>
+</table>
+<p>這些資料只存在你的裝置上，我們拿不到。</p>
+
+<h2>資料存多久、怎麼刪除</h2>
+<ul>
+  <li>配對資訊會保留到你清除為止。在寶寶端點右上角選單的「清除已配對裝置」即可刪除；正在連線的父母端會同時刪除它的配對資訊。當時沒連線的父母端會保留配對資訊，但寶寶端已刪除對應的金鑰，這份資訊再也無法用來連線；之後重新配對時會被覆蓋，刪除 App 時見下一點。</li>
+  <li>刪除 App 會刪除本機設定。iOS 在刪除 App 後可能仍保留鑰匙圈中的配對資訊；要完全清除，請先在寶寶端使用「清除已配對裝置」再刪除 App。</li>
+</ul>
+
+<h2>權限用途</h2>
+<table>
+  <tr><th>權限</th><th>用途</th></tr>
+  <tr><td>相機</td><td>寶寶端把寶寶的畫面傳給父母端。</td></tr>
+  <tr><td>麥克風</td><td>寶寶端傳送寶寶的聲音；父母端只在你按住「按住說話」時傳送你的聲音。</td></tr>
+  <tr><td>區域網路</td><td>在同一個 Wi‑Fi 中找到彼此並直接連線。</td></tr>
+  <tr><td>通知</td><td>父母端在寶寶有聲音或連線中斷時通知你。通知在裝置上產生，不經過伺服器。</td></tr>
+</table>
+<p>App 不要求定位、聯絡人、相簿、健康資料或追蹤權限。</p>
+
+<h2>連線的網域與服務</h2>
+<p>無。App 不連到任何網際網路網域或 API，只在區域網路內以 Bonjour 搜尋並直接連線你的另一台裝置。</p>
+
+<h2>廣告與追蹤</h2>
+<p>沒有廣告與追蹤。App 不含廣告、分析或當機回報 SDK，也不使用 App 追蹤透明度（ATT）。</p>
+
+<h2>兒童隱私</h2>
+<p>BabyCam 是給父母或照顧者使用的工具。App 會拍攝寶寶的畫面，但這些畫面只在你自己的裝置之間傳送，我們不會收到、也不會儲存任何兒童或使用者的資料。</p>
+
+<h2>你的權利與聯絡方式</h2>
+<p>因為我們不收集任何個人資料，所以沒有你的資料可以查詢、更正或刪除。對本政策有任何問題，請來信：<a href="mailto:kaishacowcow@gmail.com">kaishacowcow@gmail.com</a>。</p>
+
+<h2>政策變更</h2>
+<p>政策若有變更，我們會更新本頁並修改上方的生效日期；若變更涉及資料處理方式，也會在 App 的版本更新說明中告知。</p>
+</section>
+
+<section id="en" lang="en">
+<h1>BabyCam Privacy Policy</h1>
+<p class="meta">Effective date: November 17, 2026　Developer: CowCow</p>
+
+<p class="summary"><strong>In short:</strong> BabyCam does not collect any personal data and does not send any personal data to our servers. We have no servers. Your baby's video and sound travel only between your own two devices over the same local network (Wi-Fi). Nothing is uploaded to the cloud, recorded or stored.</p>
+
+<h2>Data we collect</h2>
+<p><strong>Collected by the developer:</strong> none.</p>
+<p><strong>Collected by third-party SDKs:</strong> none. The only third-party component is the open-source WebRTC library (stasel/WebRTC), used only to send video and sound between your two devices. It does not collect data or track you.</p>
+
+<h2>Video and sound</h2>
+<ul>
+  <li>Video and sound from the baby unit are sent directly to the parent device you paired.</li>
+  <li>They travel only within the same local network and never pass through an internet server.</li>
+  <li>Every connection is encrypted, and paired devices verify each other.</li>
+  <li>The app does not record or store any video or sound.</li>
+</ul>
+
+<h2>Data stored on your device</h2>
+<table>
+  <tr><th>Data</th><th>Where</th><th>Purpose</th></tr>
+  <tr><td>Pairing information (a randomly generated pairing key and a baby unit identifier)</td><td>The device Keychain</td><td>Lets paired devices reconnect automatically and securely</td></tr>
+  <tr><td>The role you last chose (baby unit / parent unit) and alert settings</td><td>The app's local settings</td><td>Remembers your choices next time</td></tr>
+</table>
+<p>This data stays on your device. We cannot access it.</p>
+
+<h2>Retention and deletion</h2>
+<ul>
+  <li>Pairing information is kept until you remove it. On the baby unit, open the menu in the top-right corner and choose 清除已配對裝置 (Remove paired devices). A parent unit connected at that moment deletes its pairing information too. A parent unit that was not connected keeps its copy, but the baby unit has deleted the matching key, so it can no longer be used to connect; it is overwritten when you pair again. For deleting the app, see the next point.</li>
+  <li>Deleting the app removes its local settings. iOS may keep pairing information in the Keychain after the app is deleted; to remove everything, use Remove paired devices on the baby unit before deleting the app.</li>
+</ul>
+
+<h2>Permissions</h2>
+<table>
+  <tr><th>Permission</th><th>Purpose</th></tr>
+  <tr><td>Camera</td><td>The baby unit sends your baby's video to the parent unit.</td></tr>
+  <tr><td>Microphone</td><td>The baby unit sends your baby's sound; the parent unit sends your voice only while you hold the talk button.</td></tr>
+  <tr><td>Local Network</td><td>Finds your other device on the same Wi-Fi and connects to it directly.</td></tr>
+  <tr><td>Notifications</td><td>The parent unit alerts you to sounds or a lost connection. Notifications are created on the device, not by a server.</td></tr>
+</table>
+<p>The app does not ask for location, contacts, photos, health data or tracking permission.</p>
+
+<h2>Domains and services</h2>
+<p>None. The app does not connect to any internet domain or API. It only uses Bonjour on your local network to find and connect to your other device.</p>
+
+<h2>Advertising and tracking</h2>
+<p>There is no advertising and no tracking. The app contains no advertising, analytics or crash reporting SDKs and does not use App Tracking Transparency.</p>
+
+<h2>Children's privacy</h2>
+<p>BabyCam is a tool for parents and caregivers. It captures video of your baby, but that video only travels between your own devices. We never receive or store any data about children or users.</p>
+
+<h2>Your rights and contact</h2>
+<p>Because we collect no personal data, we hold no data about you to access, correct or delete. For any questions about this policy, email <a href="mailto:kaishacowcow@gmail.com">kaishacowcow@gmail.com</a>.</p>
+
+<h2>Changes to this policy</h2>
+<p>If this policy changes, we will update this page and the effective date above. If a change affects how data is handled, we will also mention it in the app's release notes.</p>
+</section>
+</main>
+</body>
+</html>
