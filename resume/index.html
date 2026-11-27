@@ -72,7 +72,7 @@ h3{font-size:17px;margin:0 0 4px}
 .links{margin-top:8px;font-size:14px}
 .links a+a{margin-left:12px}
 .steps{display:grid;gap:14px;grid-template-columns:1fr}
-@media(min-width:720px){.steps{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:720px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .step{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
 .step .n{display:inline-block;width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;text-align:center;line-height:28px;font-weight:700;font-size:14px;margin-bottom:10px}
 .step p{margin:0;color:var(--fg2);font-size:14.5px}
@@ -83,7 +83,7 @@ h3{font-size:17px;margin:0 0 4px}
 .job ul{margin:6px 0 0;padding-left:18px;color:var(--fg2);font-size:14.5px}
 .job li{margin-bottom:2px}
 .skills{display:grid;gap:12px;grid-template-columns:1fr}
-@media(min-width:720px){.skills{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:720px){.skills{grid-template-columns:repeat(2,minmax(0,1fr))}.skill.wide{grid-column:1/-1}}
 .skill{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
 .skill h3{font-size:14px;color:var(--fg2);text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px}
 footer{border-top:1px solid var(--line);padding:32px 0 48px;color:var(--fg2);font-size:14px}
@@ -113,7 +113,7 @@ footer .row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-cont
 <section class="wrap">
   <span class="tag" data-i18n="hero_tag">iOS 工程師 · 台北 · 接受遠端與接案</span>
   <h1><span data-i18n="hero_name">鄭惟臣</span> <span class="muted" style="font-weight:500">Weichen Cheng</span></h1>
-  <p class="lead" data-i18n="hero_lead">做 iOS 十年，9 款 App 在 App Store 上架並維護中。習慣從需求、架構、測試一路做到上架與變現，近期以 Claude Code 搭配自己寫的開發規範工作。</p>
+  <p class="lead" data-i18n="hero_lead">10 年 iOS 開發經驗，做過多種類型的 App。工作之餘，也會把生活中遇到的需求做成 App，目前有 9 款上架 App Store。面對 AI 改變寫程式的方式，這幾年持續學習如何與 AI 合作來縮短開發時間；透過制定架構與測試標準、釐清需求，以及完成後的驗證，確保程式碼品質並符合需求。</p>
   <div class="cta">
     <a class="btn primary" href="https://apps.apple.com/tw/developer/weichen-cheng/id1193049632" target="_blank" rel="noopener" data-i18n="cta_apps">App Store 作品</a>
     <a class="btn" href="mailto:revok117@hotmail.com" data-i18n="cta_mail">Email 聯絡</a>
@@ -128,7 +128,6 @@ footer .row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-cont
 
 <section class="wrap" id="apps">
   <h2 data-i18n="apps_h">上架作品</h2>
-  <p class="lead" style="font-size:16px" data-i18n="apps_lead">全部由我一人設計、開發、測試、上架與維護。App Store 開發者名稱「Weichen Cheng」。</p>
   <div class="grid">
     <div class="card">
       <img src="icons/babysync.png" alt="BabySync+ icon">
@@ -225,11 +224,11 @@ footer .row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-cont
 
 <section class="wrap" id="ai">
   <h2 data-i18n="ai_h">開發方式</h2>
-  <p class="lead" style="font-size:16px" data-i18n="ai_lead">AI 產出程式與文件，我定規則、驗證與把關。規範寫成 AI 能照做的文件，變更先提案，測試與上架都自動化。</p>
   <div class="steps">
-    <div class="step"><span class="n">1</span><h3 data-i18n="ai1_h">規範寫給 AI 執行</h3><p data-i18n="ai1_p">每個專案都有 CLAUDE.md：分支流程、合併條件（可編譯、測試全過、文件更新）、測試規則、程式碼準則。Claude Code 與 Cursor 照著做。</p></div>
-    <div class="step"><span class="n">2</span><h3 data-i18n="ai2_h">變更先提案再動工</h3><p data-i18n="ai2_p">用 OpenSpec 管理變更提案；測試依需求撰寫而不是反推現況，外部依賴全部可注入，覆蓋率目標 90% 以上。</p></div>
-    <div class="step"><span class="n">3</span><h3 data-i18n="ai3_h">上架也自動化</h3><p data-i18n="ai3_p">自訂 Claude Code skills 產生多語系上架文案、截圖與隱私權頁，fastlane 一鍵上傳。最多 7 語系。</p></div>
+    <div class="step"><span class="n">1</span><h3 data-i18n="ai1_h">經驗寫成規範</h3><p data-i18n="ai1_p">架構、分支流程、合併條件（可編譯、測試全過、文件更新）與程式碼準則依十年經驗訂定，寫進每個專案的 CLAUDE.md。</p></div>
+    <div class="step"><span class="n">2</span><h3 data-i18n="ai2_h">規格先行、測試依需求</h3><p data-i18n="ai2_p">新功能先寫規格或 OpenSpec 提案，再依規格實作。測試依需求撰寫，而不是照程式的輸出反推，覆蓋率 90% 以上。</p></div>
+    <div class="step"><span class="n">3</span><h3 data-i18n="ai3_h">獨立 Code Review</h3><p data-i18n="ai3_p">實作完在新的 session 做 code review，對照規格確認功能都做到，不讓實作者自己驗自己。另外用自訂的 Claude Code skill 專找空值、網路失敗、同時操作這類容易漏掉的情況；找到的問題先實際重現，確認會發生才修。</p></div>
+    <div class="step"><span class="n">4</span><h3 data-i18n="ai4_h">上架流程化</h3><p data-i18n="ai4_p">自訂 skills 掃描專案，產出多語系文案、關鍵字、隱私權標籤、年齡分級與審核備註，以及隱私權政策與支援頁；截圖直接用 App 的真實畫面渲染。fastlane 一鍵上傳。</p></div>
   </div>
 </section>
 
@@ -256,10 +255,13 @@ footer .row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-cont
 <section class="wrap" id="skills">
   <h2 data-i18n="sk_h">技能</h2>
   <div class="skills">
-    <div class="skill"><h3 data-i18n="sk1_h">語言與 UI</h3>Swift（10 年）、SwiftUI、UIKit、Combine、Observation、RxSwift、MVVM / MVVM-C、The Composable Architecture</div>
-    <div class="skill"><h3 data-i18n="sk2_h">Apple 框架</h3>SwiftData、Core Data、CloudKit、WidgetKit、ActivityKit、AppIntents、StoreKit 2、WeatherKit、MapKit、Core Location、Core Bluetooth、HealthKit、Swift Charts</div>
-    <div class="skill"><h3 data-i18n="sk3_h">測試與交付</h3>Swift Testing、XCTest、ViewInspector、依賴注入；fastlane、Jenkins、SwiftLint、SPM、Git；App Store 審核、隱私權標籤、ATT、訂閱</div>
-    <div class="skill"><h3 data-i18n="sk4_h">服務與其他</h3>Firebase（Auth、Firestore、Storage、Crashlytics）、Google Mobile Ads、Unity 介接；C#、ASP.NET Web API、MSSQL、MongoDB、Xamarin</div>
+    <div class="skill"><h3 data-i18n="sk1_h">語言與架構</h3>Swift、async/await、Combine、RxSwift；MVVM / MVVM-C、The Composable Architecture、依賴注入（Swinject）</div>
+    <div class="skill"><h3 data-i18n="sk2_h">UI 與系統整合</h3>SwiftUI、UIKit（Storyboard／純程式碼 Auto Layout）、Observation、Swift Charts；WidgetKit、Live Activity、AppIntents、UserNotifications、BackgroundTasks</div>
+    <div class="skill"><h3 data-i18n="sk3_h">資料與網路</h3>SwiftData、Core Data、CloudKit、Firebase（Auth、Firestore、Storage）、Moya、SDWebImage、WebRTC、Network framework、CryptoKit</div>
+    <div class="skill"><h3 data-i18n="sk4_h">裝置與媒體</h3>Core Location、CoreMotion、MapKit、WeatherKit、Core Bluetooth、HealthKit、AVFoundation</div>
+    <div class="skill"><h3 data-i18n="sk5_h">變現與帳號</h3>StoreKit 2 訂閱、Sign in with Apple、Google Mobile Ads、UMP、App Tracking Transparency</div>
+    <div class="skill"><h3 data-i18n="sk6_h">測試與品質</h3>Swift Testing、XCTest、SwiftLint、Firebase Crashlytics</div>
+    <div class="skill wide"><h3 data-i18n="sk7_h">開發工具與上架</h3>Xcode、Git、SPM、CocoaPods；fastlane、Jenkins CI/CD</div>
   </div>
 </section>
 
@@ -285,10 +287,10 @@ footer .row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-cont
     nav_apps:"Apps", nav_ai:"How I work", nav_exp:"Experience", nav_skills:"Skills", nav_contact:"Contact",
     hero_tag:"iOS Engineer · Taipei · open to remote and freelance",
     hero_name:"",
-    hero_lead:"Ten years of iOS, with 9 apps live on the App Store. I usually take an app from requirements and architecture through tests to release and monetization, and lately work with Claude Code under my own engineering rules.",
+    hero_lead:"10 years of iOS experience across many kinds of apps. Outside work, I turn everyday needs into apps, and 9 of them are now on the App Store. As AI changes how software gets written, I have kept learning how to work with it to shorten development time, while setting architecture and testing standards, clarifying requirements and verifying the result so the code stays solid and meets the requirements.",
     cta_apps:"Apps on the App Store", cta_mail:"Email me",
     st_years:"years in software, 10 in iOS", st_apps:"apps shipped", st_dl:"lifetime downloads (App Store Connect)", st_cov:"test coverage on recent projects",
-    apps_h:"Shipped apps", apps_lead:"Designed, built, tested, released and maintained by me. App Store developer \"Weichen Cheng\".",
+    apps_h:"Shipped apps",
     app_babysync:"Baby-care tracker: feeds, diapers, sleep, solids, growth charts. One-tap widget logging, Dynamic Island timers, real-time family sync, Plus subscription.",
     meta_babysync:"2026 · 5 languages · 1,255 tests · ~31K lines",
     app_wealthpoise:"Portfolio rebalancing: TW/US/HK/JP stocks and ETFs, two rebalancing modes, 7 currencies, monthly net-worth snapshots, drift alerts, iCloud sync.",
@@ -310,10 +312,10 @@ footer .row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-cont
     app_calcfx:"Travel currency calculator: one-tap multi-currency conversion, rates refreshed every 24 hours, works offline.",
     meta_calcfx:"2024 · 7 languages",
     ai_h:"How I work",
-    ai_lead:"AI writes code and docs; I set the rules, verify and sign off. Rules live in documents AI can follow, changes start as proposals, and tests and releases are automated.",
-    ai1_h:"Rules written for AI to follow", ai1_p:"Every project has a CLAUDE.md: branching, merge gates (builds, all tests pass, docs updated), test rules, code standards. Claude Code and Cursor follow it.",
-    ai2_h:"Propose before changing", ai2_p:"Changes go through OpenSpec proposals. Tests are written from requirements, not from current output; every external dependency is injectable; coverage target 90%+.",
-    ai3_h:"Releases are automated too", ai3_p:"Custom Claude Code skills generate localized store metadata, screenshots and privacy pages; fastlane uploads them in one command. Up to 7 languages.",
+    ai1_h:"Experience, written down as rules", ai1_p:"Architecture, branching, merge gates (builds, all tests pass, docs updated) and code standards come from ten years of practice and live in each project's CLAUDE.md.",
+    ai2_h:"Spec first, tests from requirements", ai2_p:"New features start as a spec or OpenSpec proposal and are built to that spec. Tests are written from the requirements, not reverse-engineered from the code's output, with 90%+ coverage.",
+    ai3_h:"Independent code review", ai3_p:"After implementation, a fresh session reviews the code against the spec, so the implementer never checks its own work. Custom Claude Code skills also look for easy-to-miss cases such as empty values, network failures and concurrent actions; each issue is reproduced first and fixed only once it is confirmed.",
+    ai4_h:"A repeatable release process", ai4_p:"Custom skills scan each project and produce localized metadata, keywords, privacy labels, age rating and review notes, plus privacy and support pages; screenshots are rendered from the app's real views. fastlane uploads it all in one command.",
     exp_h:"Experience",
     j1_h:"Baifu Technology · iOS Engineer", j1_1:"Gaming apps: native iOS shell (UIKit / SwiftUI) bridged to Unity game content", j1_2:"Chat app and video-player app; MVVM / MVVM-C; multiple branded variants maintained on the App Store", j1_3:"Introduced AI-assisted development to the team; team of 3–6",
     j2_h:"MixerBox · iOS Engineer", j2_1:"MixerBox News app: bug fixes, new features, regular releases; Firebase Crashlytics",
@@ -322,7 +324,7 @@ footer .row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-cont
     j5_h:"TPIsoftware · Software Engineer", j5_1:"FarEasTone Health+: HealthKit and Google Fit integration, push, Core Bluetooth health devices", j5_2:"Kinmen food guide (Facebook SDK, Google Maps SDK); Fubon insurance tablet apps (Xamarin + C#)",
     j6_h:"Migo · Backend Engineer", j6_1:"E-commerce marketing analytics: ASP.NET Web API 2, Quartz.NET, Entity Framework 6, MSSQL, MongoDB",
     j7_h:"SYSTEX · Software Engineer", j7_1:"Banking and wealth-management systems (C#, Java)",
-    sk_h:"Skills", sk1_h:"Languages & UI", sk2_h:"Apple frameworks", sk3_h:"Testing & delivery", sk4_h:"Services & other",
+    sk_h:"Skills", sk1_h:"Language & architecture", sk2_h:"UI & system integration", sk3_h:"Data & networking", sk4_h:"Device & media", sk5_h:"Monetization & accounts", sk6_h:"Testing & quality", sk7_h:"Tooling & release",
     ct_h:"Contact", ct_lead:"Open to iOS roles and freelance app projects.",
     ft_note:"Figures from App Store Connect, November 2026."
   };
